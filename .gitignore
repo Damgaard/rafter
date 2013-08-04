@@ -1,0 +1,11 @@
+.idea/workspace.xml
+
+js/libs/three.js/
+!js/libs/three.js/build/three.js
+!js/libs/three.js/build/three.min.js
+
+js/libs/requirejs/
+!js/libs/requirejs/require.js
+
+js/libs/qunitjs.com/
+!libs/qunitjs.com/resources/qunit.js

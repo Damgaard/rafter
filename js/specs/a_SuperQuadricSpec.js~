@@ -1,0 +1,67 @@
+define(
+    [
+    ],
+    function (
+        ) {
+
+//        console.log("declaring my superQuadric spec");
+
+        var mySuperQuadricSpec;
+
+        // my parametric polarWall:
+        //      curve parameter/azimuth angle:   phi,   eta     (aka. inclination)
+        //      modulator parameter/polar angle: theta, omega
+        //      radius:                          rho
+
+        //      X = radius * modulator_XY * curve_X
+        //      Y = radius * modulator_XY * curve_Y
+        //      Z = radius * modulator_Z
+
+        //      X = radius * sin ( theta ) * cos ( phi )
+        //      Y = radius * sin ( theta ) * sin ( phi )
+        //      Z = radius * sin ( theta )
+
+        //      SPHERE:
+        //      modulator_XY = sin ( theta )
+        //      modulator_Z = sin ( theta )
+        //      curve_X = cos ( phi )
+        //      curve_Y = sin ( phi )
+
+        //      -pi / 2 <= theta <=   pi / 2
+        //      0 <= phi   <= 2*pi
+        //      0 <= rho
+
+        //      '0' = theta
+        //      'ø' = phi
+        //      'p' = rho
+        //      en.wikipedia.org/wiki/Spherical_coordinates#Cartesian_coordinates
+        //      en.wikipedia.org/wiki/List_of_common_coordinate_transformations#From_spherical_coordinates
+
+        mySuperQuadricSpec = {
+            radius: 100,
+            //curve_X( 2 * PI * frequency_scaler) = fun(0)
+            curve_X: function ( phi ) {
+                x = Math.cos(phi);
+                //x = Math.cos(phi) + ( Math.cos(phi*9) / 7 );
+                //x = Math.cos(phi) + ( Math.cos(phi*9) / 10 );
+                return x;
+            },
+            curve_Y: function ( phi ) {
+                y = Math.sin( phi );
+                //y = Math.sin(phi) + ( Math.sin(phi*3) / 10 );
+                return y;
+            },
+            modulator_XY: function ( theta ) {
+                m_xy = Math.cos( theta );
+                return m_xy;
+            },
+            modulator_Z: function ( theta ) {
+                m_z = Math.sin( theta );
+                return m_z;
+            }
+        };
+        Object.freeze(mySuperQuadricSpec);
+
+        return mySuperQuadricSpec;
+    }
+);
