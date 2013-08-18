@@ -21,6 +21,9 @@
 "use strict";
 
 
+//This constructor is not in use anywhere yet
+
+
 define(
     [
     ],
@@ -32,33 +35,27 @@ define(
         var NormalVectorProjectedGetXYZ;
 
         NormalVectorProjectedGetXYZ = function (getXgetYgetZ) {
-            var aNormalVectorProjectedGetXYZ;
 
-            aNormalVectorProjectedGetXYZ = (function (getXgetYgetZ) {
-                var getX, getY, getZ, tangentVectorPhiR, tangentVectorThetaR;
+            var getX, getY, getZ, tangentVectorPhiR, tangentVectorThetaR, delta_phiR_X;
 
-                getX = mySuperQuadric.getX;
-                getY = mySuperQuadric.getY;
-                getZ = mySuperQuadric.getZ;
+            getX = mySuperQuadric.getX;
+            getY = mySuperQuadric.getY;
+            getZ = mySuperQuadric.getZ;
 
-                getX = function(phiR, thetaR) {
-                    if(memo[phiR][thetaR]) {
-                        return memo[phiR][thetaR][X]
-                    } else {
-                        delta_phiR_X = getXREA(phiR + epsilon)
-                    }
+            getX = function(phiR, thetaR) {
+                if(memo[phiR][thetaR]) {
+                    return memo[phiR][thetaR][X]
+                } else {
+                    delta_phiR_X = getXREA(phiR + epsilon)
                 }
+            }
 
-                //deltaPhiR_X = getX()
-                tangentVectorPhiR = 42;
+            //deltaPhiR_X = getX()
+            tangentVectorPhiR = 42;
 
-                return {
+            //THIS CONSTRUCTOR REALLY SHOULD RETURN SOMETHING
 
-                };
-            }(getXgetYgetZ));
-
-            Object.freeze(aNormalVectorProjectedGetXYZ);
-            return aNormalVectorProjectedGetXYZ;
+            Object.freeze(this);
         };
 
         Object.freeze(NormalVectorProjectedGetXYZ);

@@ -32,36 +32,29 @@ define(
         var Delimitation;
 
         Delimitation = function (aDelimitationSpec) {
-            var aDelimitation;
+            var spec, phiR_int, thetaR_int;
 
-            aDelimitation = (function (aDelimitationSpec) {
-                var spec, phiR_int, thetaR_int;
+            spec = {};
 
-                spec = {};
-
-                for (var prop in aDelimitationSpec) {
-                    if (aDelimitationSpec.hasOwnProperty(prop)) {
-                        spec[prop] = aDelimitationSpec[prop];
-                    }
+            for (var prop in aDelimitationSpec) {
+                if (aDelimitationSpec.hasOwnProperty(prop)) {
+                    spec[prop] = aDelimitationSpec[prop];
                 }
+            }
 
-                phiR_int   = spec.phiR_max   - spec.phiR_min;
-                thetaR_int = spec.thetaR_max - spec.thetaR_min;
+            phiR_int   = spec.phiR_max   - spec.phiR_min;
+            thetaR_int = spec.thetaR_max - spec.thetaR_min;
 
-                return {
-                    thetaR_int: thetaR_int,
-                    phiR_int: phiR_int,
-                    thetaR_min: spec.thetaR_min,
-                    phiR_min: spec.phiR_min,
-                    thetaR_max: spec.thetaR_max,
-                    phiR_max: spec.phiR_max,
-                    thetaR_at_max_surface_extent_along_polar: spec.thetaR_at_max_surface_extent_along_polar,
-                    thetaR_at_max_surface_extent_along_azimuth: spec.thetaR_at_max_surface_extent_along_azimuth
-                };
-            }(aDelimitationSpec));
+            this.thetaR_int = thetaR_int;
+            this.phiR_int = phiR_int;
+            this.thetaR_min = spec.thetaR_min;
+            this.phiR_min = spec.phiR_min;
+            this.thetaR_max = spec.thetaR_max;
+            this.phiR_max = spec.phiR_max;
+            this.thetaR_at_max_surface_extent_along_polar = spec.thetaR_at_max_surface_extent_along_polar;
+            this.thetaR_at_max_surface_extent_along_azimuth = spec.thetaR_at_max_surface_extent_along_azimuth;
 
-            Object.freeze(aDelimitation);
-            return aDelimitation;
+            Object.freeze(this);
         };
 
         Object.freeze(Delimitation);

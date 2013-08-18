@@ -32,44 +32,39 @@ define(
         var SuperQuadric;
 
         SuperQuadric = function ( aSuperQuadricSpec ) {
-            var aSuperQuadric;
+            var spec, getX, getY, getZ, phiR_estimator;
 
-            aSuperQuadric = (function anon( aSuperQuadricSpec ) {
-                var getX, getY, getZ, phiR_estimator;
+            spec = {};
+            
+            for(var prop in aSuperQuadricSpec){
+                spec[prop] = aSuperQuadricSpec[prop];
+            };
 
-                for(var prop in aSuperQuadricSpec){
-                    anon[prop] = aSuperQuadricSpec[prop];
-                };
+            getX = function(phi_rad, theta_rad) {
+                var x = spec.radius * spec.modulator_XY(theta_rad) * spec.curve_X(phi_rad);
+                return x;
+            };
 
-                getX = function(phi_rad, theta_rad) {
-                    var x = anon.radius * anon.modulator_XY(theta_rad) * anon.curve_X(phi_rad);
-                    return x;
-                };
+            getY = function(phi_rad, theta_rad) {
+                var y = spec.radius * spec.modulator_XY(theta_rad) * spec.curve_Y(phi_rad);
+                return y;
+            };
 
-                getY = function(phi_rad, theta_rad) {
-                    var y = anon.radius * anon.modulator_XY(theta_rad) * anon.curve_Y(phi_rad);
-                    return y;
-                };
+            getZ = function(theta_rad) {
+                var z = spec.radius * spec.modulator_Z(theta_rad);
+                return z;
+            };
 
-                getZ = function(theta_rad) {
-                    var z = anon.radius * anon.modulator_Z(theta_rad);
-                    return z;
-                };
+            phiR_estimator = function(projectionDistance) {
+                return (projectionDistance / 100);
+            }
 
-                phiR_estimator = function(projectionDistance) {
-                    return (projectionDistance / 100);
-                }
+            this.getX = getX;
+            this.getY = getY;
+            this.getZ = getZ;
+            this.phiR_estimator = phiR_estimator;
 
-                return {
-                    getX: getX,
-                    getY: getY,
-                    getZ: getZ,
-                    phiR_estimator: phiR_estimator
-                };
-            }(aSuperQuadricSpec));
-
-            Object.freeze(aSuperQuadric);
-            return aSuperQuadric;
+            Object.freeze(this);
         };
 
         Object.freeze(SuperQuadric);
