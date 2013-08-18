@@ -21,6 +21,9 @@
 "use strict";
 
 
+//This constructor is not in use anywhere yet
+
+
 define(
     [
     ],
@@ -32,21 +35,18 @@ define(
         var RafterSet;
 
         RafterSet = function ( aRafterSetSpec, aSegmentation ) {
-            var arafterSet;
+            var spec, thetaS, phiS, vertices;
 
-            arafterSet = (function (aRafterSetSpec, aSegmentation) {
-                var spec, thetaS, phiS, vertices;
-                
-                vertices = [];
-                spec = {};
+            vertices = [];
+            spec = {};
 
-                for(var prop in aRafterSetSpec){
-                    if(aRafterSetSpec.hasOwnProperty(prop)) {
-                        spec[prop] = aRafterSetSpec[prop];
-                    }
+            for(var prop in aRafterSetSpec){
+                if(aRafterSetSpec.hasOwnProperty(prop)) {
+                    spec[prop] = aRafterSetSpec[prop];
                 }
+            }
 
-           for ( thetaS = 0; thetaS <= (aSegmentation.noOfSegments_along_polar * 2); thetaS ++ ) {
+            for ( thetaS = 0; thetaS <= (aSegmentation.noOfSegments_along_polar * 2); thetaS ++ ) {
                 for ( phiS = 0; phiS <  (aSegmentation.noOfSegments_along_azimuth * 2); phiS   ++ ) {  // '<' is to avoid double points at phi=0
                     var x = aSegmentation.getXSES(phiS, thetaS);
                     var y = aSegmentation.getYSES(phiS, thetaS);
@@ -67,12 +67,9 @@ define(
                 };
             };
 
-                return {};
+            //THIS CONSTRUCTOR REALLY SHOULD RETURN SOMETHING
 
-            }(aRafterSetSpec, aSegmentation));
-
-            Object.freeze(arafterSet);
-            return arafterSet;
+            Object.freeze(this);
         };
 
         Object.freeze(RafterSet);
