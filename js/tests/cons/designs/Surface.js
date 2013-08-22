@@ -182,12 +182,12 @@ define(
 
             surface = new Surface(mySurfaceSpec, getXgetYgetZ_rad, superQuadric.phiR_estimator);
 
-            test('horizontalSurfaceProjection(phiR_start, thetaR_start, projectionDistance, approximationPrecision, maxRecursionDepth) should get the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth', function() {
-                equal(surface.horizontalSurfaceProjection(0,0,Math.PI*100,       1,1000), 340.7640568721204, 'X should be ~Pi*100 (314.159265359).');
-                equal(surface.horizontalSurfaceProjection(0,0,Math.PI*200,     1,1000), 681.5281137442408, 'X should be ~Pi*2*100 (628.318530718).');
-                equal(surface.horizontalSurfaceProjection(0,0,-Math.PI*50,    1,1000), 168.72968020305188, 'X should be ~Pi/2*100 (157.079632679).');
-                equal(surface.horizontalSurfaceProjection(0,0,-Math.PI*150,  1,1000), 502.5327608098721, 'X should be ~Pi*1.5*100 (471.238898038).');
-            });
+//            test('horizontalSurfaceProjection(phiR_start, thetaR_start, projectionDistance, approximationPrecision, maxRecursionDepth) should get the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth', function() {
+//                equal(surface.horizontalSurfaceProjection(0,0,Math.PI*100,       1,1000), 340.7640568721204, 'X should be ~Pi*100 (314.159265359).');
+//                equal(surface.horizontalSurfaceProjection(0,0,Math.PI*200,     1,1000), 681.5281137442408, 'X should be ~Pi*2*100 (628.318530718).');
+//                equal(surface.horizontalSurfaceProjection(0,0,-Math.PI*50,    1,1000), 168.72968020305188, 'X should be ~Pi/2*100 (157.079632679).');
+//                equal(surface.horizontalSurfaceProjection(0,0,-Math.PI*150,  1,1000), 502.5327608098721, 'X should be ~Pi*1.5*100 (471.238898038).');
+//            });
         };
 
         return {runA: runA,

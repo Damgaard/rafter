@@ -41,7 +41,14 @@ define(
 
         runA = function() {
 
-            var superQuadricSpec, superQuadric, surface, delimitationSpec, delimitation, geometrywiseSegmentationSpec, segmentation, getXgetYgetZ_rad = {};
+            var superQuadricSpec,
+                superQuadric,
+                surface,
+                delimitationSpec,
+                delimitation,
+                geometrywiseSegmentationSpec,
+                segmentation,
+                getXgetYgetZ_rad = {};
 
             superQuadricSpec = {
                 radius: 100,
@@ -115,7 +122,14 @@ define(
 
         runB = function() {
 
-            var superQuadricSpec, superQuadric, surface, delimitationSpec, delimitation, geometrywiseSegmentationSpec, segmentation, getXgetYgetZ_rad = {};
+            var superQuadricSpec,
+                superQuadric,
+                surface,
+                delimitationSpec,
+                delimitation,
+                geometrywiseSegmentationSpec,
+                segmentation,
+                getXgetYgetZ_rad = {};
 
             superQuadricSpec = {
                 radius: 100,

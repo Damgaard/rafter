@@ -1,0 +1,12 @@
+Coding guidelines:
+
+
+Configureable functions:
+========================
+
+All configureable functions must have configuration arguments be optional. In case such arguments are not given at function call, default values will be fetched from the relevant constructors specification files 'conf'-object.
+
+To avoid bloating recursive functions, the origin of the configuration must be determined on the first function call, and not be reevaluated on subsequent function calls.
+
+Configuration arguments shall be given as close to the call of the to-be-configured function as possible. It is not desirable to pass configuration arguments through several function calls before they come to use.
+
