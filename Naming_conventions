@@ -1,0 +1,3 @@
+only the main instances (which has their own files in 'instances') has the prefix 'my'
+
+Both camelCase and under_case is used: the former for the more tightly bound words and the latter for the more loosely bound words. ish.
