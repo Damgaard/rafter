@@ -32,8 +32,8 @@ define(
         var myGeometrywiseSegmentationSpec;
 
         myGeometrywiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: 10,
-            max_outer_segmentExtent_along_azimuth: 10
+            max_outer_segmentExtent_along_polar: 80,
+            max_outer_segmentExtent_along_azimuth: 80
         };
 
         Object.freeze(myGeometrywiseSegmentationSpec);

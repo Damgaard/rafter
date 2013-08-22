@@ -32,8 +32,24 @@ define(
         var mySurfaceSpec;
 
         mySurfaceSpec = {
-            approximationPrecision: 0.1,
-            maxRecursionDepth: 1000
+            conf: {
+                surfaceDistR: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                },
+                surfaceDistR_along_azimuth: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                },
+                surfaceDistR_along_polar: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                },
+                horizontalSurfaceProjection: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                }
+            }
         };
 
         Object.freeze(mySurfaceSpec);

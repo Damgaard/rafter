@@ -48,6 +48,7 @@ define(
                 getXSEA, getYSEA, getZSEA,
                 memo = {},
                 getXSES, getYSES, getZSES,
+                getXSES_body, getYSES_body,
                 linearDistS;
 
             spec = {};
@@ -152,6 +153,13 @@ define(
             // best_phiR_end, projectionDistance,
             // approximationPrecision, maxRecursionDepth)
             getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getXSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getXSES.maxRecursionDepth;
+
+                return getXSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
+            };
+
+            getXSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
                 var phiR_best, projectionDistance, thetaR, x;
                 if(memo[phiS]) {
                     phiR_best = memo[phiS];
@@ -173,6 +181,13 @@ define(
 
             // getY from Segment, Equidistant along Surface
             getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getYSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getYSES.maxRecursionDepth;
+
+                return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
+            };
+
+            getYSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
                 var phiR_best, projectionDistance, thetaR, y;
                 if(memo[phiS]) {
                     phiR_best = memo[phiS];
@@ -200,29 +215,6 @@ define(
                 return z;
             };
 
-            /*                linearDistS = function (phiS_start, phiS_end, thetaS_start, thetaS_end) {
-             var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
-             phi_x = getXSEA(phiS_start, thetaS_start);
-             phi_y = getYSEA(phiS_start, thetaS_start);
-             phi_z = getZSEA(thetaS_start);
-             phi__x = getXSEA(phiS_end, thetaS_end);
-             phi__y = getYSEA(phiS_end, thetaS_end);
-             phi__z = getZSEA(thetaS_end);
-
-             x_diff = phi__x - phi_x;
-             y_diff = phi__y - phi_y;
-             z_diff = phi__z - phi_z;
-
-             seg_dist = Math.sqrt(x_diff * x_diff + y_diff * y_diff + z_diff * z_diff);
-             return seg_dist;
-             };*/
-
-            /*                horizontalSurfaceProjectionS = function(phiS, thetaS) {
-             var best_phiR, x, y, z;
-             // surfaceProjection(phiR_start, phiR_end, theta, projectionDistance, approximationPrecision, iterations)
-             best_phiR = aSurface.horizontalSurfaceProjection(aDelimitation.phiR_min, phiS * segment_extent_azimuth,
-             aDelimitation.thetaR_min, segment_extent_azimuth, 7, 100);
-             }*/
 
             this.phiR_offset_by_phiR_min = phiR_offset_by_phiR_min;
             this.thetaR_offset_by_thetaR_min = thetaR_offset_by_thetaR_min;
@@ -238,7 +230,6 @@ define(
             this.getXSES = getXSES;
             this.getYSES = getYSES;
             this.getZSES = getZSES;
-            this.linearDistS = linearDistS;
 
             Object.freeze(this);
         };
