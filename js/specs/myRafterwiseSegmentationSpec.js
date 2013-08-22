@@ -34,7 +34,17 @@ define(
 
         db_rafterwiseSegmentationSpec = {
             max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 2,
-            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 2
+            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 2,
+            conf: {
+                getXSES: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                },
+                getYSES: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                }
+            }
         };
 
         Object.freeze(db_rafterwiseSegmentationSpec);

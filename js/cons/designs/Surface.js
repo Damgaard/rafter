@@ -34,7 +34,8 @@ define(
         var Surface;
 
         Surface = function (aSurfaceSpec, getXgetYgetZ_rad, phiR_estimator) {
-            var spec, aSurface, linearDistR, surfaceDistR,
+            var spec, linearDistR, surfaceDistR,
+                surfaceDistR_body,
                 surfaceDistR_along_azimuth,
                 surfaceDistR_along_polar,
                 horizontalSurfaceProjectionHelper,
@@ -52,8 +53,8 @@ define(
             getX = getXgetYgetZ_rad.getX;
             getY = getXgetYgetZ_rad.getY;
             getZ = getXgetYgetZ_rad.getZ;
-            approximationPrecision = aSurfaceSpec.approximationPrecision;
-            maxRecursionDepth = aSurfaceSpec.maxRecursionDepth;
+            //approximationPrecision = aSurfaceSpec.approximationPrecision;
+            //maxRecursionDepth = aSurfaceSpec.maxRecursionDepth;
             //console.log("outer approximationPrecision: ", approximationPrecision);
 
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
@@ -95,6 +96,27 @@ define(
             // *** Doesn't always work well for phiR_end > Pi*2  ***
             // Private function
             surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth) {
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
+
+                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth)
+            };
+
+            surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end, approximationPrecision, maxRecursionDepth) {
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR_along_azimuth.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
+
+                return (surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start, approximationPrecision, maxRecursionDepth))
+            };
+
+            surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end, approximationPrecision, maxRecursionDepth) {
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR_along_polar.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
+
+                return (surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end, approximationPrecision, maxRecursionDepth))
+            };
+
+            surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 //                    console.log("arguments: ", arguments);
 //                    console.log("approximationPrecision: ", approximationPrecision);
@@ -128,7 +150,7 @@ define(
                     //console.log("differencen er stoerre end approximationPrecision");
                     //console.log("difference: ", Math.abs(dist - halfDist * 2));
                     //console.log("VENSTRE REKURSION: ");
-                    firstDist  = surfaceDistR(phiR_start,
+                    firstDist  = surfaceDistR_body(phiR_start,
                         thetaR_start,
                         phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
@@ -136,7 +158,7 @@ define(
                     //console.log("VENSTRE REKURSION SLUT ");
                     //console.log("firstDist: ", firstDist);
                     //console.log("HOEJRE REKURSION: ");
-                    secondDist = surfaceDistR(phiR_start + deltaPhi / 2,
+                    secondDist = surfaceDistR_body(phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
                         phiR_start   + deltaPhi,
                         thetaR_start + deltaTheta,
@@ -149,15 +171,6 @@ define(
                 }
             };
 
-            surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end, approximationPrecision, maxRecursionDepth) {
-//                    console.log("surfaceDistR_along_azimuth arguments: ", arguments);
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start, approximationPrecision, maxRecursionDepth))
-            };
-
-            surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end, approximationPrecision, maxRecursionDepth) {
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end, approximationPrecision, maxRecursionDepth))
-            };
-
 
             // gets the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth
             // *** Doesn't always work well for best_phiR_end > Pi*2 and never for best_phiR_end < 0  ***
@@ -166,10 +179,7 @@ define(
                 var surfaceDist, distRatio, phiR_end_guesstimate, deltaDist;
                 //console.log("arguments: ", arguments);
 
-
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, best_phiR_end, approximationPrecision, maxRecursionDepth);
-
-
 
                 console.log(" ");
                 console.log("best_phiR_end: ", best_phiR_end);
@@ -205,6 +215,9 @@ define(
             horizontalSurfaceProjection = function(phiR_start, thetaR_start, projectionDistance,
                                                    approximationPrecision, maxRecursionDepth) {
                 var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ;
+
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
 
                 init_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
                 console.log(" ");
