@@ -174,6 +174,7 @@ define(
             // getY from Segment, Equidistant along Surface
             getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
                 var phiR_best, projectionDistance, thetaR, y;
+//                console.log("segment_extent_azimuth: ", segment_extent_azimuth);
                 if(memo[phiS]) {
                     phiR_best = memo[phiS];
                 } else {

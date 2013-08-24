@@ -40,9 +40,9 @@ define(
 
             THREE.Geometry.call( this );
 //console.log("noOfSegments_phi: ", noOfSegments_phi);
-            for ( theta_seg = 0; theta_seg <= noOfSegments_theta; theta_seg ++ ) {
+            for ( theta_seg = 1; theta_seg <= noOfSegments_theta; theta_seg ++ ) {
 //console.log("********theta_seg********: ", theta_seg);
-                for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
+                for ( phi_seg = 1; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
                     var x = getX(phi_seg, theta_seg, 0.01, 100);
