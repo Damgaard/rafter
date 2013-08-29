@@ -38,7 +38,7 @@ define(
                 surfaceDistR_body,
                 surfaceDistR_along_azimuth,
                 surfaceDistR_along_polar,
-                horizontalSurfaceProjectionHelper,
+                horizontalSurfaceProjection_body,
                 horizontalSurfaceProjection,
                 getX, getY, getZ,
                 approximationPrecision,
@@ -174,7 +174,7 @@ define(
 
             // gets the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth
             // *** Doesn't always work well for best_phiR_end > Pi*2 and never for best_phiR_end < 0  ***
-            horizontalSurfaceProjectionHelper = function(phiR_start, thetaR_start, best_phiR_end, projectionDistance,
+            horizontalSurfaceProjection_body = function(phiR_start, thetaR_start, best_phiR_end, projectionDistance,
                                                          approximationPrecision, maxRecursionDepth) {
                 var surfaceDist, distRatio, phiR_end_guesstimate, deltaDist;
                 //console.log("arguments: ", arguments);
@@ -202,7 +202,7 @@ define(
 
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
-                    best_phiR_end = horizontalSurfaceProjectionHelper(
+                    best_phiR_end = horizontalSurfaceProjection_body(
                         phiR_start, thetaR_start, phiR_end_guesstimate,
                         projectionDistance, approximationPrecision,
                         maxRecursionDepth - 1);
@@ -223,7 +223,7 @@ define(
                 console.log(" ");
                 console.log("init_phiR_end: ", init_phiR_end);
 
-                best_phiR_end = horizontalSurfaceProjectionHelper(
+                best_phiR_end = horizontalSurfaceProjection_body(
                     phiR_start, thetaR_start, init_phiR_end,
                     projectionDistance, approximationPrecision,
                     maxRecursionDepth);
