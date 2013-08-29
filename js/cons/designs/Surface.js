@@ -181,24 +181,25 @@ define(
 
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, best_phiR_end, approximationPrecision, maxRecursionDepth);
 
-                console.log(" ");
-                console.log("best_phiR_end: ", best_phiR_end);
-                console.log("surfaceDist: ", surfaceDist);
-                console.log("projectionDistance: ", projectionDistance);
-                deltaDist = surfaceDist - projectionDistance;
-                console.log("deltaDist: ", deltaDist);
+                             deltaDist = surfaceDist - projectionDistance;
 
                 distRatio = surfaceDist / projectionDistance;
-                console.log("distRatio: ", distRatio);
 
                 if(best_phiR_end >= 0) {phiR_end_guesstimate = best_phiR_end / distRatio;
                 } else { phiR_end_guesstimate = best_phiR_end * distRatio;};
-                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
-                console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
 
                 phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
-                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
 
+               /* console.log(" ");
+                console.log("best_phiR_end: ", best_phiR_end);
+                console.log("surfaceDist: ", surfaceDist);
+                console.log("projectionDistance: ", projectionDistance);
+                console.log("deltaDist: ", deltaDist);
+                console.log("distRatio: ", distRatio);
+                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
+                console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
+                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
+*/
 
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
@@ -214,20 +215,51 @@ define(
             // gets the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth
             horizontalSurfaceProjection = function(phiR_start, thetaR_start, projectionDistance,
                                                    approximationPrecision, maxRecursionDepth) {
-                var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ;
+                var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ, surfaceDist, distRatio, phiR_end_guesstimate, deltaDist;
 
                 approximationPrecision = approximationPrecision || aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
 
-                init_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
+                best_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
                 console.log(" ");
-                console.log("init_phiR_end: ", init_phiR_end);
+                // console.log("init_phiR_end: ", init_phiR_end);
 
-                best_phiR_end = horizontalSurfaceProjection_body(
-                    phiR_start, thetaR_start, init_phiR_end,
-                    projectionDistance, approximationPrecision,
-                    maxRecursionDepth);
+                console.time("timing horizontalSurfaceProjection_body");
 
+                do {
+
+                    surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, best_phiR_end, approximationPrecision, maxRecursionDepth);
+                    deltaDist = surfaceDist - projectionDistance;
+                    distRatio = surfaceDist / projectionDistance;
+
+                    if(best_phiR_end >= 0) {phiR_end_guesstimate = best_phiR_end / distRatio;
+                    } else { phiR_end_guesstimate = best_phiR_end * distRatio;};
+
+                    phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
+
+                    best_phiR_end = phiR_end_guesstimate; // updating the trailing phiR_end guesstimate
+/*
+                    console.log(" ");
+                    console.log("best_phiR_end: ", best_phiR_end);
+                    console.log("surfaceDist: ", surfaceDist);
+                    console.log("projectionDistance: ", projectionDistance);
+                    console.log("deltaDist: ", deltaDist);
+                    console.log("distRatio: ", distRatio);
+                    console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
+                    console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
+                    console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
+*/
+
+
+                } while( Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth-- > 0) );
+
+
+//                best_phiR_end = horizontalSurfaceProjection_body(
+//                    phiR_start, thetaR_start, init_phiR_end,
+//                    projectionDistance, approximationPrecision,
+//                    maxRecursionDepth);
+
+                console.timeEnd("timing horizontalSurfaceProjection_body")
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
                  });
@@ -240,7 +272,7 @@ define(
                  var line = new THREE.Line(geometry, material);
                  makeScene.scene.add(line);*/
 
-                return best_phiR_end;
+                return phiR_end_guesstimate;
             };
 
 
