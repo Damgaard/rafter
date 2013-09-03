@@ -181,24 +181,24 @@ define(
 
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, best_phiR_end, approximationPrecision, maxRecursionDepth);
 
+                deltaDist = surfaceDist - projectionDistance;
+
+                distRatio = surfaceDist / projectionDistance;
+
+                if(best_phiR_end >= 0) {phiR_end_guesstimate = best_phiR_end / distRatio;
+                } else { phiR_end_guesstimate = best_phiR_end * distRatio;};
+
+                phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
+
                 console.log(" ");
                 console.log("best_phiR_end: ", best_phiR_end);
                 console.log("surfaceDist: ", surfaceDist);
                 console.log("projectionDistance: ", projectionDistance);
-                deltaDist = surfaceDist - projectionDistance;
                 console.log("deltaDist: ", deltaDist);
-
-                distRatio = surfaceDist / projectionDistance;
                 console.log("distRatio: ", distRatio);
-
-                if(best_phiR_end >= 0) {phiR_end_guesstimate = best_phiR_end / distRatio;
-                } else { phiR_end_guesstimate = best_phiR_end * distRatio;};
                 console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
                 console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
-
-                phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
                 console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
-
 
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
