@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -28,7 +28,8 @@ define(
         "cons/geoms/Surface",
         "cons/designs/Segmentation",
         //"instances/myGeometrywiseSegmentation",
-        "instances/myRafterwiseSegmentation"
+        "instances/myRafterwiseSegmentation",
+        "instances/myWinDoorSet"
     ],
     function (
         three,
@@ -37,7 +38,8 @@ define(
         SurfaceGeometry,  // don't use any variables explicitly exported from this one, here.
         Segmentation,
         //myGeometrywiseSegmentation,
-        myRafterwiseSegmentation
+        myRafterwiseSegmentation,
+        myWinDoorSet
     ) {
 
         //console.log("15");

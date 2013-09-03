@@ -22,12 +22,27 @@
 
 
 define(
-    [   "libs/three.js/build/three"
+    [
+        "cons/designs/WinDoorSet",
+        "specs/myWinDoorSetSpec",
+        "instances/myOuterSurface",
+        "instances/myDelimitation"
     ],
     function (
-        three
+        WinDoorSet,
+        myWinDoorSetSpec,
+        myOuterSurface,
+        myDelimitation
         ) {
 
-        //console.log("8");
+        //console.log("999");
+
+        var myWinDoorSet;
+
+        myWinDoorSet = new WinDoorSet(myWinDoorSetSpec, myOuterSurface, myDelimitation);
+
+        console.log("myWinDoorSet instantiated")
+
+        return myWinDoorSet;
     }
 );

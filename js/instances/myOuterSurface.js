@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -41,7 +41,7 @@ define(
         getXgetYgetZ_rad.getZ = mySuperQuadric.getZ;
 
         // create a cons/designs/Surface:
-        myOuterSurface = new Surface(mySurfaceSpec, getXgetYgetZ_rad, mySuperQuadric.phiR_estimator);
+        myOuterSurface = new Surface(mySurfaceSpec, getXgetYgetZ_rad, mySuperQuadric.phiR_estimator, mySuperQuadric.radius);
 
         // test surfaceDistR:
 //        myOuterSurface.surfaceDistR(0,0,0,           Math.PI/3,0.1,1000);

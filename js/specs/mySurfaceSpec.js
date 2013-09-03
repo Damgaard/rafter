@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -46,6 +46,10 @@ define(
                     maxRecursionDepth: 1000
                 },
                 horizontalSurfaceProjection: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 1000
+                },
+                verticalSurfaceProjection: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 1000
                 }

@@ -32,7 +32,7 @@ define(
         var myWinDoorSpec;
 
         myWinDoorSpec = {
-            no_of_rafters_between_each_two_winDoors: 2,
+            no_of_winDoors: 3,
             winDoor_extent_along_azimuth_in_centimeters: [100, 150, 200],
             winDoor_extent_along_polar_in_centimeters: [125, 175, 225],
             winDoor_polar_posStart_in_centimeters: [75, 75, 0],

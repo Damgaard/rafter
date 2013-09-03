@@ -1,11 +1,12 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
  Rafter is free software: you can redistribute it and/or modify
- it under the terms of the GNU Affero Public License as published by
+ it under the terms o * @copyright other-contributors-name-here
+f the GNU Affero Public License as published by
  the Free Software Foundation, either version 3 of the License, or
  (at your option) any later version.
 
@@ -33,16 +34,15 @@ define(
 
         var Surface;
 
-        Surface = function (aSurfaceSpec, getXgetYgetZ_rad, phiR_estimator) {
+        Surface = function (aSurfaceSpec, getXgetYgetZ_rad, phiR_estimator, radius) {
             var spec, linearDistR, surfaceDistR,
                 surfaceDistR_body,
                 surfaceDistR_along_azimuth,
                 surfaceDistR_along_polar,
                 horizontalSurfaceProjection_body,
                 horizontalSurfaceProjection,
-                getX, getY, getZ,
-                approximationPrecision,
-                maxRecursionDepth;
+                verticalSurfaceProjection,
+                getX, getY, getZ;
 
             spec = {};
 
@@ -190,7 +190,7 @@ define(
 
                 phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
 
-                console.log(" ");
+               /* console.log(" ");
                 console.log("best_phiR_end: ", best_phiR_end);
                 console.log("surfaceDist: ", surfaceDist);
                 console.log("projectionDistance: ", projectionDistance);
@@ -199,20 +199,21 @@ define(
                 console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
                 console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
                 console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
-
+*/
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
                     best_phiR_end = horizontalSurfaceProjection_body(
                         phiR_start, thetaR_start, phiR_end_guesstimate,
                         projectionDistance, approximationPrecision,
                         maxRecursionDepth - 1);
-                } else {console.log(" "); console.log("best surfaceDist: ", surfaceDist); console.log(" ");}
+                } else { // console.log(" "); console.log("best surfaceDist: ", surfaceDist); console.log(" ");
+                }
                 return best_phiR_end;
             };
 
 
-            // gets the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth
-            horizontalSurfaceProjection = function(phiR_start, thetaR_start, projectionDistance,
+            // gets the delta phiR between phiR_start and the phiR achieved by walking `projectionDistance` from (phiR_start, thetaR) along the surface at constant azimuth
+            horizontalSurfaceProjection = function(phiR_start, thetaR, projectionDistance,
                                                    approximationPrecision, maxRecursionDepth) {
                 var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ;
 
@@ -220,20 +221,20 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
 
                 init_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
-                console.log(" ");
-                console.log("init_phiR_end: ", init_phiR_end);
+                //console.log(" ");
+                //console.log("init_phiR_end: ", init_phiR_end);
 
                 best_phiR_end = horizontalSurfaceProjection_body(
-                    phiR_start, thetaR_start, init_phiR_end,
+                    phiR_start, thetaR, init_phiR_end,
                     projectionDistance, approximationPrecision,
                     maxRecursionDepth);
 
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
                  });
-                 endPointX = getX(best_phiR_end, thetaR_start);
-                 endPointY = getY(best_phiR_end, thetaR_start);
-                 endPointZ = getZ(thetaR_start);
+                 endPointX = getX(best_phiR_end, thetaR);
+                 endPointY = getY(best_phiR_end, thetaR);
+                 endPointZ = getZ(thetaR);
                  var geometry = new THREE.Geometry();
                  geometry.vertices.push(new THREE.Vector3(0, 0, 0));
                  geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
@@ -244,13 +245,29 @@ define(
             };
 
 
+            // gets the delta thetaR between thetaR_start and the thetaR achieved by walking `projectionDistance` from (phiR, thetaR_start) along the surface at constant polar
+            verticalSurfaceProjection = function(phiR, thetaR_start, projectionDistance, approximationPrecision, maxRecursionDepth) {
+                var thetaR_end;
+
+                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.verticalSurfaceProjection.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.verticalSurfaceProjection.maxRecursionDepth;
+
+                console.log("radius: ", radius);
+
+                thetaR_end = thetaR_start + projectionDistance / radius;
+
+                return thetaR_end;
+            };
+
+
             this.getX = getX;
             this.getY = getY;
             this.getZ = getZ;
             this.linearDistR = linearDistR;
-            this.surfaceDistR_along_azimuth = surfaceDistR_along_azimuth;
-            this.surfaceDistR_along_polar = surfaceDistR_along_polar;
-            this.horizontalSurfaceProjection = horizontalSurfaceProjection;
+            this.surfaceDistR_along_azimuth  = surfaceDistR_along_azimuth;
+            this.surfaceDistR_along_polar    = surfaceDistR_along_polar;
+            this.horizontalSurfaceProjection = horizontalSurfaceProjection,
+            this.verticalSurfaceProjection   = verticalSurfaceProjection;
 
             Object.freeze(this);
         };
