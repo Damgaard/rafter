@@ -35,7 +35,7 @@ define(
             no_of_winDoors: 3,
             winDoor_extent_along_azimuth_in_centimeters: [100, 150, 200],
             winDoor_extent_along_polar_in_centimeters: [125, 175, 225],
-            winDoor_polar_posStart_in_centimeters: [75, 75, 0],
+            winDoor_polar_posCenter_in_radians: [Math.PI / 8, Math.PI / 8, 0],
             winDoor_azimuth_posCenter_in_radians: [Math.PI*0.5, Math.PI, Math.PI*1.5]
         };
 

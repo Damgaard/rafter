@@ -42,7 +42,7 @@ define(
                 horizontalSurfaceProjection_body,
                 horizontalSurfaceProjection,
                 verticalSurfaceProjection,
-                getX, getY, getZ;
+                getXREA, getYREA, getZREA;
 
             spec = {};
 
@@ -50,9 +50,9 @@ define(
                 spec[prop] = aSurfaceSpec[prop];
             };
 
-            getX = getXgetYgetZ_rad.getX;
-            getY = getXgetYgetZ_rad.getY;
-            getZ = getXgetYgetZ_rad.getZ;
+            getXREA = getXgetYgetZ_rad.getX;  // Gets X from radians (azimuth, polar) equidistant along azimuth.
+            getYREA = getXgetYgetZ_rad.getY;     // Gets Y from radians (azimuth, polar) equidistant along azimuth.
+            getZREA = getXgetYgetZ_rad.getZ;     // Gets Z from radians (azimuth, polar) equidistant along azimuth.
             //approximationPrecision = aSurfaceSpec.approximationPrecision;
             //maxRecursionDepth = aSurfaceSpec.maxRecursionDepth;
             //console.log("outer approximationPrecision: ", approximationPrecision);
@@ -60,12 +60,12 @@ define(
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
 
-                phi_x  = getX(phiR_start, thetaR_start);
-                phi_y  = getY(phiR_start, thetaR_start);
-                phi_z  = getZ(thetaR_start);
-                phi__x = getX(phiR_end, thetaR_end);
-                phi__y = getY(phiR_end, thetaR_end);
-                phi__z = getZ(thetaR_end);
+                phi_x  = getXREA(phiR_start, thetaR_start);
+                phi_y  = getYREA(phiR_start, thetaR_start);
+                phi_z  = getZREA(thetaR_start);
+                phi__x = getXREA(phiR_end, thetaR_end);
+                phi__y = getYREA(phiR_end, thetaR_end);
+                phi__z = getZREA(thetaR_end);
 
 //            console.log("thetaR_start: ", thetaR_start);
 //            console.log("thetaR_end: ", thetaR_end);
@@ -134,12 +134,12 @@ define(
                 /*                     var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
                  });
-                 phiS_start_x = getX(phiR_start, thetaR_start);
-                 phiS_start_y = getY(phiR_start, thetaR_start);
-                 phiS_start_z = getZ(thetaR_start);
-                 phiS_end_x = getX(phiR_end, thetaR_end);
-                 phiS_end_y = getY(phiR_end, thetaR_end);
-                 phiS_end_z = getZ(thetaR_end);
+                 phiS_start_x = getXREA(phiR_start, thetaR_start);
+                 phiS_start_y = getYREA(phiR_start, thetaR_start);
+                 phiS_start_z = getZREA(thetaR_start);
+                 phiS_end_x = getXREA(phiR_end, thetaR_end);
+                 phiS_end_y = getYREA(phiR_end, thetaR_end);
+                 phiS_end_z = getZREA(thetaR_end);
                  var geometry = new THREE.Geometry();
                  geometry.vertices.push(new THREE.Vector3(phiS_start_x, phiS_start_y, phiS_start_z));
                  geometry.vertices.push(new THREE.Vector3(phiS_end_x, phiS_end_y, phiS_end_z));
@@ -232,9 +232,9 @@ define(
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
                  });
-                 endPointX = getX(best_phiR_end, thetaR);
-                 endPointY = getY(best_phiR_end, thetaR);
-                 endPointZ = getZ(thetaR);
+                 endPointX = getXREA(best_phiR_end, thetaR);
+                 endPointY = getYREA(best_phiR_end, thetaR);
+                 endPointZ = getZREA(thetaR);
                  var geometry = new THREE.Geometry();
                  geometry.vertices.push(new THREE.Vector3(0, 0, 0));
                  geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
@@ -260,9 +260,9 @@ define(
             };
 
 
-            this.getX = getX;
-            this.getY = getY;
-            this.getZ = getZ;
+            this.getXREA = getXREA;
+            this.getYREA = getYREA;
+            this.getZREA = getZREA;
             this.linearDistR = linearDistR;
             this.surfaceDistR_along_azimuth  = surfaceDistR_along_azimuth;
             this.surfaceDistR_along_polar    = surfaceDistR_along_polar;

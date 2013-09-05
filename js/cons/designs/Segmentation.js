@@ -175,7 +175,7 @@ define(
                 }
                 //console.log("phir_best: ", phiR_best);
                 thetaR = thetaR_from_thetaS(thetaS);
-                x = aSurface.getX(phiR_best, thetaR);
+                x = aSurface.getXREA(phiR_best, thetaR);
                 return x;
             };
 
@@ -203,7 +203,7 @@ define(
                 }
                 //console.log("phir_best: ", phiR_best);
                 thetaR = thetaR_from_thetaS(thetaS);
-                y = aSurface.getY(phiR_best, thetaR);
+                y = aSurface.getYREA(phiR_best, thetaR);
                 return y;
             };
 
@@ -211,7 +211,7 @@ define(
             getZSES = function(thetaS) {
                 var thetaR, z;
                 thetaR = thetaR_from_thetaS(thetaS);
-                z = aSurface.getZ(thetaR);
+                z = aSurface.getZREA(thetaR);
                 return z;
             };
 
