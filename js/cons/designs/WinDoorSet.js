@@ -25,9 +25,11 @@
 
 
 define(
-    [ "libs/three.js/build/three"],
+    [ "libs/three.js/build/three",
+      "cons/designs/TangentPlane"],
     function (
-        three
+        three,
+        TangentPlane
         ) {
         //console.log("999");
 
@@ -35,15 +37,7 @@ define(
 
         WinDoorSet = function ( aWinDoorSetSpec, aSurface, aDelimitation ) {
             var winDoorNo,
-                thetaR_X_minus_ephsilon,
-                thetaR_X_plus_ephsilon,
-                thetaR_Y_minus_ephsilon,
-                thetaR_Y_plus_ephsilon,
-                thetaR_Z_minus_ephsilon,
-                thetaR_Z_plus_ephsilon,
-                deltaThetaR_X,
-                deltaThetaR_Y,
-                deltaThetaR_Z,
+                winDoor_center_tangentPlane,
                 thetaR_tangentV,
                 winDoor_polar_posStart_in_radians,
                 halfWidthCM,
@@ -53,39 +47,23 @@ define(
                 console.log("winDoorNo: ", winDoorNo);
 
                 // Find 8 corners:
+
+                winDoor_center_tangentPlane = new TangentPlane(
+                    aWinDoorSetSpec.winDoor_azimuth_posCenter_in_radians[winDoorNo],
+                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo],
+                    aSurface
+                );
+
                 // Find azimuth values in radians
                 // Outer corners:
 
                 // Upper left corner:
 
-                thetaR_X_minus_ephsilon = aSurface.getXREA(
-                    aWinDoorSetSpec.winDoor_azimuth_posCenter_in_radians[winDoorNo],
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] - 0.0001
-                );
-                thetaR_X_plus_ephsilon = aSurface.getXREA(
-                    aWinDoorSetSpec.winDoor_azimuth_posCenter_in_radians[winDoorNo],
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] + 0.0001
-                );
-                thetaR_Y_minus_ephsilon = aSurface.getYREA(
-                    aWinDoorSetSpec.winDoor_azimuth_posCenter_in_radians[winDoorNo],
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] - 0.0001
-                );
-                thetaR_Y_plus_ephsilon = aSurface.getYREA(
-                    aWinDoorSetSpec.winDoor_azimuth_posCenter_in_radians[winDoorNo],
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] + 0.0001
-                );
-                thetaR_Z_minus_ephsilon = aSurface.getZREA(
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] - 0.0001
-                );
-                thetaR_Z_plus_ephsilon = aSurface.getZREA(
-                    aWinDoorSetSpec.winDoor_polar_posCenter_in_radians[winDoorNo] + 0.0001
-                );
 
-                deltaThetaR_X = thetaR_X_plus_ephsilon - thetaR_X_minus_ephsilon;
-                deltaThetaR_Y = thetaR_Y_plus_ephsilon - thetaR_Y_minus_ephsilon;
-                deltaThetaR_Z = thetaR_Z_plus_ephsilon - thetaR_Z_minus_ephsilon;
 
-                thetaR_tangentV = new THREE.Vector3(deltaThetaR_X, deltaThetaR_Y, deltaThetaR_Z).normalize();
+
+/*
+                thetaR_tangentV = new THREE.Vector3(delta_X_from_thetaR, delta_Y_from_thetaR, delta_Z_from_thetaR).normalize();
                 console.log("thetaR_tangentV: ", thetaR_tangentV);
 
 
@@ -105,6 +83,7 @@ define(
                     winDoor_polar_posStart_in_radians,
                     halfWidthCM);
                 console.log("halfWidthR: ", halfWidthR);
+*/
 
                 // Inner corners:
 
