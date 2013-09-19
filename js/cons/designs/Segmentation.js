@@ -33,7 +33,7 @@ define(
 
         var Segmentation;
 
-        Segmentation = function ( aSegmentationSpec, aDelimitation, aSurface ) {
+        Segmentation = function ( aSegmentationSpec, aDelimitation, aSurfaceSpec, aSurface ) {
             var spec,
                 max_surface_extent_along_azimuth,
                 max_surface_extent_along_polar,

@@ -25,7 +25,7 @@ define(
     [   "instances/myOuterSurface",
         "instances/myRafterwiseSegmentation",
         "cons/designs/RafterSet",
-        "specs/myRafterSetSpec"
+        "specs/designs/myRafterSetSpec"
     ],
     function (
         myOuterSurface,

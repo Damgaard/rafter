@@ -21,7 +21,7 @@
 define(
     [   "instances/mySuperQuadric",
         "cons/designs/Surface",
-        "specs/mySurfaceSpec"
+        "specs/designs/mySurfaceSpec"
     ],
     function (
         mySuperQuadric,

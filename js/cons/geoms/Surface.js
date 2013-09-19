@@ -30,7 +30,7 @@ define(
         //console.log("9");
 
         // X = length, Y = height, Z = depth,
-        THREE.SurfaceGeometry = function (noOfSegments_phi, noOfSegments_theta, getX, getY, getZ) {
+        THREE.SurfaceGeometry = function (aSurfaceGeometrySpec, noOfSegments_phi, noOfSegments_theta, getX, getY, getZ) {
             var phi_seg,
                 theta_seg,
                 color,
@@ -45,9 +45,15 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
-                    var x = getX(phi_seg, theta_seg, 0.01, 100);
-                    var y = getY(phi_seg, theta_seg, 0.01, 100);
-                    var z = getZ(         theta_seg, 0.01, 100);
+                    var x = getX(phi_seg, theta_seg,
+                        aSurfaceGeometrySpec.approximationPrecision,
+                        aSurfaceGeometrySpec.maxRecursionDepth);
+                    var y = getY(phi_seg, theta_seg,
+                        aSurfaceGeometrySpec.approximationPrecision,
+                        aSurfaceGeometrySpec.maxRecursionDepth);
+                    var z = getZ(         theta_seg,
+                        aSurfaceGeometrySpec.approximationPrecision,
+                        aSurfaceGeometrySpec.maxRecursionDepth);
                    //console.log("x: ", x);
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };

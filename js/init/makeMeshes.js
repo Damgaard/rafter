@@ -29,7 +29,8 @@ define(
         "cons/designs/Segmentation",
         //"instances/myGeometrywiseSegmentation",
         "instances/myRafterwiseSegmentation",
-        "instances/myWinDoorSet"
+        "instances/myWinDoorSet",
+        "specs/geoms/myEquiSurfaceDistGeometrySpec"
     ],
     function (
         three,
@@ -39,7 +40,8 @@ define(
         Segmentation,
         //myGeometrywiseSegmentation,
         myRafterwiseSegmentation,
-        myWinDoorSet
+        myWinDoorSet,
+        myEquiSurfaceDistGeometrySpec
     ) {
 
         //console.log("15");
@@ -63,7 +65,8 @@ define(
         makeScene.scene.add( meshA );
         objects.push( meshA );*/
 
-        /*myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
+        myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
+            myEquiSurfaceDistGeometrySpec,
             myRafterwiseSegmentation.noOfSegments_along_azimuth,
             myRafterwiseSegmentation.noOfSegments_along_polar,
             myRafterwiseSegmentation.getXSES,
@@ -74,7 +77,7 @@ define(
         meshB.name = "myWallB";
         meshB.callback = function() { makeDOMelements.info.innerHTML = this.name; };
         makeScene.scene.add( meshB );
-        objects.push( meshB ); */
+        objects.push( meshB );
 
         return {
             objects: objects

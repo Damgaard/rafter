@@ -21,33 +21,38 @@
 "use strict";
 
 
+// technically, this file really ought to be named myEquiSurfaceDistSURFACEGeometrySpec...
+
+
 define(
-    [ "specs/myGeometrywiseSegmentationSpec"
+    [
     ],
     function (
-        myGeometrywiseSegmentationSpec
         ) {
 
-        //console.log("28");
+        //console.log("30");
 
-        var db_rafterwiseSegmentationSpec;
+        var myEquiSurfaceDistGeometrySpec;
 
-        db_rafterwiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 2,
-            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 2,
+        myEquiSurfaceDistGeometrySpec = {
             conf: {
-                getXSES: {
+                getX: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 4
                 },
-                getYSES: {
+                getY: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 4
+                },
+                getZ: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 4
                 }
             }
         };
 
-        Object.freeze(db_rafterwiseSegmentationSpec);
-        return db_rafterwiseSegmentationSpec;
+        Object.freeze(myEquiSurfaceDistGeometrySpec);
+
+        return myEquiSurfaceDistGeometrySpec;
     }
 );

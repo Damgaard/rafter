@@ -24,7 +24,7 @@
 define(
     [
         "cons/designs/WinDoorSet",
-        "specs/myWinDoorSetSpec",
+        "specs/designs/myWinDoorSetSpec",
         "instances/myOuterSurface",
         "instances/myDelimitation"
     ],

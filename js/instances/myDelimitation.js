@@ -23,7 +23,7 @@
 
 define(
     [   "cons/designs/Delimitation",
-        "specs/myDelimitationSpec"
+        "specs/designs/myDelimitationSpec"
     ],
     function (
         Delimitation,

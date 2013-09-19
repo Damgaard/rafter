@@ -23,7 +23,7 @@
 
 define(
     [   "cons/designs/SuperQuadric",
-        "specs/mySuperQuadricSpec"
+        "specs/designs/mySuperQuadricSpec"
     ],
     function (
         SuperQuadric,
