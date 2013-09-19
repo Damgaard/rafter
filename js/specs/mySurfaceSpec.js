@@ -35,23 +35,23 @@ define(
             conf: {
                 surfaceDistR: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 surfaceDistR_along_azimuth: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 surfaceDistR_along_polar: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 horizontalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 verticalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 }
             }
         };

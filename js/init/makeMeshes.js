@@ -63,7 +63,7 @@ define(
         makeScene.scene.add( meshA );
         objects.push( meshA );*/
 
-        myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
+        /*myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
             myRafterwiseSegmentation.noOfSegments_along_azimuth,
             myRafterwiseSegmentation.noOfSegments_along_polar,
             myRafterwiseSegmentation.getXSES,
@@ -74,7 +74,7 @@ define(
         meshB.name = "myWallB";
         meshB.callback = function() { makeDOMelements.info.innerHTML = this.name; };
         makeScene.scene.add( meshB );
-        objects.push( meshB );
+        objects.push( meshB ); */
 
         return {
             objects: objects
