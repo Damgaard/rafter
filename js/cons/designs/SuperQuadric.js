@@ -55,8 +55,8 @@ define(
                 return z;
             };
 
-            phiR_estimator = function(projectionDistance) {
-                return (projectionDistance / 100);
+            phiR_estimator = function(phiR_start, projectionDistance) {
+                return (phiR_start + projectionDistance / aSuperQuadricSpec.radius);
             }
 
             this.getX = getX;

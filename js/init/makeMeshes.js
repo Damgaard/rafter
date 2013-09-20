@@ -30,7 +30,7 @@ define(
         //"instances/myGeometrywiseSegmentation",
         "instances/myRafterwiseSegmentation",
         "instances/myWinDoorSet",
-        "specs/geoms/myEquiSurfaceDistGeometrySpec"
+        "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
         three,
@@ -41,7 +41,7 @@ define(
         //myGeometrywiseSegmentation,
         myRafterwiseSegmentation,
         myWinDoorSet,
-        myEquiSurfaceDistGeometrySpec
+        myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
         //console.log("15");
@@ -66,7 +66,7 @@ define(
         objects.push( meshA );*/
 
         myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
-            myEquiSurfaceDistGeometrySpec,
+            myEquiSurfaceDist_SurfaceGeometrySpec,
             myRafterwiseSegmentation.noOfSegments_along_azimuth,
             myRafterwiseSegmentation.noOfSegments_along_polar,
             myRafterwiseSegmentation.getXSES,

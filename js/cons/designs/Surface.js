@@ -139,14 +139,18 @@ define(
 
 
             /**
-             * It should give the distance along azimuth or polar between two points. Direction
+             * Should give the distance along azimuth or polar between two points. Direction
              * is determined by (point_end - point_start).
              * surfaceDistR doesn't work along azimuth and polar simultaniously. One of them must
              * be set to zero.
              * Doesn't always work well for phiR_end > Pi*2.
              *
+             * @param phiR_end  the absolute end value (as in: not a delta value) at which to
+             * measure the surface distance to
+             *
              * @private
              */
+
             surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
                                          approximationPrecision, maxRecursionDepth) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
@@ -225,7 +229,7 @@ define(
              * as a negative value. This indicates that the walking is to be done in the negative
              * direction (i.e. clockwise around the unit circle).
              *
-             * @return      the best phiR_end achieved through the approximation process.
+             * @return  the best phiR_end achieved through the approximation process.
              *
              * @private
              */
@@ -246,25 +250,27 @@ define(
                 // is greater than its end point (phiR_end_estimate_A).
                 if (phiR_start > phiR_end_estimate_A) { surfaceDist = -surfaceDist; };
 
+                // delta**distance**:
                 deltaDist = projectionDistance - surfaceDist;
 
-                phiR_end_estimate_B = phiR_end_estimate_A + deltaDist / 2;
-                //phiR_end_estimate_C = phiR_end_estimate_A + deltaDist;
+                // now we need to translate the delta **distance** into some effect
+                // on the phiR_end **angle**:
+                phiR_end_estimate_B = phiR_end_estimate_A + phiR_estimator(phiR_start, deltaDist);
 
-               /* console.log(" ");
+                console.log(" ");
                 console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
                 console.log("projectionDistance: ", projectionDistance);
                 console.log("surfaceDist: ", surfaceDist);
                 console.log("deltaDist: ", deltaDist);
                 console.log("phiR_end_estimate_B: ", phiR_end_estimate_B);
-*/
+
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
                     best_phiR_end = horizontalSurfaceProjection_body(
                         phiR_start, thetaR_start, phiR_end_estimate_B,
                         projectionDistance, approximationPrecision,
                         maxRecursionDepth - 1);
-                } else { console.log(" "); console.log("best surfaceDist: ", surfaceDist);
+                } else { console.log("best surfaceDist: ", surfaceDist); console.log(" ");
                 }
                 return best_phiR_end;
             };
@@ -286,14 +292,16 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
 
-                init_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
-                //console.log(" ");
-                //console.log("init_phiR_end: ", init_phiR_end);
+                init_phiR_end = phiR_estimator(phiR_start, projectionDistance);
+                console.log(" ");
+                console.log("init_phiR_end: ", init_phiR_end);
 
                 best_phiR_end = horizontalSurfaceProjection_body(
                     phiR_start, thetaR, init_phiR_end,
                     projectionDistance, approximationPrecision,
                     maxRecursionDepth);
+
+                console.log("best_phiR_end: ", best_phiR_end);
 
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff

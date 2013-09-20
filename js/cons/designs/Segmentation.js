@@ -33,7 +33,7 @@ define(
 
         var Segmentation;
 
-        Segmentation = function ( aSegmentationSpec, aDelimitation, aSurfaceSpec, aSurface ) {
+        Segmentation = function ( aSegmentationSpec, aDelimitation, aSurface ) {
             var spec,
                 max_surface_extent_along_azimuth,
                 max_surface_extent_along_polar,
@@ -153,8 +153,8 @@ define(
             // best_phiR_end, projectionDistance,
             // approximationPrecision, maxRecursionDepth)
             getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getXSES.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getXSES.maxRecursionDepth;
+                approximationPrecision = approximationPrecision || aSegmentationSpec.conf.getXSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSegmentationSpec.conf.getXSES.maxRecursionDepth;
 
                 return getXSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
             };
@@ -181,8 +181,8 @@ define(
 
             // getY from Segment, Equidistant along Surface
             getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getYSES.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getYSES.maxRecursionDepth;
+                approximationPrecision = approximationPrecision || aSegmentationSpec.conf.getYSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      || aSegmentationSpec.conf.getYSES.maxRecursionDepth;
 
                 return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
             };

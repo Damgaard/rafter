@@ -46,14 +46,14 @@ define(
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
                     var x = getX(phi_seg, theta_seg,
-                        aSurfaceGeometrySpec.approximationPrecision,
-                        aSurfaceGeometrySpec.maxRecursionDepth);
+                        aSurfaceGeometrySpec.conf.approximationPrecision,
+                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
                     var y = getY(phi_seg, theta_seg,
-                        aSurfaceGeometrySpec.approximationPrecision,
-                        aSurfaceGeometrySpec.maxRecursionDepth);
+                        aSurfaceGeometrySpec.conf.approximationPrecision,
+                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
                     var z = getZ(         theta_seg,
-                        aSurfaceGeometrySpec.approximationPrecision,
-                        aSurfaceGeometrySpec.maxRecursionDepth);
+                        aSurfaceGeometrySpec.conf.approximationPrecision,
+                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
                    //console.log("x: ", x);
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };

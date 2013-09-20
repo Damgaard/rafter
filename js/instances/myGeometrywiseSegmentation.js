@@ -25,22 +25,20 @@ define(
     [   "instances/myOuterSurface",
         "instances/myDelimitation",
         "cons/designs/Segmentation",
-        "specs/designs/myGeometrywiseSegmentationSpec",
-        "specs/designs/mySurfaceSpec"
+        "specs/designs/myGeometrywiseSegmentationSpec"
     ],
     function (
         myOuterSurface,
         myDelimitation,
         Segmentation,
-        myGeometrywiseSegmentationSpec,
-        mySurfaceSpec
+        myGeometrywiseSegmentationSpec
         ) {
 
         //console.log("20");
 
         var myGeometrywiseegmentation;
 
-        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, mySurfaceSpec, myOuterSurface);
+        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
 
         return myGeometrywiseegmentation;
     }
