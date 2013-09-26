@@ -22,7 +22,7 @@
 
 
 define(
-    [   "instances/mySuperQuadric",
+    [   "instances/designs/mySuperQuadric",
         "cons/designs/Surface",
         "specs/designs/mySurfaceSpec"
     ],
@@ -32,7 +32,7 @@ define(
         mySurfaceSpec
         ) {
 
-        //console.log("21");
+        console.log("21");
 
         var myOuterSurface, getXgetYgetZ_rad = {};
 

@@ -38,11 +38,13 @@ define(
             conf: {
                 getXSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 4,
+                    debug:false
                 },
                 getYSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 4,
+                    debug:false
                 }
             }
         };

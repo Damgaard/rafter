@@ -30,13 +30,33 @@ define(
         //console.log("9");
 
         // X = length, Y = height, Z = depth,
-        THREE.SurfaceGeometry = function (aSurfaceGeometrySpec, noOfSegments_phi, noOfSegments_theta, getX, getY, getZ) {
+        THREE.SurfaceGeometry = function (noOfSegments_phi, noOfSegments_theta, getX, getY, getZ, aSurfaceGeometrySpec) {
             var phi_seg,
                 theta_seg,
-                color,
-                normal = new THREE.Vector3( 0, 0, 1);
+                debug,
+                normal = new THREE.Vector3( 0, 0, 1),
+                approximationPrecisionX,
+                maxRecursionDepthX,
+                approximationPrecisionY,
+                maxRecursionDepthY;
 
-            this.vertices = [];
+            if (typeof aSurfaceGeometrySpec == 'undefined') {
+                approximationPrecisionX = "dummy value"  // this value is not used when getX is getXSEA
+                maxRecursionDepthX      = "dummy value"  // this value is not used when getX is getXSEA
+                approximationPrecisionY = "dummy value"  // this value is not used when getY is getYSEA
+                maxRecursionDepthY      = "dummy value"  // this value is not used when getY is getYSEA
+            } else {
+                approximationPrecisionX = aSurfaceGeometrySpec.conf.getX.approximationPrecision;
+                maxRecursionDepthX      = aSurfaceGeometrySpec.conf.getX.maxRecursionDepth;
+                approximationPrecisionY = aSurfaceGeometrySpec.conf.getY.approximationPrecision;
+                maxRecursionDepthY      = aSurfaceGeometrySpec.conf.getY.maxRecursionDepth;
+                console.log("aSurfaceGeometrySpec.conf.getX.approximationPrecision: ", aSurfaceGeometrySpec.conf.getX.approximationPrecision);
+                //console.log("aSurfaceGeometrySpec.conf.getX.maxRecursionDepth: ", aSurfaceGeometrySpec.conf.getX.maxRecursionDepth);
+            }
+
+                this.vertices = [];
+
+
 
             THREE.Geometry.call( this );
 //console.log("noOfSegments_phi: ", noOfSegments_phi);
@@ -45,15 +65,15 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
+                    debug = ((theta_seg === noOfSegments_theta) && (phi_seg === noOfSegments_phi-1));
+                    //console.log("debug: ", debug);
                     var x = getX(phi_seg, theta_seg,
-                        aSurfaceGeometrySpec.conf.approximationPrecision,
-                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
+                        approximationPrecisionX,
+                        maxRecursionDepthX, debug);
                     var y = getY(phi_seg, theta_seg,
-                        aSurfaceGeometrySpec.conf.approximationPrecision,
-                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
-                    var z = getZ(         theta_seg,
-                        aSurfaceGeometrySpec.conf.approximationPrecision,
-                        aSurfaceGeometrySpec.conf.maxRecursionDepth);
+                        approximationPrecisionY,
+                        maxRecursionDepthY, debug);
+                    var z = getZ(         theta_seg);
                    //console.log("x: ", x);
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };

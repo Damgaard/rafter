@@ -22,27 +22,24 @@
 
 
 define(
-    [
-        "cons/designs/WinDoorSet",
-        "specs/designs/myWinDoorSetSpec",
-        "instances/myOuterSurface",
-        "instances/myDelimitation"
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation",
+        "cons/designs/Segmentation",
+        "specs/designs/myRafterwiseSegmentationSpec"
     ],
     function (
-        WinDoorSet,
-        myWinDoorSetSpec,
         myOuterSurface,
-        myDelimitation
+        myDelimitation,
+        Segmentation,
+        myRafterwiseSegmentationSpec
         ) {
 
-        //console.log("999");
+        //console.log("23");
 
-        var myWinDoorSet;
+        var myRafterwiseegmentation;
 
-        myWinDoorSet = new WinDoorSet(myWinDoorSetSpec, myOuterSurface, myDelimitation);
+        myRafterwiseegmentation = new Segmentation(myRafterwiseSegmentationSpec, myDelimitation, myOuterSurface);
 
-        console.log("myWinDoorSet instantiated")
-
-        return myWinDoorSet;
+        return myRafterwiseegmentation;
     }
 );

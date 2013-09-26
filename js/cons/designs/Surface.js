@@ -99,6 +99,7 @@ define(
              *
              * @private
              */
+
             surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
                                     approximationPrecision, maxRecursionDepth) {
 
@@ -145,8 +146,8 @@ define(
              * be set to zero.
              * Doesn't always work well for phiR_end > Pi*2.
              *
-             * @param phiR_end  the absolute end value (as in: not a delta value) at which to
-             * measure the surface distance to
+             * @param phiR_end  The absolute end value (as in: not a delta value) at which to
+             * measure the surface distance to.
              *
              * @private
              */
@@ -214,34 +215,37 @@ define(
              * Gets the delta phiR between phiR_start and the phiR achieved by walking `distance`
              * from (phiR_start, theta) along the surface at constant azimuth.
              * If projectionDistance is negative, the walking direction is also negative
-             * (i.e. clockwise around the unit circle)
+             * (i.e. clockwise around the unit circle).
              *
              * @param  phiR_end_estimate_A  the phiR_end estimate that the previous recursive
              * call to horizontalSurfaceProjection_body came up with.
-             * The value of phiR_end_estimate_A has the value of phiR_start incorporated into it.
+             * The value of phiR_end_estimate_A is the absolute end value (as in: not a delta value)
+             * at which to measure the surface distance to.
              * Initially phiR_end_estimate_A is given as phiR_start + an estimate of the delta
              * phiR value that will generate a walk of distance projectionDistance.
              *
-             * @param  projectionDistance   the distance wanted to be walked from phiR_start along
+             * @param  projectionDistance   The distance wanted to be walked from phiR_start along
              * the surface at constant azimuth. Thus, projectionDistance is an offset from phiR_start
              * and is thus a phiR_start ignorant, sort of.
              * Although distances are normally always positive, projectionDistance can be given
              * as a negative value. This indicates that the walking is to be done in the negative
              * direction (i.e. clockwise around the unit circle).
              *
-             * @return  the best phiR_end achieved through the approximation process.
+             * @return  The best phiR_end achieved through the approximation process.
              *
              * @private
              */
 
             horizontalSurfaceProjection_body = function(phiR_start, thetaR_start,
                                                         phiR_end_estimate_A, projectionDistance,
-                                                        approximationPrecision, maxRecursionDepth) {
-                var surfaceDist, deltaDist, phiR_end_estimate_B, best_phiR_end;
+                                                        approximationPrecision,maxRecursionDepth,
+                                                        debug) {
+                var surfaceDist, deltaDist, phiR_end_estimate_B, phiR_end_estimate_C, best_phiR_end;
                 //console.log("arguments: ", arguments);
 
                 // surfaceDist is the achieved walk (while projectionDistance was the wanted walk)
-                // Thus, surfaceDist is an offset from phiR_start and is thus a phiR_start ignorant.
+                // surfaceDist is an offset from phiR_start and is thus a phiR_start ignorant, just
+                // as projectionDistance.
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, phiR_end_estimate_A,
                     approximationPrecision, maxRecursionDepth);
 
@@ -253,26 +257,37 @@ define(
                 // delta**distance**:
                 deltaDist = projectionDistance - surfaceDist;
 
-                // now we need to translate the delta **distance** into some effect
+                // now we need to translate the delta **distance** into some deltas effect
                 // on the phiR_end **angle**:
-                phiR_end_estimate_B = phiR_end_estimate_A + phiR_estimator(phiR_start, deltaDist);
+                phiR_end_estimate_B = phiR_end_estimate_A + phiR_estimator(deltaDist);
 
+                //console.log("1, debug in horizontalSurfaceProjection_body: ", debug);
+
+                if(debug) {
                 console.log(" ");
                 console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
                 console.log("projectionDistance: ", projectionDistance);
                 console.log("surfaceDist: ", surfaceDist);
                 console.log("deltaDist: ", deltaDist);
-                console.log("phiR_end_estimate_B: ", phiR_end_estimate_B);
+                console.log("phiR_end_estimate_B: ", phiR_end_estimate_B); }
+
+                console.log("approximationPrecision: ", approximationPrecision);
+                //console.log("maxRecursionDepth: ", maxRecursionDepth);
 
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
-                    best_phiR_end = horizontalSurfaceProjection_body(
+                    //console.log("2, debug in horizontalSurfaceProjection_body: ", debug);
+                    phiR_end_estimate_C = horizontalSurfaceProjection_body(
                         phiR_start, thetaR_start, phiR_end_estimate_B,
                         projectionDistance, approximationPrecision,
-                        maxRecursionDepth - 1);
-                } else { console.log("best surfaceDist: ", surfaceDist); console.log(" ");
+                        maxRecursionDepth - 1, debug);
+                } else if(debug) {
+                    console.log("best surfaceDist: ", surfaceDist);
+                    console.log("best_phiR_end: ", phiR_end_estimate_B);
+                    console.log(" ");
                 }
-                return best_phiR_end;
+
+                return phiR_end_estimate_C || phiR_end_estimate_B;
             };
 
 
@@ -284,24 +299,28 @@ define(
              */
 
             horizontalSurfaceProjection = function(phiR_start, thetaR, projectionDistance,
-                                                   approximationPrecision, maxRecursionDepth) {
+                                                   approximationPrecision, maxRecursionDepth, debug) {
                 var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ;
 
                 approximationPrecision = approximationPrecision ||
                     aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
+                if (typeof debug == 'undefined') {
+                    debug = aSurfaceSpec.conf.horizontalSurfaceProjection.debug; }
 
-                init_phiR_end = phiR_estimator(phiR_start, projectionDistance);
-                console.log(" ");
-                console.log("init_phiR_end: ", init_phiR_end);
+                // phiR_start + a delta phiR gives an absolute phiR-value (in this case an initial
+                // estimate of phiR_end).
+                init_phiR_end = phiR_start + phiR_estimator(projectionDistance);
+
+                if(debug) { console.log(" "); console.log("init_phiR_end: ", init_phiR_end); }
 
                 best_phiR_end = horizontalSurfaceProjection_body(
                     phiR_start, thetaR, init_phiR_end,
                     projectionDistance, approximationPrecision,
-                    maxRecursionDepth);
+                    maxRecursionDepth, debug);
 
-                console.log("best_phiR_end: ", best_phiR_end);
+                if(debug) {console.log("best_phiR_end: ", best_phiR_end);}
 
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
@@ -321,7 +340,7 @@ define(
 
             /**
              * Gets the delta thetaR between thetaR_start and the thetaR achieved by walking
-             * `projectionDistance` from (phiR, thetaR_start) along the surface at constant polar
+             * `projectionDistance` from (phiR, thetaR_start) along the surface at constant polar.
              */
 
             verticalSurfaceProjection = function(phiR, thetaR_start, projectionDistance,

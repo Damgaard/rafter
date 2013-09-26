@@ -22,24 +22,25 @@
 
 
 define(
-    [   "instances/myOuterSurface",
-        "instances/myDelimitation",
-        "cons/designs/Segmentation",
-        "specs/designs/myGeometrywiseSegmentationSpec"
+    [
+        "cons/designs/WinDoorSet",
+        "specs/designs/myWinDoorSetSpec",
+        "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation"
     ],
     function (
+        WinDoorSet,
+        myWinDoorSetSpec,
         myOuterSurface,
-        myDelimitation,
-        Segmentation,
-        myGeometrywiseSegmentationSpec
+        myDelimitation
         ) {
 
-        //console.log("20");
+        //console.log("999");
 
-        var myGeometrywiseegmentation;
+        var myWinDoorSet;
 
-        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
+        myWinDoorSet = new WinDoorSet(myWinDoorSetSpec, myOuterSurface, myDelimitation);
 
-        return myGeometrywiseegmentation;
+        return myWinDoorSet;
     }
 );

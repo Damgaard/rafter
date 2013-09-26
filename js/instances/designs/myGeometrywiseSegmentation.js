@@ -22,26 +22,24 @@
 
 
 define(
-    [   "instances/myOuterSurface",
-        "instances/myRafterwiseSegmentation",
-        "cons/designs/RafterSet",
-        "specs/designs/myRafterSetSpec"
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation",
+        "cons/designs/Segmentation",
+        "specs/designs/myGeometrywiseSegmentationSpec"
     ],
     function (
         myOuterSurface,
-        myRafterwiseSegmentation,
-        RafterSet,
-        myRafterSetSpec
+        myDelimitation,
+        Segmentation,
+        myGeometrywiseSegmentationSpec
         ) {
 
-        //console.log("22");
+        //console.log("20");
 
-        var myRafterSet;
+        var myGeometrywiseegmentation;
 
-        myRafterSet = new RafterSet(myRafterSetSpec, myRafterwiseSegmentation, myOuterSurface);
+        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
 
-        return myRafterSet;
+        return myGeometrywiseegmentation;
     }
 );
-
-//             arafterSet = (function anon(aRafterSetSpec, aSegmentation, asurface) {

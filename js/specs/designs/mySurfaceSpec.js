@@ -47,7 +47,8 @@ define(
                 },
                 horizontalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 4,
+                    debug: false
                 },
                 verticalSurfaceProjection: {
                     approximationPrecision: 0.1,
