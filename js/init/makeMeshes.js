@@ -27,9 +27,10 @@ define(
         "init/makeDOMelements",
         "cons/geoms/Surface",
         "cons/designs/Segmentation",
-        //"instances/myGeometrywiseSegmentation",
-        "instances/myRafterwiseSegmentation",
-        "instances/myWinDoorSet"
+        "instances/designs/myGeometrywiseSegmentation",
+        "instances/designs/myRafterwiseSegmentation",
+        "instances/designs/myWinDoorSet",
+        "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
         three,
@@ -37,9 +38,10 @@ define(
         makeDOMelements,
         SurfaceGeometry,  // don't use any variables explicitly exported from this one, here.
         Segmentation,
-        //myGeometrywiseSegmentation,
+        myGeometrywiseSegmentation,
         myRafterwiseSegmentation,
-        myWinDoorSet
+        myWinDoorSet,
+        myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
         //console.log("15");
@@ -49,8 +51,9 @@ define(
           , meshA
           , meshB
           , objects = [];
+console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
 
-/*        myEquiAzimuthDistGeometry = new THREE.SurfaceGeometry(
+        myEquiAzimuthDistGeometry = new THREE.SurfaceGeometry(
             myGeometrywiseSegmentation.noOfSegments_along_azimuth,
             myGeometrywiseSegmentation.noOfSegments_along_polar,
             myGeometrywiseSegmentation.getXSEA,
@@ -61,14 +64,15 @@ define(
         meshA.name = "myWallA";
         meshA.callback = function() { makeDOMelements.info.innerHTML = this.name; };
         makeScene.scene.add( meshA );
-        objects.push( meshA );*/
+        objects.push( meshA );
 
         myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
             myRafterwiseSegmentation.noOfSegments_along_azimuth,
             myRafterwiseSegmentation.noOfSegments_along_polar,
             myRafterwiseSegmentation.getXSES,
             myRafterwiseSegmentation.getYSES,
-            myRafterwiseSegmentation.getZSES);
+            myRafterwiseSegmentation.getZSES,
+            myEquiSurfaceDist_SurfaceGeometrySpec);
         meshB = new THREE.Mesh(myEquiSurfaceDistGeometry);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";

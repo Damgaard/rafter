@@ -22,20 +22,24 @@
 
 
 define(
-    [   "cons/designs/SuperQuadric",
-        "specs/mySuperQuadricSpec"
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation",
+        "cons/designs/Segmentation",
+        "specs/designs/myGeometrywiseSegmentationSpec"
     ],
     function (
-        SuperQuadric,
-        mySuperQuadricSpec
+        myOuterSurface,
+        myDelimitation,
+        Segmentation,
+        myGeometrywiseSegmentationSpec
         ) {
 
-        //console.log("24");
+        //console.log("20");
 
-        var mySuperQuadric;
+        var myGeometrywiseegmentation;
 
-        mySuperQuadric = new SuperQuadric(mySuperQuadricSpec);
+        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
 
-        return mySuperQuadric;
+        return myGeometrywiseegmentation;
     }
 );

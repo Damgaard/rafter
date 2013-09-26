@@ -50,12 +50,13 @@ define(
                 spec[prop] = aSurfaceSpec[prop];
             };
 
-            getXREA = getXgetYgetZ_rad.getX;  // Gets X from radians (azimuth, polar) equidistant along azimuth.
-            getYREA = getXgetYgetZ_rad.getY;     // Gets Y from radians (azimuth, polar) equidistant along azimuth.
-            getZREA = getXgetYgetZ_rad.getZ;     // Gets Z from radians (azimuth, polar) equidistant along azimuth.
-            //approximationPrecision = aSurfaceSpec.approximationPrecision;
-            //maxRecursionDepth = aSurfaceSpec.maxRecursionDepth;
-            //console.log("outer approximationPrecision: ", approximationPrecision);
+            // Gets X from radians (azimuth, polar) equidistant along azimuth.
+            getXREA = getXgetYgetZ_rad.getX;
+            // Gets Y from radians (azimuth, polar) equidistant along azimuth.
+            getYREA = getXgetYgetZ_rad.getY;
+            // Gets Z from radians (azimuth, polar) equidistant along azimuth.
+            getZREA = getXgetYgetZ_rad.getZ;
+
 
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
@@ -92,31 +93,67 @@ define(
                 return seg_dist;
             };
 
-            // distance along azimuth or polar, between two points. Direction is determined by (point_end - point_start)
-            // *** Doesn't always work well for phiR_end > Pi*2  ***
-            // Private function
-            surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
 
-                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth)
+            /**
+             * @see surfaceDistR_body
+             *
+             * @private
+             */
+
+            surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                                    approximationPrecision, maxRecursionDepth) {
+
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
+
+                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                    approximationPrecision, maxRecursionDepth)
             };
 
-            surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR_along_azimuth.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
 
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start, approximationPrecision, maxRecursionDepth))
+            surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end,
+                                                  approximationPrecision, maxRecursionDepth) {
+
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.surfaceDistR_along_azimuth.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
+
+                return (surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start,
+                    approximationPrecision, maxRecursionDepth))
             };
 
-            surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.surfaceDistR_along_polar.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
 
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end, approximationPrecision, maxRecursionDepth))
+            surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end,
+                                                approximationPrecision, maxRecursionDepth) {
+
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.surfaceDistR_along_polar.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
+
+                return (surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end,
+                    approximationPrecision, maxRecursionDepth))
             };
 
-            surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end, approximationPrecision, maxRecursionDepth) {
+
+            /**
+             * Should give the distance along azimuth or polar between two points. Direction
+             * is determined by (point_end - point_start).
+             * surfaceDistR doesn't work along azimuth and polar simultaniously. One of them must
+             * be set to zero.
+             * Doesn't always work well for phiR_end > Pi*2.
+             *
+             * @param phiR_end  The absolute end value (as in: not a delta value) at which to
+             * measure the surface distance to.
+             *
+             * @private
+             */
+
+            surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                                         approximationPrecision, maxRecursionDepth) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 //                    console.log("arguments: ", arguments);
 //                    console.log("approximationPrecision: ", approximationPrecision);
@@ -126,9 +163,11 @@ define(
                 //console.log("phiR_start ", phiR_start );
                 //console.log("phiR_end ", phiR_end );
 
-                dist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi, thetaR_start + deltaTheta);
+                dist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi,
+                    thetaR_start + deltaTheta);
                 //console.log("dist: ", dist);
-                halfDist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi / 2, thetaR_start + deltaTheta / 2);
+                halfDist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi / 2,
+                    thetaR_start + deltaTheta / 2);
                 //console.log("halfDist: ", halfDist);
 
                 /*                     var material = new THREE.LineBasicMaterial({
@@ -172,62 +211,116 @@ define(
             };
 
 
-            // gets the delta phiR between phiR_start and the phiR achieved by walking `distance` from (phiR_start, theta) along the surface at constant azimuth
-            // *** Doesn't always work well for best_phiR_end > Pi*2 and never for best_phiR_end < 0  ***
-            horizontalSurfaceProjection_body = function(phiR_start, thetaR_start, best_phiR_end, projectionDistance,
-                                                         approximationPrecision, maxRecursionDepth) {
-                var surfaceDist, distRatio, phiR_end_guesstimate, deltaDist;
+            /**
+             * Gets the delta phiR between phiR_start and the phiR achieved by walking `distance`
+             * from (phiR_start, theta) along the surface at constant azimuth.
+             * If projectionDistance is negative, the walking direction is also negative
+             * (i.e. clockwise around the unit circle).
+             *
+             * @param  phiR_end_estimate_A  the phiR_end estimate that the previous recursive
+             * call to horizontalSurfaceProjection_body came up with.
+             * The value of phiR_end_estimate_A is the absolute end value (as in: not a delta value)
+             * at which to measure the surface distance to.
+             * Initially phiR_end_estimate_A is given as phiR_start + an estimate of the delta
+             * phiR value that will generate a walk of distance projectionDistance.
+             *
+             * @param  projectionDistance   The distance wanted to be walked from phiR_start along
+             * the surface at constant azimuth. Thus, projectionDistance is an offset from phiR_start
+             * and is thus a phiR_start ignorant, sort of.
+             * Although distances are normally always positive, projectionDistance can be given
+             * as a negative value. This indicates that the walking is to be done in the negative
+             * direction (i.e. clockwise around the unit circle).
+             *
+             * @return  The best phiR_end achieved through the approximation process.
+             *
+             * @private
+             */
+
+            horizontalSurfaceProjection_body = function(phiR_start, thetaR_start,
+                                                        phiR_end_estimate_A, projectionDistance,
+                                                        approximationPrecision,maxRecursionDepth,
+                                                        debug) {
+                var surfaceDist, deltaDist, phiR_end_estimate_B, phiR_end_estimate_C, best_phiR_end;
                 //console.log("arguments: ", arguments);
 
-                surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, best_phiR_end, approximationPrecision, maxRecursionDepth);
+                // surfaceDist is the achieved walk (while projectionDistance was the wanted walk)
+                // surfaceDist is an offset from phiR_start and is thus a phiR_start ignorant, just
+                // as projectionDistance.
+                surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, phiR_end_estimate_A,
+                    approximationPrecision, maxRecursionDepth);
 
-                deltaDist = surfaceDist - projectionDistance;
+                // as for projectionDistance, we need surfaceDist to be direction aware. That is, it
+                // needs to be negative if the starting point of the surfaceDist walk (phiR_start)
+                // is greater than its end point (phiR_end_estimate_A).
+                if (phiR_start > phiR_end_estimate_A) { surfaceDist = -surfaceDist; };
 
-                distRatio = surfaceDist / projectionDistance;
+                // delta**distance**:
+                deltaDist = projectionDistance - surfaceDist;
 
-                if(best_phiR_end >= 0) {phiR_end_guesstimate = best_phiR_end / distRatio;
-                } else { phiR_end_guesstimate = best_phiR_end * distRatio;};
+                // now we need to translate the delta **distance** into some deltas effect
+                // on the phiR_end **angle**:
+                phiR_end_estimate_B = phiR_end_estimate_A + phiR_estimator(deltaDist);
 
-                phiR_end_guesstimate = (phiR_end_guesstimate + best_phiR_end) / 2;
+                //console.log("1, debug in horizontalSurfaceProjection_body: ", debug);
 
-               /* console.log(" ");
-                console.log("best_phiR_end: ", best_phiR_end);
-                console.log("surfaceDist: ", surfaceDist);
+                if(debug) {
+                console.log(" ");
+                console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
                 console.log("projectionDistance: ", projectionDistance);
+                console.log("surfaceDist: ", surfaceDist);
                 console.log("deltaDist: ", deltaDist);
-                console.log("distRatio: ", distRatio);
-                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
-                console.log("best_phiR_end minus first phiR_end_guesstimate: ", best_phiR_end - phiR_end_guesstimate);
-                console.log("phiR_end_guesstimate: ", phiR_end_guesstimate);
-*/
+                console.log("phiR_end_estimate_B: ", phiR_end_estimate_B); }
+
+                console.log("approximationPrecision: ", approximationPrecision);
+                //console.log("maxRecursionDepth: ", maxRecursionDepth);
+
                 if(Math.abs(deltaDist) > approximationPrecision && (maxRecursionDepth > 0)) {
 //                        console.log("differencen er stoerre end approximationPrecision");
-                    best_phiR_end = horizontalSurfaceProjection_body(
-                        phiR_start, thetaR_start, phiR_end_guesstimate,
+                    //console.log("2, debug in horizontalSurfaceProjection_body: ", debug);
+                    phiR_end_estimate_C = horizontalSurfaceProjection_body(
+                        phiR_start, thetaR_start, phiR_end_estimate_B,
                         projectionDistance, approximationPrecision,
-                        maxRecursionDepth - 1);
-                } else { // console.log(" "); console.log("best surfaceDist: ", surfaceDist); console.log(" ");
+                        maxRecursionDepth - 1, debug);
+                } else if(debug) {
+                    console.log("best surfaceDist: ", surfaceDist);
+                    console.log("best_phiR_end: ", phiR_end_estimate_B);
+                    console.log(" ");
                 }
-                return best_phiR_end;
+
+                return phiR_end_estimate_C || phiR_end_estimate_B;
             };
 
 
-            // gets the delta phiR between phiR_start and the phiR achieved by walking `projectionDistance` from (phiR_start, thetaR) along the surface at constant azimuth
+            /**
+             * Gets the delta phiR between phiR_start and the phiR achieved by walking `distance`
+             * from (phiR_start, theta) along the surface at constant azimuth.
+             *
+             * @see horizontalSurfaceProjection_body
+             */
+
             horizontalSurfaceProjection = function(phiR_start, thetaR, projectionDistance,
-                                                   approximationPrecision, maxRecursionDepth) {
+                                                   approximationPrecision, maxRecursionDepth, debug) {
                 var init_phiR_end, best_phiR_end, endPointX, endPointY, endPointZ;
 
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
+                if (typeof debug == 'undefined') {
+                    debug = aSurfaceSpec.conf.horizontalSurfaceProjection.debug; }
 
-                init_phiR_end = phiR_estimator(projectionDistance);// - Math.PI;
-                //console.log(" ");
-                //console.log("init_phiR_end: ", init_phiR_end);
+                // phiR_start + a delta phiR gives an absolute phiR-value (in this case an initial
+                // estimate of phiR_end).
+                init_phiR_end = phiR_start + phiR_estimator(projectionDistance);
+
+                if(debug) { console.log(" "); console.log("init_phiR_end: ", init_phiR_end); }
 
                 best_phiR_end = horizontalSurfaceProjection_body(
                     phiR_start, thetaR, init_phiR_end,
                     projectionDistance, approximationPrecision,
-                    maxRecursionDepth);
+                    maxRecursionDepth, debug);
+
+                if(debug) {console.log("best_phiR_end: ", best_phiR_end);}
 
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
@@ -245,12 +338,19 @@ define(
             };
 
 
-            // gets the delta thetaR between thetaR_start and the thetaR achieved by walking `projectionDistance` from (phiR, thetaR_start) along the surface at constant polar
-            verticalSurfaceProjection = function(phiR, thetaR_start, projectionDistance, approximationPrecision, maxRecursionDepth) {
+            /**
+             * Gets the delta thetaR between thetaR_start and the thetaR achieved by walking
+             * `projectionDistance` from (phiR, thetaR_start) along the surface at constant polar.
+             */
+
+            verticalSurfaceProjection = function(phiR, thetaR_start, projectionDistance,
+                                                 approximationPrecision, maxRecursionDepth) {
                 var thetaR_end;
 
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.verticalSurfaceProjection.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.verticalSurfaceProjection.maxRecursionDepth;
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.verticalSurfaceProjection.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.verticalSurfaceProjection.maxRecursionDepth;
 
                 console.log("radius: ", radius);
 

@@ -22,21 +22,20 @@
 
 
 define(
-    [
+    [   "cons/designs/SuperQuadric",
+        "specs/designs/mySuperQuadricSpec"
     ],
     function (
+        SuperQuadric,
+        mySuperQuadricSpec
         ) {
 
-        //console.log("26");
+        //console.log("24");
 
-        var myGeometrywiseSegmentationSpec;
+        var mySuperQuadric;
 
-        myGeometrywiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: 80,
-            max_outer_segmentExtent_along_azimuth: 80
-        };
+        mySuperQuadric = new SuperQuadric(mySuperQuadricSpec);
 
-        Object.freeze(myGeometrywiseSegmentationSpec);
-        return myGeometrywiseSegmentationSpec;
+        return mySuperQuadric;
     }
 );

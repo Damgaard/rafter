@@ -18,10 +18,13 @@
  along with Rafter. If not, see <https://www.gnu.org/licenses/agpl.html>.
  */
 
+"use strict";
+
+
 define(
-    [   "instances/mySuperQuadric",
+    [   "instances/designs/mySuperQuadric",
         "cons/designs/Surface",
-        "specs/mySurfaceSpec"
+        "specs/designs/mySurfaceSpec"
     ],
     function (
         mySuperQuadric,
@@ -29,26 +32,24 @@ define(
         mySurfaceSpec
         ) {
 
-        console.log("20,5");
+        console.log("21");
 
-        var myInnerSurface, getXgetYgetZ_rad = {};
+        var myOuterSurface, getXgetYgetZ_rad = {};
 
         getXgetYgetZ_rad.getX = mySuperQuadric.getX;
         getXgetYgetZ_rad.getY = mySuperQuadric.getY;
         getXgetYgetZ_rad.getZ = mySuperQuadric.getZ;
-        console.log("mySuperQuadric.getX: ", mySuperQuadric.getX)
 
-        console.log("phiR_estimator: ", mySuperQuadric.phiR_estimator)
         // create a cons/designs/Surface:
-        myInnerSurface = new Surface(mySurfaceSpec, getXgetYgetZ_rad, mySuperQuadric.phiR_estimator);
+        myOuterSurface = new Surface(mySurfaceSpec, getXgetYgetZ_rad, mySuperQuadric.phiR_estimator, mySuperQuadric.radius);
 
         // test surfaceDistR:
-//        myInnerSurface.surfaceDistR(0,0,0,           Math.PI/3,0.1,1000);
-//        myInnerSurface.surfaceDistR(0,0,Math.PI/2,   Math.PI/3,0.1,1000);
-//        myInnerSurface.surfaceDistR(0,0,Math.PI,     Math.PI/3,0.1,1000);
-//        myInnerSurface.surfaceDistR(0,0,Math.PI*1.5, Math.PI/3,0.1,1000);
+//        myOuterSurface.surfaceDistR(0,0,0,           Math.PI/3,0.1,1000);
+//        myOuterSurface.surfaceDistR(0,0,Math.PI/2,   Math.PI/3,0.1,1000);
+//        myOuterSurface.surfaceDistR(0,0,Math.PI,     Math.PI/3,0.1,1000);
+//        myOuterSurface.surfaceDistR(0,0,Math.PI*1.5, Math.PI/3,0.1,1000);
 
 
-        return myInnerSurface;
+        return myOuterSurface;
     }
 );

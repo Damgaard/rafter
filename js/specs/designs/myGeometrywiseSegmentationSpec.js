@@ -23,26 +23,20 @@
 
 define(
     [
-        "cons/designs/WinDoorSet",
-        "specs/myWinDoorSetSpec",
-        "instances/myOuterSurface",
-        "instances/myDelimitation"
     ],
     function (
-        WinDoorSet,
-        myWinDoorSetSpec,
-        myOuterSurface,
-        myDelimitation
         ) {
 
-        //console.log("999");
+        //console.log("26");
 
-        var myWinDoorSet;
+        var myGeometrywiseSegmentationSpec;
 
-        myWinDoorSet = new WinDoorSet(myWinDoorSetSpec, myOuterSurface, myDelimitation);
+        myGeometrywiseSegmentationSpec = {
+            max_outer_segmentExtent_along_polar: 40,
+            max_outer_segmentExtent_along_azimuth: 40
+        };
 
-        console.log("myWinDoorSet instantiated")
-
-        return myWinDoorSet;
+        Object.freeze(myGeometrywiseSegmentationSpec);
+        return myGeometrywiseSegmentationSpec;
     }
 );

@@ -36,7 +36,7 @@ define(
 
 // camera
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.set( 0, 150, -250 );
+    camera.position.set( 0, 0, -350 );
     makeScene.scene.add( camera );
 
     return {

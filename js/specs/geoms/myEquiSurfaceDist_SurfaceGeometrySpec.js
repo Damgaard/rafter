@@ -21,6 +21,9 @@
 "use strict";
 
 
+// technically, this file really ought to be named myEquiSurfaceDistSURFACEGeometrySpec...
+
+
 define(
     [
     ],
@@ -29,35 +32,23 @@ define(
 
         //console.log("30");
 
-        var mySurfaceSpec;
+        var myEquiSurfaceDistGeometrySpec;
 
-        mySurfaceSpec = {
+        myEquiSurfaceDistGeometrySpec = {
             conf: {
-                surfaceDistR: {
-                    approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                getX: {
+                    approximationPrecision: 0.01,
+                    maxRecursionDepth: 30
                 },
-                surfaceDistR_along_azimuth: {
-                    approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
-                },
-                surfaceDistR_along_polar: {
-                    approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
-                },
-                horizontalSurfaceProjection: {
-                    approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
-                },
-                verticalSurfaceProjection: {
-                    approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                getY: {
+                    approximationPrecision: 0.01,
+                    maxRecursionDepth: 30
                 }
             }
         };
 
-        Object.freeze(mySurfaceSpec);
+        Object.freeze(myEquiSurfaceDistGeometrySpec);
 
-        return mySurfaceSpec;
+        return myEquiSurfaceDistGeometrySpec;
     }
 );

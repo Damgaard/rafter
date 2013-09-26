@@ -22,7 +22,7 @@
 
 
 define(
-    [ "specs/myGeometrywiseSegmentationSpec"
+    [ "specs/designs/myGeometrywiseSegmentationSpec"
     ],
     function (
         myGeometrywiseSegmentationSpec
@@ -38,11 +38,13 @@ define(
             conf: {
                 getXSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4,
+                    debug:false
                 },
                 getYSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4,
+                    debug:false
                 }
             }
         };
