@@ -39,7 +39,8 @@ define(
                 },
                 surfaceDistR_along_azimuth: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 4,
+                    debug: false
                 },
                 surfaceDistR_along_polar: {
                     approximationPrecision: 0.1,
