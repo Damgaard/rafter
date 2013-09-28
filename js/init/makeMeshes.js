@@ -30,6 +30,8 @@ define(
         "instances/designs/myGeometrywiseSegmentation",
         "instances/designs/myRafterwiseSegmentation",
         "instances/designs/myWinDoorSet",
+        "instances/geoms/myEquiAzimuthDistGeometry",
+        "instances/geoms/myEquiSurfaceDistGeometry",
         "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
@@ -41,6 +43,8 @@ define(
         myGeometrywiseSegmentation,
         myRafterwiseSegmentation,
         myWinDoorSet,
+        myEquiAzimuthDistGeometry,
+        myEquiSurfaceDistGeometry,
         myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
@@ -51,14 +55,8 @@ define(
           , meshA
           , meshB
           , objects = [];
-console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
+//console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
 
-        myEquiAzimuthDistGeometry = new THREE.SurfaceGeometry(
-            myGeometrywiseSegmentation.noOfSegments_along_azimuth,
-            myGeometrywiseSegmentation.noOfSegments_along_polar,
-            myGeometrywiseSegmentation.getXSEA,
-            myGeometrywiseSegmentation.getYSEA,
-            myGeometrywiseSegmentation.getZSEA);
         meshA = new THREE.Mesh(myEquiAzimuthDistGeometry);
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
@@ -66,13 +64,6 @@ console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometr
         makeScene.scene.add( meshA );
         objects.push( meshA );
 
-        myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
-            myRafterwiseSegmentation.noOfSegments_along_azimuth,
-            myRafterwiseSegmentation.noOfSegments_along_polar,
-            myRafterwiseSegmentation.getXSES,
-            myRafterwiseSegmentation.getYSES,
-            myRafterwiseSegmentation.getZSES,
-            myEquiSurfaceDist_SurfaceGeometrySpec);
         meshB = new THREE.Mesh(myEquiSurfaceDistGeometry);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";

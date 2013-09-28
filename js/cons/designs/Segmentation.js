@@ -68,7 +68,7 @@ define(
                     aDelimitation.thetaR_min,
                     aDelimitation.thetaR_max,
                     0.0002, 800);
-            //console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
+            console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
             //console.log("spec.max_outer_segmentExtent_along_azimuth: ", spec.max_outer_segmentExtent_along_azimuth);
 
             noOfSegments_along_azimuth =
@@ -154,7 +154,7 @@ define(
 
             getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
 
-                console.log("approximationPrecision: ", approximationPrecision);
+                //console.log("approximationPrecision: ", approximationPrecision);
 
                 approximationPrecision = approximationPrecision ||
                                          aSegmentationSpec.conf.getXSES.approximationPrecision;
@@ -179,20 +179,27 @@ define(
 
             getXSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
                 var phiR_at_projDist, projectionDistance, thetaR, x;
+
+                //console.log("debug in getXSES_body: ", debug);
+
                 if(memo[phiS]) {
                     phiR_at_projDist = memo[phiS];
-                    console.log("memo hit: ", phiS);
-                    console.log("memo hit: ", memo[phiS]);
+                    //console.log("memo hit: ", phiS);
+                    //console.log("memo hit: ", memo[phiS]);
                 } else {
                     projectionDistance = phiS * segment_extent_azimuth;
-                    console.log("projectionDistance: ", projectionDistance);
+                    //console.log("projectionDistance: ", projectionDistance);
+                    //console.log("phiS in getXSES_body: ", phiS);
+                    //console.log("thetaS in getXSES_body: ", thetaS);
                     phiR_at_projDist = aSurface.horizontalSurfaceProjection(
                         aDelimitation.phiR_min,
                         aDelimitation.thetaR_at_max_surface_extent_along_azimuth,
                         projectionDistance,
                         approximationPrecision,
                         maxRecursionDepth,
-                        debug);
+                        debug,
+                        phiS,
+                        thetaS);
                     memo[phiS] = phiR_at_projDist;
                 }
                 //console.log("phir_best: ", phiR_at_projDist);
@@ -230,6 +237,7 @@ define(
 
             getYSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
                 var phiR_at_projDist, projectionDistance, thetaR, y;
+
                 if(memo[phiS]) {
                     phiR_at_projDist = memo[phiS];
                 } else {
@@ -240,7 +248,9 @@ define(
                         projectionDistance,
                         approximationPrecision,
                         maxRecursionDepth,
-                        debug);
+                        debug,
+                        phiS,
+                        thetaS);
                     memo[phiS] = phiR_at_projDist;
                 }
                 if(debug) { console.log("phir_best: ", phiR_at_projDist); }

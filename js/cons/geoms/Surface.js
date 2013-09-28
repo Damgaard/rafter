@@ -40,22 +40,16 @@ define(
                 approximationPrecisionY,
                 maxRecursionDepthY;
 
-            if (typeof aSurfaceGeometrySpec == 'undefined') {
-                approximationPrecisionX = "dummy value"  // this value is not used when getX is getXSEA
-                maxRecursionDepthX      = "dummy value"  // this value is not used when getX is getXSEA
-                approximationPrecisionY = "dummy value"  // this value is not used when getY is getYSEA
-                maxRecursionDepthY      = "dummy value"  // this value is not used when getY is getYSEA
-            } else {
+            if (typeof aSurfaceGeometrySpec != 'undefined') {
                 approximationPrecisionX = aSurfaceGeometrySpec.conf.getX.approximationPrecision;
                 maxRecursionDepthX      = aSurfaceGeometrySpec.conf.getX.maxRecursionDepth;
                 approximationPrecisionY = aSurfaceGeometrySpec.conf.getY.approximationPrecision;
                 maxRecursionDepthY      = aSurfaceGeometrySpec.conf.getY.maxRecursionDepth;
-                console.log("aSurfaceGeometrySpec.conf.getX.approximationPrecision: ", aSurfaceGeometrySpec.conf.getX.approximationPrecision);
+                //console.log("aSurfaceGeometrySpec.conf.getX.approximationPrecision: ", aSurfaceGeometrySpec.conf.getX.approximationPrecision);
                 //console.log("aSurfaceGeometrySpec.conf.getX.maxRecursionDepth: ", aSurfaceGeometrySpec.conf.getX.maxRecursionDepth);
             }
 
                 this.vertices = [];
-
 
 
             THREE.Geometry.call( this );
@@ -65,8 +59,8 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
-                    debug = ((theta_seg === noOfSegments_theta) && (phi_seg === noOfSegments_phi-1));
-                    //console.log("debug: ", debug);
+                    debug = ((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
+                    //console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
                         maxRecursionDepthX, debug);
@@ -74,7 +68,7 @@ define(
                         approximationPrecisionY,
                         maxRecursionDepthY, debug);
                     var z = getZ(         theta_seg);
-                   //console.log("x: ", x);
+                    console.log(" ");
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };
             };
