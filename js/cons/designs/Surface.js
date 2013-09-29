@@ -24,11 +24,13 @@ f the GNU Affero Public License as published by
 
 define(
     [   "libs/three.js/build/three",
-        "init/makeScene"
+        "init/makeScene",
+        "cons/geoms/phiR_mark"
     ],
     function (
         three,
-        makeScene
+        makeScene,
+        phiR_mark  // don't use any variables explicitly exported from this one, here.
         ) {
         //console.log("7");
 
@@ -42,7 +44,7 @@ define(
                 horizontalSurfaceProjection_body,
                 horizontalSurfaceProjection,
                 verticalSurfaceProjection,
-                getXREA, getYREA, getZREA;
+                getXR, getYR, getZR;
 
             spec = {};
 
@@ -51,22 +53,22 @@ define(
             };
 
             // Gets X from radians (azimuth, polar) equidistant along azimuth.
-            getXREA = getXgetYgetZ_rad.getX;
+            getXR = getXgetYgetZ_rad.getX;
             // Gets Y from radians (azimuth, polar) equidistant along azimuth.
-            getYREA = getXgetYgetZ_rad.getY;
+            getYR = getXgetYgetZ_rad.getY;
             // Gets Z from radians (azimuth, polar) equidistant along azimuth.
-            getZREA = getXgetYgetZ_rad.getZ;
+            getZR = getXgetYgetZ_rad.getZ;
 
 
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
 
-                phi_x  = getXREA(phiR_start, thetaR_start);
-                phi_y  = getYREA(phiR_start, thetaR_start);
-                phi_z  = getZREA(thetaR_start);
-                phi__x = getXREA(phiR_end, thetaR_end);
-                phi__y = getYREA(phiR_end, thetaR_end);
-                phi__z = getZREA(thetaR_end);
+                phi_x  = getXR(phiR_start, thetaR_start);
+                phi_y  = getYR(phiR_start, thetaR_start);
+                phi_z  = getZR(thetaR_start);
+                phi__x = getXR(phiR_end, thetaR_end);
+                phi__y = getYR(phiR_end, thetaR_end);
+                phi__z = getZR(thetaR_end);
 
 //            console.log("thetaR_start: ", thetaR_start);
 //            console.log("thetaR_end: ", thetaR_end);
@@ -101,7 +103,7 @@ define(
              */
 
             surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                    approximationPrecision, maxRecursionDepth) {
+                                    approximationPrecision, maxRecursionDepth, debug) {
 
                 approximationPrecision = approximationPrecision ||
                     aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
@@ -109,7 +111,7 @@ define(
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
 
                 return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                    approximationPrecision, maxRecursionDepth)
+                    approximationPrecision, maxRecursionDepth, debug);
             };
 
 
@@ -121,20 +123,30 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
                 if (typeof debug == 'undefined') {
-                    debug = aSurfaceSpec.conf.surfaceDistR.debug; }
-
-                console.log("debug in surfaceDistR: ", debug);
+                    debug = aSurfaceSpec.conf.surfaceDistR_along_azimuth.debug; }
 
                 if (debug) {
-                    console.log(" ");
-                    console.log("phiR_start: ", phiR_start);
+                    //console.log(" ");
+                    //console.log("phiR_start: ", phiR_start);
                     //console.log("thetaR_start: ", thetaR_start);
-                    console.log("phiR_end: ", phiR_end);
-                    console.log(" ");
+                    //console.log("phiR_end: ", phiR_end);
+                    //console.log(" ");
+
+                    /*var material = new THREE.LineBasicMaterial({
+                        color: 0xffffff
+                    });
+                    var endPointX = getXR(phiR_end, thetaR_start);
+                    var endPointY = getYR(phiR_end, thetaR_start);
+                    var endPointZ = getZR(thetaR_start);
+                    var geometry = new THREE.Geometry();
+                    geometry.vertices.push(new THREE.Vector3(0, 0, 0));
+                    geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
+                    var line = new THREE.Line(geometry, material);
+                    makeScene.scene.add(line);*/
                 }
 
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start,
-                    approximationPrecision, maxRecursionDepth))
+                return surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start,
+                    approximationPrecision, maxRecursionDepth, debug);
             };
 
 
@@ -146,15 +158,15 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
 
-                return (surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end,
-                    approximationPrecision, maxRecursionDepth))
+                return surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end,
+                    approximationPrecision, maxRecursionDepth);
             };
 
 
             /**
              * Should give the distance along azimuth or polar between two points. Direction
              * is determined by (point_end - point_start).
-             * surfaceDistR doesn't work along azimuth and polar simultaniously. One of them must
+             * surfaceDistR doesn't work along azimuth and polar simultaneously. One of them must
              * be set to zero.
              * Doesn't always work well for phiR_end > Pi*2.
              *
@@ -165,7 +177,7 @@ define(
              */
 
             surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                         approximationPrecision, maxRecursionDepth) {
+                                         approximationPrecision, maxRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 //                    console.log("arguments: ", arguments);
 //                    console.log("approximationPrecision: ", approximationPrecision);
@@ -182,20 +194,22 @@ define(
                     thetaR_start + deltaTheta / 2);
                 //console.log("halfDist: ", halfDist);
 
-                /*                     var material = new THREE.LineBasicMaterial({
-                 color: 0xffffff
-                 });
-                 phiS_start_x = getXREA(phiR_start, thetaR_start);
-                 phiS_start_y = getYREA(phiR_start, thetaR_start);
-                 phiS_start_z = getZREA(thetaR_start);
-                 phiS_end_x = getXREA(phiR_end, thetaR_end);
-                 phiS_end_y = getYREA(phiR_end, thetaR_end);
-                 phiS_end_z = getZREA(thetaR_end);
-                 var geometry = new THREE.Geometry();
-                 geometry.vertices.push(new THREE.Vector3(phiS_start_x, phiS_start_y, phiS_start_z));
-                 geometry.vertices.push(new THREE.Vector3(phiS_end_x, phiS_end_y, phiS_end_z));
-                 var line = new THREE.Line(geometry, material);
-                 makeScene.scene.add(line);*/
+                if (debug) {
+                    var material = new THREE.LineBasicMaterial({
+                     color: 0xffffff
+                     });
+                    var phiS_start_x = getXR(phiR_start, thetaR_start);
+                    var phiS_start_y = getYR(phiR_start, thetaR_start);
+                    var phiS_start_z = getZR(thetaR_start);
+                    var phiS_end_x = getXR(phiR_end, thetaR_end);
+                    var phiS_end_y = getYR(phiR_end, thetaR_end);
+                    var phiS_end_z = getZR(thetaR_end);
+                    var geometry = new THREE.Geometry();
+                    geometry.vertices.push(new THREE.Vector3(phiS_start_x, phiS_start_y, phiS_start_z));
+                    geometry.vertices.push(new THREE.Vector3(phiS_end_x, phiS_end_y, phiS_end_z));
+                    var line = new THREE.Line(geometry, material);
+                    makeScene.scene.add(line);
+                }
 
                 if(Math.abs(dist - halfDist * 2) > approximationPrecision && (maxRecursionDepth > 0)) {
                     //console.log("differencen er stoerre end approximationPrecision");
@@ -261,9 +275,9 @@ define(
                 /*                    var material = new THREE.LineBasicMaterial({
                  color: 0xffffff
                  });
-                 endPointX = getXREA(best_phiR_end, thetaR);
-                 endPointY = getYREA(best_phiR_end, thetaR);
-                 endPointZ = getZREA(thetaR);
+                 endPointX = getXR(best_phiR_end, thetaR);
+                 endPointY = getYR(best_phiR_end, thetaR);
+                 endPointZ = getZR(thetaR);
                  var geometry = new THREE.Geometry();
                  geometry.vertices.push(new THREE.Vector3(0, 0, 0));
                  geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
@@ -303,16 +317,16 @@ define(
                                                         phiR_end_estimate_A, projectionDistance,
                                                         approximationPrecision,maxRecursionDepth,
                                                         debug, phiS, thetaS) {
-                var surfaceDist, deltaDist, phiR_end_estimate_B, phiR_end_estimate_C, best_phiR_end;
+                var surfaceDist, deltaDist, phiR_end_estimate_B, mark_phiR_one, mark_phiR_two, phiR_end_estimate_C, best_phiR_end;
                 //console.log("arguments: ", arguments);
 
-                console.log("debug in horizontalSurfaceProjection_body: ", debug);
+                //console.log("debug in horizontalSurfaceProjection_body: ", debug);
 
                 // surfaceDist is the achieved walk (while projectionDistance was the wanted walk)
                 // surfaceDist is an offset from phiR_start and is thus a phiR_start ignorant, just
                 // as projectionDistance.
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, phiR_end_estimate_A,
-                    approximationPrecision, maxRecursionDepth, debug);
+                    0.01, maxRecursionDepth, debug);
 
                 // as for projectionDistance, we need surfaceDist to be direction aware. That is, it
                 // needs to be negative if the starting point of the surfaceDist walk (phiR_start)
@@ -332,10 +346,14 @@ define(
 //                    console.log(" ");
 //                    console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
                     //console.log("projectionDistance: ", projectionDistance);
-                    //console.log("surfaceDist: ", surfaceDist);
-                    console.log("deltaDist: ", deltaDist);
+                    //mark_phiR_one = new THREE.phiR_mark_geometry(phiR_end_estimate_A, getXR, getYR, getZR);
+                    console.log("phiR_end for surfaceDist: ", phiR_end_estimate_A);
+                    console.log("surfaceDist: ", surfaceDist);
+                    //console.log("phiR_end for surfaceDist - true phiR_end: ", phiR_end_estimate_A - 6.283617937340014);
+                    //console.log("deltaDist: ", deltaDist);
                     //console.log("phiR_estimator(deltaDist): ", phiR_estimator(deltaDist));
-//                    console.log("phiR_end_estimate_B: ", phiR_end_estimate_B);
+                    //console.log("phiR_end_estimate_B - true phiR_end: ", phiR_end_estimate_B -  6.283617937340014);
+                    console.log(" ");
                     //console.log("phiS in horizontalSurfaceProjection_body: ", phiS);
                     //console.log("thetaS in horizontalSurfaceProjection_body: ", thetaS);
 
@@ -359,7 +377,10 @@ define(
                         console.log("best deltaDist: ", deltaDist);
                         console.log("best surfaceDist: ", surfaceDist);
                         console.log("arguments: ", arguments);
-                        //console.log("best_phiR_end: ", phiR_end_estimate_B);
+                        console.log("best_phiR_end: ", phiR_end_estimate_B);
+                        mark_phiR_one = new THREE.phiR_mark_geometry(7.337545372284094, getXR, getYR, getZR);
+                        mark_phiR_two = new THREE.phiR_mark_geometry(7.030486254051471, getXR, getYR, getZR);
+
 
                     }
                     //console.log(" ");
@@ -391,9 +412,9 @@ define(
             };
 
 
-            this.getXREA = getXREA;
-            this.getYREA = getYREA;
-            this.getZREA = getZREA;
+            this.getXR = getXR;
+            this.getYR = getYR;
+            this.getZR = getZR;
             this.linearDistR = linearDistR;
             this.surfaceDistR_along_azimuth  = surfaceDistR_along_azimuth;
             this.surfaceDistR_along_polar    = surfaceDistR_along_polar;
