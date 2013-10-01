@@ -59,7 +59,7 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
-                    debug = ((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
+                    debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
                     //console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
