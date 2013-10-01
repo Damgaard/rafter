@@ -31,6 +31,37 @@ define(
 
         var mySuperQuadricSpec;
 
+        mySuperQuadricSpec = {
+            radius: 100,
+            //curve_X( 2 * PI * frequency_scaler) = fun(0)
+            curve_X: function ( phi ) {
+                var x;
+                //x = Math.cos(phi);
+                x = Math.cos(phi) + (Math.cos(phi*4) / 5);
+                //x = Math.cos(phi) + (Math.cos(phi*4) / 7);
+                //x = Math.cos(phi) + (Math.cos(phi*9) / 10);
+                return x;
+            },
+            curve_Y: function ( phi ) {
+                var y;
+                //y = Math.sin( phi );
+                y = Math.sin(phi) + (Math.sin(phi*4) / 5);
+                //y = Math.sin(phi) + (Math.sin(phi*3) / 10);
+                return y;
+            },
+            modulator_XY: function ( theta ) {
+                var m_xy;
+                m_xy = Math.cos( theta );
+                return m_xy;
+            },
+            modulator_Z: function ( theta ) {
+                var m_z;
+                m_z = Math.sin( theta );
+                return m_z;
+            }
+        };
+
+
         // my parametric polarWall:
         //      curve parameter/azimuth angle:   phi,   eta     (aka. inclination)
         //      modulator parameter/polar angle: theta, omega
@@ -59,36 +90,6 @@ define(
         //      'p' = rho
         //      en.wikipedia.org/wiki/Spherical_coordinates#Cartesian_coordinates
         //      en.wikipedia.org/wiki/List_of_common_coordinate_transformations#From_spherical_coordinates
-
-        mySuperQuadricSpec = {
-            radius: 100,
-            //curve_X( 2 * PI * frequency_scaler) = fun(0)
-            curve_X: function ( phi ) {
-                var x;
-                //x = Math.cos(phi);
-                x = Math.cos(phi) + (Math.cos(phi*4) / 5);
-                //x = Math.cos(phi) + (Math.cos(phi*4) / 7);
-                //x = Math.cos(phi) + (Math.cos(phi*9) / 10);
-                return x;
-            },
-            curve_Y: function ( phi ) {
-                var y;
-                //y = Math.sin( phi );
-                y = Math.sin(phi) + (Math.sin(phi*4) / 6);
-                //y = Math.sin(phi) + (Math.sin(phi*3) / 10);
-                return y;
-            },
-            modulator_XY: function ( theta ) {
-                var m_xy;
-                m_xy = Math.cos( theta );
-                return m_xy;
-            },
-            modulator_Z: function ( theta ) {
-                var m_z;
-                m_z = Math.sin( theta );
-                return m_z;
-            }
-        };
 
         Object.freeze(mySuperQuadricSpec);
         return mySuperQuadricSpec;

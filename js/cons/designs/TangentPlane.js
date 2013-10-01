@@ -59,19 +59,19 @@ define(
                 vector3D_projected_to_plane;
 
 
-            phiR_minus_ephsilon_to_X = aSurface.getXREA( phiR - 0.0001, thetaR );
-            phiR_plus_ephsilon_to_X  = aSurface.getXREA( phiR + 0.0001, thetaR );
-            phiR_minus_ephsilon_to_Y = aSurface.getYREA( phiR - 0.0001, thetaR );
-            phiR_plus_ephsilon_to_Y  = aSurface.getYREA( phiR + 0.0001, thetaR );
-            phiR_minus_ephsilon_to_Z = aSurface.getZREA( thetaR );
-            phiR_plus_ephsilon_to_Z  = aSurface.getZREA( thetaR );
+            phiR_minus_ephsilon_to_X = aSurface.getXR( phiR - 0.0001, thetaR );
+            phiR_plus_ephsilon_to_X  = aSurface.getXR( phiR + 0.0001, thetaR );
+            phiR_minus_ephsilon_to_Y = aSurface.getYR( phiR - 0.0001, thetaR );
+            phiR_plus_ephsilon_to_Y  = aSurface.getYR( phiR + 0.0001, thetaR );
+            phiR_minus_ephsilon_to_Z = aSurface.getZR( thetaR );
+            phiR_plus_ephsilon_to_Z  = aSurface.getZR( thetaR );
 
-            thetaR_minus_ephsilon_to_X = aSurface.getXREA( phiR, thetaR - 0.0001 );
-            thetaR_plus_ephsilon_to_X  = aSurface.getXREA( phiR, thetaR + 0.0001 );
-            thetaR_minus_ephsilon_to_Y = aSurface.getYREA( phiR, thetaR - 0.0001 );
-            thetaR_plus_ephsilon_to_Y  = aSurface.getYREA( phiR, thetaR + 0.0001 );
-            thetaR_minus_ephsilon_to_Z = aSurface.getZREA( thetaR - 0.0001 );
-            thetaR_plus_ephsilon_to_Z  = aSurface.getZREA( thetaR + 0.0001 );
+            thetaR_minus_ephsilon_to_X = aSurface.getXR( phiR, thetaR - 0.0001 );
+            thetaR_plus_ephsilon_to_X  = aSurface.getXR( phiR, thetaR + 0.0001 );
+            thetaR_minus_ephsilon_to_Y = aSurface.getYR( phiR, thetaR - 0.0001 );
+            thetaR_plus_ephsilon_to_Y  = aSurface.getYR( phiR, thetaR + 0.0001 );
+            thetaR_minus_ephsilon_to_Z = aSurface.getZR( thetaR - 0.0001 );
+            thetaR_plus_ephsilon_to_Z  = aSurface.getZR( thetaR + 0.0001 );
 
             delta_X_from_phiR = phiR_plus_ephsilon_to_X - phiR_minus_ephsilon_to_X;
             delta_Y_from_phiR = phiR_plus_ephsilon_to_Y - phiR_minus_ephsilon_to_Y;
