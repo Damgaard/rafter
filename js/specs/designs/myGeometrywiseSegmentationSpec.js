@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -22,24 +22,21 @@
 
 
 define(
-    [   "instances/myOuterSurface",
-        "instances/myDelimitation",
-        "cons/designs/Segmentation",
-        "specs/myGeometrywiseSegmentationSpec"
+    [
     ],
     function (
-        myOuterSurface,
-        myDelimitation,
-        Segmentation,
-        myGeometrywiseSegmentationSpec
         ) {
 
-        //console.log("20");
+        //console.log("26");
 
-        var myGeometrywiseegmentation;
+        var myGeometrywiseSegmentationSpec;
 
-        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
+        myGeometrywiseSegmentationSpec = {
+            max_outer_segmentExtent_along_polar: 15,
+            max_outer_segmentExtent_along_azimuth: 15
+        };
 
-        return myGeometrywiseegmentation;
+        Object.freeze(myGeometrywiseSegmentationSpec);
+        return myGeometrywiseSegmentationSpec;
     }
 );

@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -22,20 +22,26 @@
 
 
 define(
-    [   "cons/designs/Delimitation",
-        "specs/myDelimitationSpec"
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myRafterwiseSegmentation",
+        "cons/designs/RafterSet",
+        "specs/designs/myRafterSetSpec"
     ],
     function (
-        Delimitation,
-        myDelimitationSpec
+        myOuterSurface,
+        myRafterwiseSegmentation,
+        RafterSet,
+        myRafterSetSpec
         ) {
 
-        //console.log("19");
+        //console.log("22");
 
-        var myDelimitation;
+        var myRafterSet;
 
-        myDelimitation = new Delimitation( myDelimitationSpec );
+        myRafterSet = new RafterSet(myRafterSetSpec, myRafterwiseSegmentation, myOuterSurface);
 
-        return myDelimitation;
+        return myRafterSet;
     }
 );
+
+//             arafterSet = (function anon(aRafterSetSpec, aSegmentation, asurface) {

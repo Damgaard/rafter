@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -22,25 +22,20 @@
 
 
 define(
-    [
+    [   "cons/designs/Delimitation",
+        "specs/designs/myDelimitationSpec"
     ],
     function (
+        Delimitation,
+        myDelimitationSpec
         ) {
 
-        //console.log("25");
+        //console.log("19");
 
-        var myDelimitationSpec;
+        var myDelimitation;
 
-        myDelimitationSpec = {
-            thetaR_min: 0, //-Math.PI,
-            thetaR_max: Math.PI/2,
-            phiR_min:   0,//-Math.PI,
-            phiR_max:   2*Math.PI,
-            thetaR_at_max_surface_extent_along_polar: 0,
-            thetaR_at_max_surface_extent_along_azimuth: 0
-        };
+        myDelimitation = new Delimitation( myDelimitationSpec );
 
-        Object.freeze(myDelimitationSpec);
-        return myDelimitationSpec;
+        return myDelimitation;
     }
 );

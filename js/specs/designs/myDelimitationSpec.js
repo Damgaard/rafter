@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -27,16 +27,20 @@ define(
     function (
         ) {
 
-        //console.log("26");
+        //console.log("25");
 
-        var myGeometrywiseSegmentationSpec;
+        var myDelimitationSpec;
 
-        myGeometrywiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: 80,
-            max_outer_segmentExtent_along_azimuth: 80
+        myDelimitationSpec = {
+            thetaR_min: 0, //-Math.PI,
+            thetaR_max: Math.PI/2,
+            phiR_min:   0, //-Math.PI,
+            phiR_max:   2*Math.PI,
+            thetaR_at_max_surface_extent_along_polar: 0,
+            thetaR_at_max_surface_extent_along_azimuth: 0
         };
 
-        Object.freeze(myGeometrywiseSegmentationSpec);
-        return myGeometrywiseSegmentationSpec;
+        Object.freeze(myDelimitationSpec);
+        return myDelimitationSpec;
     }
 );

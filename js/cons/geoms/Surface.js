@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -30,13 +30,27 @@ define(
         //console.log("9");
 
         // X = length, Y = height, Z = depth,
-        THREE.SurfaceGeometry = function (noOfSegments_phi, noOfSegments_theta, getX, getY, getZ) {
+        THREE.SurfaceGeometry = function (noOfSegments_phi, noOfSegments_theta, getX, getY, getZ, aSurfaceGeometrySpec) {
             var phi_seg,
                 theta_seg,
-                color,
-                normal = new THREE.Vector3( 0, 0, 1);
+                debug,
+                normal = new THREE.Vector3( 0, 0, 1),
+                approximationPrecisionX,
+                maxRecursionDepthX,
+                approximationPrecisionY,
+                maxRecursionDepthY;
 
-            this.vertices = [];
+            if (typeof aSurfaceGeometrySpec != 'undefined') {
+                approximationPrecisionX = aSurfaceGeometrySpec.conf.getX.approximationPrecision;
+                maxRecursionDepthX      = aSurfaceGeometrySpec.conf.getX.maxRecursionDepth;
+                approximationPrecisionY = aSurfaceGeometrySpec.conf.getY.approximationPrecision;
+                maxRecursionDepthY      = aSurfaceGeometrySpec.conf.getY.maxRecursionDepth;
+                //console.log("aSurfaceGeometrySpec.conf.getX.approximationPrecision: ", aSurfaceGeometrySpec.conf.getX.approximationPrecision);
+                //console.log("aSurfaceGeometrySpec.conf.getX.maxRecursionDepth: ", aSurfaceGeometrySpec.conf.getX.maxRecursionDepth);
+            }
+
+                this.vertices = [];
+
 
             THREE.Geometry.call( this );
 //console.log("noOfSegments_phi: ", noOfSegments_phi);
@@ -45,10 +59,16 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
-                    var x = getX(phi_seg, theta_seg, 0.01, 100);
-                    var y = getY(phi_seg, theta_seg, 0.01, 100);
-                    var z = getZ(         theta_seg, 0.01, 100);
-                   //console.log("x: ", x);
+                    debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
+                    //console.log("debug in geoms/Surface: ", debug);
+                    var x = getX(phi_seg, theta_seg,
+                        approximationPrecisionX,
+                        maxRecursionDepthX, debug);
+                    var y = getY(phi_seg, theta_seg,
+                        approximationPrecisionY,
+                        maxRecursionDepthY, debug);
+                    var z = getZ(         theta_seg);
+                    console.log(" ");
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };
             };

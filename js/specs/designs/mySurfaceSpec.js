@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -35,19 +35,25 @@ define(
             conf: {
                 surfaceDistR: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 surfaceDistR_along_azimuth: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4,
+                    debug: false
                 },
                 surfaceDistR_along_polar: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4
                 },
                 horizontalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 1000
+                    maxRecursionDepth: 4,
+                    debug: false
+                },
+                verticalSurfaceProjection: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 4
                 }
             }
         };

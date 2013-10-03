@@ -22,12 +22,20 @@
 
 
 define(
-    [   "libs/three.js/build/three"
+    [
     ],
     function (
-        three
         ) {
 
-        //console.log("8");
+        //console.log("27");
+
+        var myRafterSetSpec;
+
+        myRafterSetSpec = {
+            maxOuterBrickLength: 500,
+            maxOuterBrickHeigth: 150
+        };
+        Object.freeze(myRafterSetSpec);
+        return  myRafterSetSpec;
     }
 );

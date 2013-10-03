@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -36,7 +36,7 @@ define(
 
 // camera
     camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 10000 );
-    camera.position.set( 0, 150, -250 );
+    camera.position.set( 0, 0, -350 );
     makeScene.scene.add( camera );
 
     return {

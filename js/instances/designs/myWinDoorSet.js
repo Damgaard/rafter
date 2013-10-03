@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -23,23 +23,24 @@
 
 define(
     [
+        "cons/designs/WinDoorSet",
+        "specs/designs/myWinDoorSetSpec",
+        "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation"
     ],
     function (
+        WinDoorSet,
+        myWinDoorSetSpec,
+        myOuterSurface,
+        myDelimitation
         ) {
 
-        //console.log("25");
+        //console.log("999");
 
-        var myWinDoorSpec;
+        var myWinDoorSet;
 
-        myWinDoorSpec = {
-            no_of_rafters_between_each_two_winDoors: 2,
-            winDoor_extent_along_azimuth_in_centimeters: [100, 150, 200],
-            winDoor_extent_along_polar_in_centimeters: [125, 175, 225],
-            winDoor_polar_posStart_in_centimeters: [75, 75, 0],
-            winDoor_azimuth_posCenter_in_radians: [Math.PI*0.5, Math.PI, Math.PI*1.5]
-        };
+        myWinDoorSet = new WinDoorSet(myWinDoorSetSpec, myOuterSurface, myDelimitation);
 
-        Object.freeze(myWinDoorSpec);
-        return myWinDoorSpec;
+        return myWinDoorSet;
     }
 );

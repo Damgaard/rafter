@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -27,8 +27,12 @@ define(
         "init/makeDOMelements",
         "cons/geoms/Surface",
         "cons/designs/Segmentation",
-        //"instances/myGeometrywiseSegmentation",
-        "instances/myRafterwiseSegmentation"
+        "instances/designs/myGeometrywiseSegmentation",
+        "instances/designs/myRafterwiseSegmentation",
+        "instances/designs/myWinDoorSet",
+        "instances/geoms/myEquiAzimuthDistGeometry",
+        "instances/geoms/myEquiSurfaceDistGeometry",
+        "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
         three,
@@ -36,8 +40,12 @@ define(
         makeDOMelements,
         SurfaceGeometry,  // don't use any variables explicitly exported from this one, here.
         Segmentation,
-        //myGeometrywiseSegmentation,
-        myRafterwiseSegmentation
+        myGeometrywiseSegmentation,
+        myRafterwiseSegmentation,
+        myWinDoorSet,
+        myEquiAzimuthDistGeometry,
+        myEquiSurfaceDistGeometry,
+        myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
         //console.log("15");
@@ -47,26 +55,15 @@ define(
           , meshA
           , meshB
           , objects = [];
+//console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
 
-/*        myEquiAzimuthDistGeometry = new THREE.SurfaceGeometry(
-            myGeometrywiseSegmentation.noOfSegments_along_azimuth,
-            myGeometrywiseSegmentation.noOfSegments_along_polar,
-            myGeometrywiseSegmentation.getXSEA,
-            myGeometrywiseSegmentation.getYSEA,
-            myGeometrywiseSegmentation.getZSEA);
         meshA = new THREE.Mesh(myEquiAzimuthDistGeometry);
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
         meshA.callback = function() { makeDOMelements.info.innerHTML = this.name; };
-        makeScene.scene.add( meshA );
-        objects.push( meshA );*/
+        //makeScene.scene.add( meshA );
+        objects.push( meshA );
 
-        myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
-            myRafterwiseSegmentation.noOfSegments_along_azimuth,
-            myRafterwiseSegmentation.noOfSegments_along_polar,
-            myRafterwiseSegmentation.getXSES,
-            myRafterwiseSegmentation.getYSES,
-            myRafterwiseSegmentation.getZSES);
         meshB = new THREE.Mesh(myEquiSurfaceDistGeometry);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";

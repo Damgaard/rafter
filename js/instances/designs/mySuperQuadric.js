@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -22,26 +22,20 @@
 
 
 define(
-    [   "instances/myOuterSurface",
-        "instances/myRafterwiseSegmentation",
-        "cons/designs/RafterSet",
-        "specs/myRafterSetSpec"
+    [   "cons/designs/SuperQuadric",
+        "specs/designs/mySuperQuadricSpec"
     ],
     function (
-        myOuterSurface,
-        myRafterwiseSegmentation,
-        RafterSet,
-        myRafterSetSpec
+        SuperQuadric,
+        mySuperQuadricSpec
         ) {
 
-        //console.log("22");
+        //console.log("24");
 
-        var myRafterSet;
+        var mySuperQuadric;
 
-        myRafterSet = new RafterSet(myRafterSetSpec, myRafterwiseSegmentation, myOuterSurface);
+        mySuperQuadric = new SuperQuadric(mySuperQuadricSpec);
 
-        return myRafterSet;
+        return mySuperQuadric;
     }
 );
-
-//             arafterSet = (function anon(aRafterSetSpec, aSegmentation, asurface) {

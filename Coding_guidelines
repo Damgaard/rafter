@@ -10,3 +10,5 @@ To avoid bloating recursive functions, the origin of the configuration must be d
 
 Configuration arguments shall be given as close to the call of the to-be-configured function as possible. It is not desirable to pass configuration arguments through several function calls before they come to use.
 
+
+Private functions doesn't need to have a default value for optional arguments.

@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -22,24 +22,24 @@
 
 
 define(
-    [   "instances/myOuterSurface",
-        "instances/myDelimitation",
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation",
         "cons/designs/Segmentation",
-        "specs/myRafterwiseSegmentationSpec"
+        "specs/designs/myGeometrywiseSegmentationSpec"
     ],
     function (
         myOuterSurface,
         myDelimitation,
         Segmentation,
-        myRafterwiseSegmentationSpec
+        myGeometrywiseSegmentationSpec
         ) {
 
-        //console.log("23");
+        //console.log("20");
 
-        var myRafterwiseegmentation;
+        var myGeometrywiseegmentation;
 
-        myRafterwiseegmentation = new Segmentation(myRafterwiseSegmentationSpec, myDelimitation, myOuterSurface);
+        myGeometrywiseegmentation = new Segmentation(myGeometrywiseSegmentationSpec, myDelimitation, myOuterSurface);
 
-        return myRafterwiseegmentation;
+        return myGeometrywiseegmentation;
     }
 );

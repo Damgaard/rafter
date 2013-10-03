@@ -1,6 +1,6 @@
 /**
  * @copyright Jon Loldrup loldrup@gmail.com
- * @copyright other-contributors-name-here
+ * @copyright Hjalte Loldrup hjalteloldrup@gmail.com
 
  This file is part of Rafter.
 
@@ -49,7 +49,6 @@ define(
                 memo = {},
                 getXSES, getYSES, getZSES,
                 getXSES_body, getYSES_body,
-                linearDistS;
 
             spec = {};
 
@@ -69,7 +68,7 @@ define(
                     aDelimitation.thetaR_min,
                     aDelimitation.thetaR_max,
                     0.0002, 800);
-            //console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
+            console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
             //console.log("spec.max_outer_segmentExtent_along_azimuth: ", spec.max_outer_segmentExtent_along_azimuth);
 
             noOfSegments_along_azimuth =
@@ -129,7 +128,7 @@ define(
                 var thetaR, phiR, x;
                 phiR = phiR_from_phiS(phiS);
                 thetaR = thetaR_from_thetaS(thetaS);
-                x = aSurface.getX(phiR, thetaR);
+                x = aSurface.getXR(phiR, thetaR);
                 return x;
             };
 
@@ -137,81 +136,144 @@ define(
                 var thetaR, phiR, y;
                 phiR = phiR_from_phiS(phiS);
                 thetaR = thetaR_from_thetaS(thetaS);
-                y = aSurface.getY(phiR, thetaR);
+                y = aSurface.getYR(phiR, thetaR);
                 return y;
             };
 
             getZSEA = function (thetaS) {
                 var thetaR, z;
                 thetaR = thetaR_from_thetaS(thetaS);
-                z = aSurface.getZ(thetaR);
+                z = aSurface.getZR(thetaR);
                 return z;
             };
 
-            // getZ from Segment Equidistant along Surface
-            // horizontalSurfaceProjectionHelper (phiR_start, thetaR_start,
-            // best_phiR_end, projectionDistance,
-            // approximationPrecision, maxRecursionDepth)
-            getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getXSES.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getXSES.maxRecursionDepth;
 
-                return getXSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
+            /**
+             * @see getXSES_body
+             */
+
+            getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+
+                //console.log("approximationPrecision: ", approximationPrecision);
+
+                approximationPrecision = approximationPrecision ||
+                                         aSegmentationSpec.conf.getXSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                                         aSegmentationSpec.conf.getXSES.maxRecursionDepth;
+                if (typeof debug == 'undefined') {
+                    debug              = aSegmentationSpec.conf.getXSES.debug; }
+
+                return getXSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug);
             };
 
-            getXSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                var phiR_best, projectionDistance, thetaR, x;
+
+            /**
+             * Get X by Segment number. For regularly sampled input numbers (segment numbers),
+             * the X-values returned by this function are spread Equidistant along the Surface.
+             *
+             * @param phiS
+             * @param thetaS
+             * @returns {The X-value of the 3D coordinate (in euclidian space) at the surface point
+             * defined by phiS and thetaS}
+             */
+
+            getXSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+                var phiR_at_projDist, projectionDistance, thetaR, x;
+
+                //console.log("debug in getXSES_body: ", debug);
+
                 if(memo[phiS]) {
-                    phiR_best = memo[phiS];
+                    phiR_at_projDist = memo[phiS];
+                    //console.log("memo hit: ", phiS);
+                    //console.log("memo hit: ", memo[phiS]);
                 } else {
                     projectionDistance = phiS * segment_extent_azimuth;
-                    phiR_best = aSurface.horizontalSurfaceProjection(
+                    //console.log("projectionDistance: ", projectionDistance);
+                    //console.log("phiS in getXSES_body: ", phiS);
+                    //console.log("thetaS in getXSES_body: ", thetaS);
+                    phiR_at_projDist = aSurface.horizontalSurfaceProjection(
                         aDelimitation.phiR_min,
                         aDelimitation.thetaR_at_max_surface_extent_along_azimuth,
                         projectionDistance,
                         approximationPrecision,
-                        maxRecursionDepth);
-                    memo[phiS] = phiR_best;
+                        maxRecursionDepth,
+                        debug,
+                        phiS,
+                        thetaS);
+                    memo[phiS] = phiR_at_projDist;
                 }
-                //console.log("phir_best: ", phiR_best);
+                //console.log("phir_best: ", phiR_at_projDist);
                 thetaR = thetaR_from_thetaS(thetaS);
-                x = aSurface.getX(phiR_best, thetaR);
+                x = aSurface.getXR(phiR_at_projDist, thetaR);
                 return x;
             };
 
-            // getY from Segment, Equidistant along Surface
-            getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                approximationPrecision = approximationPrecision || aSurfaceSpec.conf.getYSES.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      || aSurfaceSpec.conf.getYSES.maxRecursionDepth;
+
+            /**
+             * @see getYSES_body
+             */
+
+            getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+                approximationPrecision = approximationPrecision ||
+                                         aSegmentationSpec.conf.getYSES.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                                         aSegmentationSpec.conf.getYSES.maxRecursionDepth;
+                if (typeof debug == 'undefined') {
+                    debug              = aSegmentationSpec.conf.getYSES.debug; }
 
                 return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
             };
 
-            getYSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth) {
-                var phiR_best, projectionDistance, thetaR, y;
+
+            /**
+             * Get Y by Segment number. For regularly sampled input numbers (segment numbers),
+             * the Y-values returned by this function are spread Equidistant along the Surface.
+             *
+             * @param phiS
+             * @param thetaS
+             * @returns {The Y-value of the 3D coordinate (in euclidian space) at the surface point
+             * defined by phiS and thetaS}
+             */
+
+            getYSES_body = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+                var phiR_at_projDist, projectionDistance, thetaR, y;
+
                 if(memo[phiS]) {
-                    phiR_best = memo[phiS];
+                    phiR_at_projDist = memo[phiS];
                 } else {
                     projectionDistance = phiS * segment_extent_azimuth;
-                    phiR_best = aSurface.horizontalSurfaceProjection(
+                    phiR_at_projDist = aSurface.horizontalSurfaceProjection(
                         aDelimitation.phiR_min,
                         aDelimitation.thetaR_at_max_surface_extent_along_azimuth,
                         projectionDistance,
                         approximationPrecision,
-                        maxRecursionDepth);
-                    memo[phiS] = phiR_best;
+                        maxRecursionDepth,
+                        debug,
+                        phiS,
+                        thetaS);
+                    memo[phiS] = phiR_at_projDist;
                 }
-                //console.log("phir_best: ", phiR_best);
+                if(debug) { console.log("phir_best: ", phiR_at_projDist); }
                 thetaR = thetaR_from_thetaS(thetaS);
-                y = aSurface.getY(phiR_best, thetaR);
+                y = aSurface.getYR(phiR_at_projDist, thetaR);
                 return y;
             };
 
-            // getZ from Segment, Equidistant along Surface
+
+            /**
+             * Get Z by Segment number. For regularly sampled input numbers (i.e. segment numbers),,
+             * the Z-values returned by this function are spread Equidistant along the Surface.
+             *
+             * @param phiS
+             * @param thetaS
+             * @returns {The Z-value of the 3D coordinate (in euclidian space) at the surface point
+             * defined by phiS and thetaS}
+             */
+
             getZSES = function(thetaS) {
                 var thetaR, z;
                 thetaR = thetaR_from_thetaS(thetaS);
-                z = aSurface.getZ(thetaR);
+                z = aSurface.getZR(thetaR);
                 return z;
             };
 
@@ -222,8 +284,8 @@ define(
             this.thetaR_from_thetaS = thetaR_from_thetaS;
             this.noOfSegments_along_azimuth = noOfSegments_along_azimuth;
             this.noOfSegments_along_polar = noOfSegments_along_polar;
-            this.segment_extent_azimuth = segment_extent_azimuth;
-            this.segment_extent_polar = segment_extent_polar;
+            //this.segment_extent_azimuth = segment_extent_azimuth;
+            //this.segment_extent_polar = segment_extent_polar;
             this.getXSEA = getXSEA;
             this.getYSEA = getYSEA;
             this.getZSEA = getZSEA;
