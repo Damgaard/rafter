@@ -190,6 +190,12 @@ define(
                                          approximationPrecision, remainingRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 
+                // runtime error check that recursion limit hasn't been reached before the wanted
+                // precision has been achieved:
+                if (remainingRecursionDepth === 0) {
+                    throw "WOOPS! surfaceDistR_body has hit the recursion floor!!";
+                }
+
                 // Find the delta angle along azimuth and polar. Only one of them must be non-
                 // zero for surfaceDistR_body to work properly.
                 deltaPhi = phiR_end - phiR_start;
@@ -204,6 +210,16 @@ define(
                 // a point on the surface half-way towards (phiR_end, thetaR_end).
                 halfDist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi / 2,
                     thetaR_start + deltaTheta / 2);
+
+                // runtime checking that the triangle inequality holds:
+                if ( (halfDist * 2 - dist) <= 0 ) {
+                    throw "WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold";
+                }
+
+                // runtime check that halfDist and dist have the same sign:
+                if ( Math.abs(halfDist * 2 - dist) > (halfDist * 2)  ) {
+                    throw "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign"
+                }
 
                 if (debug) {
                     //console.log("arguments: ", arguments);
@@ -227,10 +243,6 @@ define(
                     geometry.vertices.push(new THREE.Vector3(phiS_end_x, phiS_end_y, phiS_end_z));
                     var line = new THREE.Line(geometry, material);
                     makeScene.scene.add(line);*/
-                }
-
-                if (remainingRecursionDepth === 0) {
-                    console.log("  WOOPS! surfaceDistR_body has hit the recursion floor!!");
                 }
 
                 // If the currently obtained precision isn't good enough, recursively improve the
