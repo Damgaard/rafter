@@ -9,3 +9,6 @@ js/libs/requirejs/
 
 js/libs/qunitjs.com/
 !libs/qunitjs.com/resources/qunit.js
+
+# Don't add internal Webstorm files
+*~
