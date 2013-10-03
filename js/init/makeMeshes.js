@@ -61,7 +61,7 @@ define(
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
         meshA.callback = function() { makeDOMelements.info.innerHTML = this.name; };
-        makeScene.scene.add( meshA );
+        //makeScene.scene.add( meshA );
         objects.push( meshA );
 
         meshB = new THREE.Mesh(myEquiSurfaceDistGeometry);

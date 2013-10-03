@@ -3,3 +3,5 @@ only the main instances (which has their own files in 'instances') has the prefi
 Both camelCase and under_case is used: the former for the more tightly bound words and the latter for the more loosely bound words. ish.
 
 when the words 'phi' and 'theta' have a capital R appended, like this: 'phiR' and 'thetaR', it means that they are measured in radians. Similarly, 'phiS' and 'thetaS' are measured in segments.
+
+When to use phiR/thetaR and when to use azimuth/polar: The former is for concrete values in the azimuth/polar axis'. The latter is for everything else relating to these axis

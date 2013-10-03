@@ -96,25 +96,6 @@ define(
             };
 
 
-            /**
-             * @see surfaceDistR_body
-             *
-             * @private
-             */
-
-            surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                    approximationPrecision, maxRecursionDepth, debug) {
-
-                approximationPrecision = approximationPrecision ||
-                    aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      ||
-                    aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
-
-                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                    approximationPrecision, maxRecursionDepth, debug);
-            };
-
-
             surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end,
                                                   approximationPrecision, maxRecursionDepth, debug) {
 
@@ -164,6 +145,25 @@ define(
 
 
             /**
+             * @see surfaceDistR_body
+             *
+             * @private
+             */
+
+            surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                                    approximationPrecision, maxRecursionDepth, debug) {
+
+                approximationPrecision = approximationPrecision ||
+                    aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
+                maxRecursionDepth      = maxRecursionDepth      ||
+                    aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
+
+                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                    approximationPrecision, maxRecursionDepth, debug);
+            };
+
+
+            /**
              * Should give the distance along azimuth or polar between two points. Direction
              * is determined by (point_end - point_start).
              * surfaceDistR doesn't work along azimuth and polar simultaneously. One of them must
@@ -187,7 +187,7 @@ define(
              */
 
             surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                         approximationPrecision, maxRecursionDepth, debug) {
+                                         approximationPrecision, remainingRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 
                 // Find the delta angle along azimuth and polar. Only one of them must be non-
@@ -229,21 +229,25 @@ define(
                     makeScene.scene.add(line);*/
                 }
 
+                if (remainingRecursionDepth === 0) {
+                    console.log("  WOOPS! surfaceDistR_body has hit the recursion floor!!");
+                }
+
                 // If the currently obtained precision isn't good enough, recursively improve the
                 // estimation of each half of the current surface segment.
-                if(Math.abs(dist - halfDist * 2) > approximationPrecision && (maxRecursionDepth > 0)) {
+                if(Math.abs(dist - halfDist * 2) > approximationPrecision && (remainingRecursionDepth > 0)) {
 
                     firstDist  = surfaceDistR_body(phiR_start,
                         thetaR_start,
                         phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
-                        approximationPrecision, maxRecursionDepth - 1, debug);
+                        approximationPrecision, remainingRecursionDepth - 1, debug);
 
                     secondDist = surfaceDistR_body(phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
                         phiR_start   + deltaPhi,
                         thetaR_start + deltaTheta,
-                        approximationPrecision, maxRecursionDepth - 1, debug);
+                        approximationPrecision, remainingRecursionDepth - 1, debug);
 
                     return firstDist + secondDist;
                 } else {
