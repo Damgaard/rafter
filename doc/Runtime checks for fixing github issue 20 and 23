@@ -1,0 +1,9 @@
+runtime checks:
+
+* triangle inequality always holds in surfaceDistR.
+
+* number of allowed recursions isn't depleted before the wanted precision is achieved.
+
+* runtime check that the two ingredients in the precison calculation both have the same sign.
+
+* the process of achieving improved precision doesn't stall or worsen before the wanted precision is achieved.
