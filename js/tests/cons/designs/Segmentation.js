@@ -27,7 +27,7 @@ define(
         'cons/designs/Surface',
         'cons/designs/Delimitation',
         'cons/designs/Segmentation',
-        "specs/mySurfaceSpec"
+        "specs/designs/mySurfaceSpec"
     ],
     function(
         SuperQuadric,

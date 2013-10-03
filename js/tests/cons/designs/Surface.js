@@ -25,7 +25,7 @@ define(
     [
         'cons/designs/SuperQuadric',
         'cons/designs/Surface',
-        "specs/mySurfaceSpec"
+        "specs/designs/mySurfaceSpec"
 
     ],
     function(
