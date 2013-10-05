@@ -60,6 +60,7 @@ define(
             getZR = getXgetYgetZ_rad.getZ;
 
 
+            // Always returns a positive value
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
 
@@ -158,9 +159,55 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
 
-                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                    approximationPrecision, maxRecursionDepth, debug);
+                try {
+                    return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                        approximationPrecision, maxRecursionDepth, debug);
+                } catch (e) {
+                    if (e instanceof TriangleInequalityException ||
+                        e instanceof Dist_and_halfDist_differentSignException ||
+                        e instanceof RecursionLimitReachedException) {
+                        console.log(e.message);
+                        console.log("dist: ", e.dist);
+                        console.log("halfDist times two: ", e.halfDist*2);
+                        console.log("phiR_start: ", e.phiR_start);
+                        console.log("phiR_end: ", e.phiR_end);
+                        console.log("thetaR_start: ", e.thetaR_start);
+                        console.log("thetaR_end: ", e.thetaR_end);
+                    }
+                    //logMyErrors(e.message, e.name); // pass exception object to err handler
+                }
             };
+
+
+            function RecursionLimitReachedException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
+                this.message = "WOOPS! In surfaceDistR_body, the recursion limit has been reached";
+                this.dist = dist;
+                this.halfDist = halfDist;
+                this.phiR_start = phiR_start;
+                this.phiR_end = phiR_end;
+                this.thetaR_start = thetaR_start;
+                this.thetaR_end = thetaR_end;
+            }
+
+            function TriangleInequalityException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
+                this.message = "WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold";
+                this.dist = dist;
+                this.halfDist = halfDist;
+                this.phiR_start = phiR_start;
+                this.phiR_end = phiR_end;
+                this.thetaR_start = thetaR_start;
+                this.thetaR_end = thetaR_end;
+            }
+
+            function Dist_and_halfDist_differentSignException() {
+                this.message = "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign";
+                this.dist = dist;
+                this.halfDist = halfDist;
+                this.phiR_start = phiR_start;
+                this.phiR_end = phiR_end;
+                this.thetaR_start = thetaR_start;
+                this.thetaR_end = thetaR_end;
+            }
 
 
             /**
@@ -190,7 +237,7 @@ define(
                                          approximationPrecision, remainingRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 
-                // runtime error check that recursion limit hasn't been reached before the wanted
+                // runtime checking that the recursion limit hasn't been reached before the wanted
                 // precision has been achieved:
                 if (remainingRecursionDepth === 0) {
                     throw "WOOPS! surfaceDistR_body has hit the recursion floor!!";
@@ -213,12 +260,14 @@ define(
 
                 // runtime checking that the triangle inequality holds:
                 if ( (halfDist * 2 - dist) <= 0 ) {
-                    throw "WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold";
-                }
+                    throw new TriangleInequalityException(dist, halfDist,
+                        phiR_start, phiR_end, thetaR_start, thetaR_end);
+                    }
 
-                // runtime check that halfDist and dist have the same sign:
+                // runtime checking that halfDist and dist have the same sign:
                 if ( Math.abs(halfDist * 2 - dist) > (halfDist * 2)  ) {
-                    throw "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign"
+                    throw Dist_and_halfDist_differentSignException(dist, halfDist,
+                        phiR_start, phiR_end, thetaR_start, thetaR_end);
                 }
 
                 if (debug) {
