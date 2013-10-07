@@ -216,6 +216,18 @@ define(
                 this.thetaR_end = thetaR_end;
             }
 
+
+            function Dist_and_halfDist_differentSignException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
+                this.message = "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign";
+                this.dist = dist;
+                this.halfDist = halfDist;
+                this.phiR_start = phiR_start;
+                this.phiR_end = phiR_end;
+                this.thetaR_start = thetaR_start;
+                this.thetaR_end = thetaR_end;
+            }
+
+
             function TriangleInequalityException(
                 phiR_start, thetaR_start, phiR_start_plus_deltaPhi, thetaR_start_plus_deltaTheta,
                 phiR_start_plus_deltaPhi_div_2, thetaR_start_plus_deltaTheta_div_2,
@@ -233,16 +245,6 @@ define(
                 this.dist = dist;
                 this.halfDist = halfDist;
                 this.phiR_end = phiR_end;
-                this.thetaR_end = thetaR_end;
-            }
-
-            function Dist_and_halfDist_differentSignException() {
-                this.message = "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign";
-                this.dist = dist;
-                this.halfDist = halfDist;
-                this.phiR_start = phiR_start;
-                this.phiR_end = phiR_end;
-                this.thetaR_start = thetaR_start;
                 this.thetaR_end = thetaR_end;
             }
 
@@ -277,7 +279,8 @@ define(
                 // runtime checking that the recursion limit hasn't been reached before the wanted
                 // precision has been achieved:
                 if (remainingRecursionDepth === 0) {
-                    throw "WOOPS! surfaceDistR_body has hit the recursion floor!!";
+                    throw RecursionLimitReachedException(dist, halfDist,
+                        phiR_start, phiR_end, thetaR_start, thetaR_end);
                 }
 
                 // Find the delta angle along azimuth and polar. Only one of them must be non-
