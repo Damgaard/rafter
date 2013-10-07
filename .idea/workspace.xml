@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bricked.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Surface.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380980572440" ignored="false" />
+    <file path="/Surface.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381123430508" ignored="false" />
     <file path="/test.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1374833633493" ignored="false" />
     <file path="/Segmentation.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380380018438" ignored="false" />
     <file path="/main.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1375205572791" ignored="false" />
@@ -26,7 +25,7 @@
     <file path="/mySurfaceSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380381997970" ignored="false" />
     <file path="/NormalVectorProjectedGetXYZ.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1376830527317" ignored="false" />
     <file path="/mySuperQuadricSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1375376097065" ignored="false" />
-    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380976759887" ignored="false" />
+    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381120244886" ignored="false" />
     <file path="/myRafterwiseSegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1379657020012" ignored="false" />
     <file path="/myWinDoorSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378226776679" ignored="false" />
     <file path="/WinDoorSet.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378836609536" ignored="false" />
@@ -80,10 +79,8 @@
       <file leaf-file-name="Surface.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="246" column="53" selection-start="11117" selection-end="11117" vertical-scroll-proportion="0.9372385">
-              <folding>
-                <element signature="e#12453#13751#0" expanded="false" />
-              </folding>
+            <state line="192" column="41" selection-start="8687" selection-end="8687" vertical-scroll-proportion="0.5308219">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,8 +188,8 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="49" />
     <option name="y" value="24" />
-    <option name="width" value="1231" />
-    <option name="height" value="696" />
+    <option name="width" value="1871" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -302,8 +299,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="fileTemplates" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -363,13 +360,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="24" width="1231" height="696" extended-state="6" />
+    <frame x="49" y="24" width="1871" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24918744" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31674957" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3163597" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -542,10 +539,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="246" column="53" selection-start="11117" selection-end="11117" vertical-scroll-proportion="0.9372385">
-          <folding>
-            <element signature="e#12453#13751#0" expanded="false" />
-          </folding>
+        <state line="192" column="41" selection-start="8687" selection-end="8687" vertical-scroll-proportion="0.5308219">
+          <folding />
         </state>
       </provider>
     </entry>

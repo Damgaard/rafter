@@ -163,8 +163,7 @@ define(
                     return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
                         approximationPrecision, maxRecursionDepth, debug);
                 } catch (e) {
-                    if (e instanceof TriangleInequalityException ||
-                        e instanceof Dist_and_halfDist_differentSignException ||
+                    if (e instanceof Dist_and_halfDist_differentSignException ||
                         e instanceof RecursionLimitReachedException) {
                         console.log(e.message);
                         console.log("dist: ", e.dist);
@@ -173,6 +172,34 @@ define(
                         console.log("phiR_end: ", e.phiR_end);
                         console.log("thetaR_start: ", e.thetaR_start);
                         console.log("thetaR_end: ", e.thetaR_end);
+                    }
+                    if (e instanceof TriangleInequalityException) {
+                        console.log(" ");
+                        console.log(e.message);
+                        console.log(" ");
+                        console.log("These are the arguments given to dist = linearDistR: ");
+
+                        console.log("phiR_start: ", e.phiR_start);
+                        console.log("thetaR_start: ", e.thetaR_start);
+                        console.log("phiR_start_plus_deltaPhi: ", e.phiR_start_plus_deltaPhi);
+                        console.log("thetaR_start_plus_deltaTheta: ", e.thetaR_start_plus_deltaTheta);
+                        console.log(" ");
+                        console.log("These are the arguments given to halfDist = linearDistR: ");
+
+                        console.log("phiR_start: ", e.phiR_start);
+                        console.log("thetaR_start: ", e.thetaR_start);
+                        console.log("phiR_start_plus_deltaPhi_div_2: ", e.phiR_start_plus_deltaPhi_div_2);
+                        console.log("thetaR_start_plus_deltaTheta_div_2: ", e.thetaR_start_plus_deltaTheta_div_2);
+                        console.log(" ");
+                        console.log("And the rest of the variables in surfaceDistR: ");
+
+                        console.log("phiR_end: ", e.phiR_end);
+                        console.log("thetaR_end: ", e.thetaR_end);
+
+                        console.log("dist:", e.dist);
+                        console.log("halfDist: ", e.halfDist);
+                        console.log("halfDist times two: ", e.halfDist*2);
+                        console.log(" ");
                     }
                     //logMyErrors(e.message, e.name); // pass exception object to err handler
                 }
@@ -189,13 +216,23 @@ define(
                 this.thetaR_end = thetaR_end;
             }
 
-            function TriangleInequalityException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
+            function TriangleInequalityException(
+                phiR_start, thetaR_start, phiR_start_plus_deltaPhi, thetaR_start_plus_deltaTheta,
+                phiR_start_plus_deltaPhi_div_2, thetaR_start_plus_deltaTheta_div_2,
+                dist, halfDist, phiR_end, thetaR_end
+                ) {
                 this.message = "WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold";
+
+                this.phiR_start = phiR_start;
+                this.thetaR_start = thetaR_start;
+                this.phiR_start_plus_deltaPhi = phiR_start_plus_deltaPhi;
+                this.thetaR_start_plus_deltaTheta = thetaR_start_plus_deltaTheta;
+                this.phiR_start_plus_deltaPhi_div_2 = phiR_start_plus_deltaPhi_div_2;
+                this.thetaR_start_plus_deltaTheta_div_2 = thetaR_start_plus_deltaTheta_div_2;
+
                 this.dist = dist;
                 this.halfDist = halfDist;
-                this.phiR_start = phiR_start;
                 this.phiR_end = phiR_end;
-                this.thetaR_start = thetaR_start;
                 this.thetaR_end = thetaR_end;
             }
 
@@ -260,8 +297,15 @@ define(
 
                 // runtime checking that the triangle inequality holds:
                 if ( (halfDist * 2 - dist) <= 0 ) {
-                    throw new TriangleInequalityException(dist, halfDist,
-                        phiR_start, phiR_end, thetaR_start, thetaR_end);
+                    throw new TriangleInequalityException(
+                        phiR_start, thetaR_start, phiR_start + deltaPhi, //the args to dist = linearDistR
+                        thetaR_start + deltaTheta,                       //the args to dist = linearDistR
+
+                        phiR_start + deltaPhi / 2,                       //the diff args to
+                        thetaR_start + deltaTheta / 2,                   //halfDist = linearDistR
+
+                        dist, halfDist,                                  //just some
+                        phiR_end, thetaR_end);                           //extra info
                     }
 
                 // runtime checking that halfDist and dist have the same sign:
