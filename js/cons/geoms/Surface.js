@@ -60,7 +60,7 @@ define(
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
                     debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
-                    console.log("debug in geoms/Surface: ", debug);
+                    //console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
                         maxRecursionDepthX, debug);
@@ -68,12 +68,11 @@ define(
                         approximationPrecisionY,
                         maxRecursionDepthY, debug);
                     var z = getZ(         theta_seg);
-                    console.log("x in geoms/Surface: ", x);
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };
             };
 
-            console.log("this.vertices: ", this.vertices);
+            //console.log("this.vertices: ", this.vertices);
 
             //color = new THREE.Color( 0xffffff );
             //color.setHSL( 1.0, 1.0, 0.5 );

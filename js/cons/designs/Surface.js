@@ -164,102 +164,9 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
 
-                try {
-                    return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                        approximationPrecision, maxRecursionDepth, debug);
-                } catch (e) {
-                    if (e instanceof Dist_and_halfDist_differentSignException ||
-                        e instanceof RecursionLimitReachedException) {
-                        console.log(e.message);
-                        console.log("dist: ", e.dist);
-                        console.log("halfDist times two: ", e.halfDist*2);
-                        console.log("phiR_start: ", e.phiR_start);
-                        console.log("phiR_end: ", e.phiR_end);
-                        console.log("thetaR_start: ", e.thetaR_start);
-                        console.log("thetaR_end: ", e.thetaR_end);
-                    }
-                    if (e instanceof TriangleInequalityException) {
-                        console.log(" ");
-                        console.log(e.message);
-                        console.log(" ");
-                        console.log("These are the arguments given to dist = linearDistR: ");
-
-                        console.log("phiR_start: ", e.phiR_start);
-                        console.log("thetaR_start: ", e.thetaR_start);
-                        console.log("phiR_start_plus_deltaPhi: ", e.phiR_start_plus_deltaPhi);
-                        console.log("thetaR_start_plus_deltaTheta: ", e.thetaR_start_plus_deltaTheta);
-                        console.log(" ");
-                        console.log("These are the arguments given to halfDist = linearDistR: ");
-
-                        console.log("phiR_start: ", e.phiR_start);
-                        console.log("thetaR_start: ", e.thetaR_start);
-                        console.log("phiR_start_plus_deltaPhi_div_2: ", e.phiR_start_plus_deltaPhi_div_2);
-                        console.log("thetaR_start_plus_deltaTheta_div_2: ", e.thetaR_start_plus_deltaTheta_div_2);
-                        console.log(" ");
-                        console.log("And the rest of the variables in surfaceDistR: ");
-
-                        console.log("phiR_end: ", e.phiR_end);
-                        console.log("thetaR_end: ", e.thetaR_end);
-
-                        console.log("dist:", e.dist);
-                        console.log("halfDist: ", e.halfDist);
-                        console.log("halfDist times two: ", e.halfDist*2);
-                        console.log(" ");
-
-                        // draw a line along dist:
-                        linearDistR(e.phiR_start, e.thetaR_start, e.phiR_start_plus_deltaPhi,
-                            e.thetaR_start_plus_deltaTheta, true);
-
-                        // draw a line along halfDist:
-                        linearDistR(e.phiR_start, e.thetaR_start, e.phiR_start_plus_deltaPhi_div_2,
-                            e.thetaR_start_plus_deltaTheta_div_2, true);
-                    }
-                    //logMyErrors(e.message, e.name); // pass exception object to err handler
-                }
+                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                                         approximationPrecision, maxRecursionDepth, debug);
             };
-
-
-            function RecursionLimitReachedException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
-                this.message = "WOOPS! In surfaceDistR_body, the recursion limit has been reached";
-                this.dist = dist;
-                this.halfDist = halfDist;
-                this.phiR_start = phiR_start;
-                this.phiR_end = phiR_end;
-                this.thetaR_start = thetaR_start;
-                this.thetaR_end = thetaR_end;
-            }
-
-
-            function Dist_and_halfDist_differentSignException(dist, halfDist, phiR_start, phiR_end, thetaR_start, thetaR_end) {
-                this.message = "WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign";
-                this.dist = dist;
-                this.halfDist = halfDist;
-                this.phiR_start = phiR_start;
-                this.phiR_end = phiR_end;
-                this.thetaR_start = thetaR_start;
-                this.thetaR_end = thetaR_end;
-            }
-
-
-            function TriangleInequalityException(
-                phiR_start, thetaR_start, phiR_start_plus_deltaPhi, thetaR_start_plus_deltaTheta,
-                phiR_start_plus_deltaPhi_div_2, thetaR_start_plus_deltaTheta_div_2,
-                dist, halfDist, phiR_end, thetaR_end
-                ) {
-                this.message = "WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold";
-
-                this.phiR_start = phiR_start;
-                this.thetaR_start = thetaR_start;
-                this.phiR_start_plus_deltaPhi = phiR_start_plus_deltaPhi;
-                this.thetaR_start_plus_deltaTheta = thetaR_start_plus_deltaTheta;
-                this.phiR_start_plus_deltaPhi_div_2 = phiR_start_plus_deltaPhi_div_2;
-                this.thetaR_start_plus_deltaTheta_div_2 = thetaR_start_plus_deltaTheta_div_2;
-
-                this.dist = dist;
-                this.halfDist = halfDist;
-                this.phiR_end = phiR_end;
-                this.thetaR_end = thetaR_end;
-            }
 
 
             /**
@@ -289,11 +196,14 @@ define(
                                          approximationPrecision, remainingRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 
-                // runtime checking that the recursion limit hasn't been reached before the wanted
+                // checking that the recursion limit hasn't been reached before the wanted
                 // precision has been achieved:
-                if (remainingRecursionDepth === 0) {
-                    throw new RecursionLimitReachedException(dist, halfDist,
-                        phiR_start, phiR_end, thetaR_start, thetaR_end);
+                if (false && (remainingRecursionDepth === 0)) {
+                    console.log("WOOPS! In surfaceDistR_body, the recursion limit has been reached");
+                    console.log("phiR_start: ",phiR_start);
+                    console.log("phiR_end: ",phiR_end);
+                    console.log("thetaR_start: ",thetaR_start);
+                    console.log("thetaR_end: ",thetaR_end);
                 }
 
                 // Find the delta angle along azimuth and polar. Only one of them must be non-
@@ -311,23 +221,54 @@ define(
                 halfDist = linearDistR(phiR_start, thetaR_start, phiR_start + deltaPhi / 2,
                     thetaR_start + deltaTheta / 2);
 
-                // runtime checking that the triangle inequality holds:
-                if ( (halfDist * 2 - dist) <= 0 ) {
-                    throw new TriangleInequalityException(
-                        phiR_start, thetaR_start, phiR_start + deltaPhi, //the args to dist = linearDistR
-                        thetaR_start + deltaTheta,                       //the args to dist = linearDistR
+                // checking that the triangle inequality holds:
+                // the constant "-20" ensures that I only log the worst cases":
+                if (debug && ((halfDist * 2 - dist) < -20)) {
+                    console.log(" ");
+                    console.log("WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold");
+                    console.log(" ");
+                    console.log("These are the arguments given to dist = linearDistR: ");
 
-                        phiR_start + deltaPhi / 2,                       //the diff args to
-                        thetaR_start + deltaTheta / 2,                   //halfDist = linearDistR
+                    console.log("phiR_start: ",phiR_start);
+                    console.log("thetaR_start: ",thetaR_start);
+                    console.log("phiR_start_plus_deltaPhi: ",phiR_start + deltaPhi);
+                    console.log("thetaR_start_plus_deltaTheta: ",thetaR_start + deltaTheta);
+                    console.log(" ");
+                    console.log("These are the arguments given to halfDist = linearDistR: ");
 
-                        dist, halfDist,                                  //just some
-                        phiR_end, thetaR_end);                           //extra info
+                    console.log("phiR_start: ",phiR_start);
+                    console.log("thetaR_start: ",thetaR_start);
+                    console.log("phiR_start_plus_deltaPhi_div_2: ",phiR_start + deltaPhi / 2);
+                    console.log("thetaR_start_plus_deltaTheta_div_2: ",thetaR_start + deltaTheta / 2);
+                    console.log(" ");
+                    console.log("And the rest of the variables in surfaceDistR: ");
+
+                    console.log("phiR_end: ",phiR_end);
+                    console.log("thetaR_end: ",thetaR_end);
+
+                    console.log("dist:",dist);
+//                    console.log("halfDist: ",halfDist);
+                    console.log("halfDist times two: ",halfDist*2);
+                    console.log(" ");
+
+                    /*// draw a line along dist:
+                    linearDistR(phiR_start,thetaR_start,phiR_start + deltaPhi,
+                       thetaR_start + deltaTheta, true);
+
+                    // draw a line along halfDist:
+                    linearDistR(phiR_start,thetaR_start,phiR_start + deltaPhi / 2,
+                       thetaR_start + deltaTheta / 2, true); */
                     }
 
-                // runtime checking that halfDist and dist have the same sign:
-                if ( Math.abs(halfDist * 2 - dist) > (halfDist * 2)  ) {
-                    throw new Dist_and_halfDist_differentSignException(dist, halfDist,
-                        phiR_start, phiR_end, thetaR_start, thetaR_end);
+                // checking that halfDist and dist have the same sign:
+                if (false && (Math.abs(halfDist * 2 - dist) > (halfDist * 2))) {
+                    console.log("WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign");
+                    console.log("dist: ", dist);
+                    console.log("halfDist times two: ", halfDist*2);
+                    console.log("phiR_start: ", phiR_start);
+                    console.log("phiR_end: ", phiR_end);
+                    console.log("thetaR_start: ", thetaR_start);
+                    console.log("thetaR_end: ", thetaR_end);
                 }
 
                 if (debug) {
