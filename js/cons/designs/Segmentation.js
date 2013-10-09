@@ -129,6 +129,8 @@ define(
                 phiR = phiR_from_phiS(phiS);
                 thetaR = thetaR_from_thetaS(thetaS);
                 x = aSurface.getXR(phiR, thetaR);
+                console.log("x in Segmentation: ", x);
+
                 return x;
             };
 

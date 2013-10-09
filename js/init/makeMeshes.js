@@ -30,8 +30,8 @@ define(
         "instances/designs/myGeometrywiseSegmentation",
         "instances/designs/myRafterwiseSegmentation",
         "instances/designs/myWinDoorSet",
-        "instances/geoms/myEquiAzimuthDistGeometry",
-        "instances/geoms/myEquiSurfaceDistGeometry",
+        "instances/geoms/myEquiAzimuthDist_SurfaceGeometry",
+        "instances/geoms/myEquiSurfaceDist_SurfaceGeometry",
         "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
@@ -43,28 +43,28 @@ define(
         myGeometrywiseSegmentation,
         myRafterwiseSegmentation,
         myWinDoorSet,
-        myEquiAzimuthDistGeometry,
-        myEquiSurfaceDistGeometry,
+        myEquiAzimuthDist_SurfaceGeometry,
+        myEquiSurfaceDist_SurfaceGeometry,
         myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
         //console.log("15");
 
-        var myEquiAzimuthDistGeometry
-          , myEquiSurfaceDistGeometry
+        var myEquiAzimuthDist_SurfaceGeometry
+          , myEquiSurfaceDist_SurfaceGeometry
           , meshA
           , meshB
           , objects = [];
 //console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
 
-        meshA = new THREE.Mesh(myEquiAzimuthDistGeometry);
+        meshA = new THREE.Mesh(myEquiAzimuthDist_SurfaceGeometry);
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
         meshA.callback = function() { makeDOMelements.info.innerHTML = this.name; };
-        //makeScene.scene.add( meshA );
+        makeScene.scene.add( meshA );
         objects.push( meshA );
 
-        meshB = new THREE.Mesh(myEquiSurfaceDistGeometry);
+        meshB = new THREE.Mesh(myEquiSurfaceDist_SurfaceGeometry);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";
         meshB.callback = function() { makeDOMelements.info.innerHTML = this.name; };

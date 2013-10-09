@@ -61,8 +61,11 @@ define(
 
 
             // Always returns a positive value
-            linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end) {
+            linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end, debug) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
+
+                if (typeof debug == 'undefined') {
+                    debug = aSurfaceSpec.conf.linearDistR.debug; }
 
                 phi_x  = getXR(phiR_start, thetaR_start);
                 phi_y  = getYR(phiR_start, thetaR_start);
@@ -71,22 +74,24 @@ define(
                 phi__y = getYR(phiR_end, thetaR_end);
                 phi__z = getZR(thetaR_end);
 
-//            console.log("thetaR_start: ", thetaR_start);
-//            console.log("thetaR_end: ", thetaR_end);
-//            console.log("phi_x: ", phi_x);
-//            console.log("phi_y: ", phi_y);
-//            console.log("phi_z: ", phi_z);
-//            console.log("phi__x: ", phi__x);
-//            console.log("phi__y: ", phi__y);
-//            console.log("phi__z: ", phi__z);
-//            var material = new THREE.LineBasicMaterial({
-//                color: 0xffffff
-//            });
-//            var geometry = new THREE.Geometry();
-//            geometry.vertices.push(new THREE.Vector3(phi_x, phi_y, phi_z));
-//            geometry.vertices.push(new THREE.Vector3(phi__x, phi__y, phi__z));
-//            var line = new THREE.Line(geometry, material);
-//            makeScene.scene.add(line);
+                if (debug) {
+                    console.log("thetaR_start: ", thetaR_start);
+                    console.log("thetaR_end: ", thetaR_end);
+                    console.log("phi_x: ", phi_x);
+                    console.log("phi_y: ", phi_y);
+                    console.log("phi_z: ", phi_z);
+                    console.log("phi__x: ", phi__x);
+                    console.log("phi__y: ", phi__y);
+                    console.log("phi__z: ", phi__z);
+                    var material = new THREE.LineBasicMaterial({
+                        color: 0xffffff
+                    });
+                    var geometry = new THREE.Geometry();
+                    geometry.vertices.push(new THREE.Vector3(phi_x, phi_y, phi_z));
+                    geometry.vertices.push(new THREE.Vector3(phi__x, phi__y, phi__z));
+                    var line = new THREE.Line(geometry, material);
+                    makeScene.scene.add(line);
+                }
 
                 x_diff = phi__x - phi_x;
                 y_diff = phi__y - phi_y;
@@ -200,6 +205,14 @@ define(
                         console.log("halfDist: ", e.halfDist);
                         console.log("halfDist times two: ", e.halfDist*2);
                         console.log(" ");
+
+                        // draw a line along dist:
+                        linearDistR(e.phiR_start, e.thetaR_start, e.phiR_start_plus_deltaPhi,
+                            e.thetaR_start_plus_deltaTheta, true);
+
+                        // draw a line along halfDist:
+                        linearDistR(e.phiR_start, e.thetaR_start, e.phiR_start_plus_deltaPhi_div_2,
+                            e.thetaR_start_plus_deltaTheta_div_2, true);
                     }
                     //logMyErrors(e.message, e.name); // pass exception object to err handler
                 }
@@ -279,7 +292,7 @@ define(
                 // runtime checking that the recursion limit hasn't been reached before the wanted
                 // precision has been achieved:
                 if (remainingRecursionDepth === 0) {
-                    throw RecursionLimitReachedException(dist, halfDist,
+                    throw new RecursionLimitReachedException(dist, halfDist,
                         phiR_start, phiR_end, thetaR_start, thetaR_end);
                 }
 
@@ -313,7 +326,7 @@ define(
 
                 // runtime checking that halfDist and dist have the same sign:
                 if ( Math.abs(halfDist * 2 - dist) > (halfDist * 2)  ) {
-                    throw Dist_and_halfDist_differentSignException(dist, halfDist,
+                    throw new Dist_and_halfDist_differentSignException(dist, halfDist,
                         phiR_start, phiR_end, thetaR_start, thetaR_end);
                 }
 

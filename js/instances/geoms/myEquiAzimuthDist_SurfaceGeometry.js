@@ -35,15 +35,15 @@ define(
 
         //console.log("42");
 
-        var myEquiAzimuthDistGeometry;
+        var myEquiAzimuthDist_SurfaceGeometry;
 
-        myEquiAzimuthDistGeometry = new THREE.SurfaceGeometry(
+        myEquiAzimuthDist_SurfaceGeometry = new THREE.SurfaceGeometry(
             myGeometrywiseSegmentation.noOfSegments_along_azimuth,
             myGeometrywiseSegmentation.noOfSegments_along_polar,
             myGeometrywiseSegmentation.getXSEA,
             myGeometrywiseSegmentation.getYSEA,
             myGeometrywiseSegmentation.getZSEA);
 
-        return myEquiAzimuthDistGeometry;
+        return myEquiAzimuthDist_SurfaceGeometry;
     }
 );

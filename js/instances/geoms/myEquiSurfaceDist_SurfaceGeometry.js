@@ -37,9 +37,9 @@ define(
 
         //console.log("42");
 
-        var myEquiSurfaceDistGeometry;
+        var myEquiSurfaceDist_SurfaceGeometry;
 
-        myEquiSurfaceDistGeometry = new THREE.SurfaceGeometry(
+        myEquiSurfaceDist_SurfaceGeometry = new THREE.SurfaceGeometry(
             myRafterwiseSegmentation.noOfSegments_along_azimuth,
             myRafterwiseSegmentation.noOfSegments_along_polar,
             myRafterwiseSegmentation.getXSES,
@@ -47,6 +47,6 @@ define(
             myRafterwiseSegmentation.getZSES,
             myEquiSurfaceDist_SurfaceGeometrySpec);
 
-        return myEquiSurfaceDistGeometry;
+        return myEquiSurfaceDist_SurfaceGeometry;
     }
 );

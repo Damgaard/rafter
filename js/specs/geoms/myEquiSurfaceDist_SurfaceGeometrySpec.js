@@ -32,9 +32,9 @@ define(
 
         //console.log("30");
 
-        var myEquiSurfaceDistGeometrySpec;
+        var myEquiSurfaceDist_SurfaceGeometrySpec;
 
-        myEquiSurfaceDistGeometrySpec = {
+        myEquiSurfaceDist_SurfaceGeometrySpec = {
             conf: {
                 getX: {
                     approximationPrecision: 0.05,
@@ -47,8 +47,8 @@ define(
             }
         };
 
-        Object.freeze(myEquiSurfaceDistGeometrySpec);
+        Object.freeze(myEquiSurfaceDist_SurfaceGeometrySpec);
 
-        return myEquiSurfaceDistGeometrySpec;
+        return myEquiSurfaceDist_SurfaceGeometrySpec;
     }
 );

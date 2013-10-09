@@ -33,6 +33,9 @@ define(
 
         mySurfaceSpec = {
             conf: {
+                linearDistR: {
+                    debug: false
+                },
                 surfaceDistR: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 4

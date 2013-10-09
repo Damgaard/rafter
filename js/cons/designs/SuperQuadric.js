@@ -43,6 +43,7 @@ define(
 
             getX = function(phi_rad, theta_rad) {
                 var x = spec.radius * spec.modulator_XY(theta_rad) * spec.curve_X(phi_rad);
+                //console.log("x in SuperQuadric: ", x);
                 return x;
             };
 
