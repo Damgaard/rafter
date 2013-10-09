@@ -251,13 +251,13 @@ define(
                     console.log("halfDist times two: ",halfDist*2);
                     console.log(" ");
 
-                    /*// draw a line along dist:
+                    // draw a line along dist:
                     linearDistR(phiR_start,thetaR_start,phiR_start + deltaPhi,
                        thetaR_start + deltaTheta, true);
 
                     // draw a line along halfDist:
                     linearDistR(phiR_start,thetaR_start,phiR_start + deltaPhi / 2,
-                       thetaR_start + deltaTheta / 2, true); */
+                       thetaR_start + deltaTheta / 2, true);
                     }
 
                 // checking that halfDist and dist have the same sign:

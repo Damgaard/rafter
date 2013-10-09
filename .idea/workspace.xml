@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" afterPath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/geoms/Surface.js" afterPath="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" />
     </list>
     <ignored path="bricked.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +25,7 @@
     <file path="/mySurfaceSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381301105418" ignored="false" />
     <file path="/NormalVectorProjectedGetXYZ.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1376830527317" ignored="false" />
     <file path="/mySuperQuadricSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1375376097065" ignored="false" />
-    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381299879229" ignored="false" />
+    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381303071004" ignored="false" />
     <file path="/myRafterwiseSegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1379657020012" ignored="false" />
     <file path="/myWinDoorSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378226776679" ignored="false" />
     <file path="/WinDoorSet.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378836609536" ignored="false" />
@@ -83,7 +80,7 @@
       <file leaf-file-name="Surface.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="224" column="77" selection-start="10204" selection-end="10204" vertical-scroll-proportion="0.40384614">
+            <state line="260" column="21" selection-start="12147" selection-end="12147" vertical-scroll-proportion="0.71153843">
               <folding />
             </state>
           </provider>
@@ -190,8 +187,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="634" />
-    <option name="y" value="80" />
+    <option name="x" value="635" />
+    <option name="y" value="108" />
     <option name="width" value="1292" />
     <option name="height" value="998" />
   </component>
@@ -221,7 +218,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -420,6 +416,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -427,8 +424,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="fileTemplates" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -488,7 +485,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="634" y="80" width="1292" height="998" extended-state="0" />
+    <frame x="635" y="108" width="1292" height="998" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -587,23 +584,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/instances/designs/myOuterSurface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="37" selection-start="1303" selection-end="1303" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="43" column="37" selection-start="1303" selection-end="1303" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/specs/designs/myDelimitationSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/instances/designs/myDelimitation.js">
@@ -671,7 +662,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="224" column="77" selection-start="10204" selection-end="10204" vertical-scroll-proportion="0.40384614">
+        <state line="260" column="21" selection-start="12147" selection-end="12147" vertical-scroll-proportion="0.71153843">
           <folding />
         </state>
       </provider>
