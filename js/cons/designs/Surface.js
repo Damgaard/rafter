@@ -64,8 +64,7 @@ define(
             linearDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end, debug) {
                 var phi_x, phi_y, phi_z, phi__x, phi__y, phi__z, x_diff, y_diff, z_diff, seg_dist;
 
-                if (typeof debug == 'undefined') {
-                    debug = aSurfaceSpec.conf.linearDistR.debug; }
+                debug = debug || aSurfaceSpec.conf.linearDistR.debug;
 
                 phi_x  = getXR(phiR_start, thetaR_start);
                 phi_y  = getYR(phiR_start, thetaR_start);
@@ -109,8 +108,7 @@ define(
                     aSurfaceSpec.conf.surfaceDistR_along_azimuth.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
-                if (typeof debug == 'undefined') {
-                    debug = aSurfaceSpec.conf.surfaceDistR_along_azimuth.debug; }
+                debug = debug || aSurfaceSpec.conf.surfaceDistR_along_azimuth.debug;
 
                 if (debug) {
                     //console.log(" ");
@@ -163,8 +161,12 @@ define(
                     aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
+                debug = debug || aSurfaceSpec.conf.surfaceDistR.debug;
 
-                console.log("maxRecursionDepth: ", maxRecursionDepth);
+                if (debug) {
+                    console.log("maxRecursionDepth      in surfaceDistR: ", maxRecursionDepth);
+                    console.log("approximationPrecision in surfaceDistR: ", approximationPrecision);
+                }
 
                 return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
                                          approximationPrecision, maxRecursionDepth, debug);
@@ -275,10 +277,9 @@ define(
 
                 if (debug) {
                     //console.log("arguments: ", arguments);
-                    console.log("approximationPrecision in surfaceDistR_body: ", approximationPrecision);
                     //console.log("phiR_start ", phiR_start );
                     //console.log("phiR_end ", phiR_end );
-                    //console.log("dist: ", dist);
+                    console.log("dist in surfaceDistR_body: ", dist);
                     //console.log("halfDist: ", halfDist);
 
                     /*var material = new THREE.LineBasicMaterial({
@@ -316,6 +317,8 @@ define(
                     return firstDist + secondDist;
                 } else {
                     return dist;
+                    // WHY IS THIS NOT GETTING LOGGED???
+                    if (debug) {console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);}
                 }
             };
 
@@ -335,8 +338,7 @@ define(
                     aSurfaceSpec.conf.horizontalSurfaceProjection.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.horizontalSurfaceProjection.maxRecursionDepth;
-                if (typeof debug == 'undefined') {
-                    debug = aSurfaceSpec.conf.horizontalSurfaceProjection.debug; }
+                debug = debug || aSurfaceSpec.conf.horizontalSurfaceProjection.debug;
 
                 // phiR_start + a delta phiR gives an absolute phiR-value (in this case an initial
                 // estimate of phiR_end).

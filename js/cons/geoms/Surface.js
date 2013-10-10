@@ -41,17 +41,14 @@ define(
                 approximationPrecisionY,
                 maxRecursionDepthY;
 
-            if (typeof aSurfaceGeometrySpec != 'undefined') {
                 approximationPrecisionX = aSurfaceGeometrySpec.conf.getX.approximationPrecision;
                 maxRecursionDepthX      = aSurfaceGeometrySpec.conf.getX.maxRecursionDepth;
                 approximationPrecisionY = aSurfaceGeometrySpec.conf.getY.approximationPrecision;
                 maxRecursionDepthY      = aSurfaceGeometrySpec.conf.getY.maxRecursionDepth;
                 //console.log("aSurfaceGeometrySpec.conf.getX.approximationPrecision: ", aSurfaceGeometrySpec.conf.getX.approximationPrecision);
                 //console.log("aSurfaceGeometrySpec.conf.getX.maxRecursionDepth: ", aSurfaceGeometrySpec.conf.getX.maxRecursionDepth);
-            }
 
                 this.vertices = [];
-
             THREE.Geometry.call( this );
 //console.log("noOfSegments_phi: ", noOfSegments_phi);
             for ( theta_seg = 0; theta_seg <= noOfSegments_theta; theta_seg ++ ) {
@@ -59,14 +56,14 @@ define(
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
-                    debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
-                    //console.log("debug in geoms/Surface: ", debug);
+                    //debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
+                    console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
-                        maxRecursionDepthX, debug);
+                        maxRecursionDepthX, aSurfaceGeometrySpec.conf.getX.debug);
                     var y = getY(phi_seg, theta_seg,
                         approximationPrecisionY,
-                        maxRecursionDepthY, debug);
+                        maxRecursionDepthY, aSurfaceGeometrySpec.conf.getY.debug);
                     var z = getZ(         theta_seg);
                     this.vertices.push( new THREE.Vector3( x, y, z ) );
                 };

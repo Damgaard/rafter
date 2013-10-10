@@ -36,17 +36,18 @@ define(
             max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 20,
             max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 0.5,
             conf: {
-                approximationPrecision: 0.01,
-                maxRecursionDepth: 10,
+                approximationPrecision: 0.1,
+                maxRecursionDepth: 6,
+                debug: true,
                 getXSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4,
+                    maxRecursionDepth: 6,
                     debug:false
                 },
                 getYSES: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4,
-                    debug:false
+                    maxRecursionDepth: 6,
+                    debug: false
                 }
             }
         };

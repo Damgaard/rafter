@@ -34,7 +34,7 @@ define(
         var Segmentation;
 
         Segmentation = function ( aSegmentationSpec, aDelimitation, aSurface ) {
-            var spec,
+            var spec, debug,
                 max_surface_extent_along_azimuth,
                 max_surface_extent_along_polar,
                 noOfSegments_along_azimuth,
@@ -51,6 +51,7 @@ define(
                 getXSES_body, getYSES_body;
 
             spec = {};
+            debug = aSegmentationSpec.conf.debug;
 
             for (var prop in aSegmentationSpec) {
                 if (aSegmentationSpec.hasOwnProperty(prop)) {
@@ -58,20 +59,24 @@ define(
                 }
             }
 
+            // find the extent of the part of the surface that is defined by the interval
+            // [phiR_min,phiR_max]
             max_surface_extent_along_azimuth =
                 aSurface.surfaceDistR_along_azimuth(aDelimitation.phiR_min,
                     aDelimitation.thetaR_at_max_surface_extent_along_azimuth,
                     aDelimitation.phiR_max,
                     aSegmentationSpec.conf.approximationPrecision,
-                    aSegmentationSpec.conf.maxRecursionDepth);
+                    aSegmentationSpec.conf.maxRecursionDepth, debug);
             max_surface_extent_along_polar =
-                aSurface.surfaceDistR_along_polar(aDelimitation.thetaR_at_max_surface_extent_along_polar,
+                aSurface.surfaceDistR_along_polar(aDelimitation.phiR_at_max_surface_extent_along_polar,
                     aDelimitation.thetaR_min,
                     aDelimitation.thetaR_max,
                     aSegmentationSpec.conf.approximationPrecision,
-                    aSegmentationSpec.conf.maxRecursionDepth);
-            console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
-            //console.log("spec.max_outer_segmentExtent_along_azimuth: ", spec.max_outer_segmentExtent_along_azimuth);
+                    aSegmentationSpec.conf.maxRecursionDepth, debug);
+            if (debug) {
+                console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
+                //console.log("spec.max_outer_segmentExtent_along_azimuth: ", spec.max_outer_segmentExtent_along_azimuth);
+            }
 
             noOfSegments_along_azimuth =
                 Math.ceil(max_surface_extent_along_azimuth /
@@ -79,9 +84,10 @@ define(
             noOfSegments_along_polar =
                 Math.ceil(max_surface_extent_along_polar /
                     spec.max_outer_segmentExtent_along_polar);
-
-            console.log("noOfSegments_along_polar: ", noOfSegments_along_polar);
-            console.log("noOfSegments_along_azimuth: ", noOfSegments_along_azimuth);
+            if (debug) {
+                console.log("noOfSegments_along_polar: ", noOfSegments_along_polar);
+                console.log("noOfSegments_along_azimuth: ", noOfSegments_along_azimuth);
+            }
 
             segment_extent_azimuth =
                 max_surface_extent_along_azimuth /
@@ -162,8 +168,7 @@ define(
                                          aSegmentationSpec.conf.getXSES.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                                          aSegmentationSpec.conf.getXSES.maxRecursionDepth;
-                if (typeof debug == 'undefined') {
-                    debug              = aSegmentationSpec.conf.getXSES.debug; }
+                debug                  = debug || aSegmentationSpec.conf.getXSES.debug;
 
                 return getXSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug);
             };
@@ -172,6 +177,9 @@ define(
             /**
              * Get X by Segment number. For regularly sampled input numbers (segment numbers),
              * the X-values returned by this function are spread Equidistant along the Surface.
+             *
+             * WARNING: the memo-mechanism assumes that getXSES_body is always called with the
+             * same approximationPrecision and maxRecursionDepth. See github issue #27.
              *
              * @param phiS
              * @param thetaS
@@ -220,8 +228,7 @@ define(
                                          aSegmentationSpec.conf.getYSES.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
                                          aSegmentationSpec.conf.getYSES.maxRecursionDepth;
-                if (typeof debug == 'undefined') {
-                    debug              = aSegmentationSpec.conf.getYSES.debug; }
+                debug                  = debug || aSegmentationSpec.conf.getYSES.debug;
 
                 return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
             };
@@ -230,6 +237,9 @@ define(
             /**
              * Get Y by Segment number. For regularly sampled input numbers (segment numbers),
              * the Y-values returned by this function are spread Equidistant along the Surface.
+             *
+             * WARNING: the memo-mechanism assumes that getYSES_body is always called with the
+             * same approximationPrecision and maxRecursionDepth. See github issue #27.
              *
              * @param phiS
              * @param thetaS

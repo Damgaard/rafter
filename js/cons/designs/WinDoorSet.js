@@ -44,7 +44,7 @@ define(
                 halfWidthR;
 
             for ( winDoorNo = 0; winDoorNo < aWinDoorSetSpec.no_of_winDoors; winDoorNo ++ ) {
-                console.log("winDoorNo: ", winDoorNo);
+                //console.log("winDoorNo: ", winDoorNo);
 
                 // Find 8 corners:
 

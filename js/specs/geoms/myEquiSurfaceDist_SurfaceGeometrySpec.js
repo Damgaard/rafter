@@ -37,12 +37,14 @@ define(
         myEquiSurfaceDist_SurfaceGeometrySpec = {
             conf: {
                 getX: {
-                    approximationPrecision: 0.05,
-                    maxRecursionDepth: 6
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 6,
+                    debug: true
                 },
                 getY: {
-                    approximationPrecision: 0.05,
-                    maxRecursionDepth: 6
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 6,
+                    debug: true
                 }
             }
         };

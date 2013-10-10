@@ -21,27 +21,32 @@
 "use strict";
 
 
+// technically, this file really ought to be named myEquiSurfaceDistSURFACEGeometrySpec...
+
+
 define(
     [
     ],
     function (
         ) {
 
-        //console.log("26");
+        //console.log("30");
 
-        var myGeometrywiseSegmentationSpec;
+        var myEquiAzimuthDist_SurfaceGeometrySpec;
 
-        myGeometrywiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: 15,
-            max_outer_segmentExtent_along_azimuth: 15,
+        myEquiAzimuthDist_SurfaceGeometrySpec = {
             conf: {
-                approximationPrecision: 0.1,
-                maxRecursionDepth: 6,
-                debug: false
+                getX: {
+                    debug: true
+                },
+                getY: {
+                    debug: true
+                }
             }
         };
 
-        Object.freeze(myGeometrywiseSegmentationSpec);
-        return myGeometrywiseSegmentationSpec;
+        Object.freeze(myEquiAzimuthDist_SurfaceGeometrySpec);
+
+        return myEquiAzimuthDist_SurfaceGeometrySpec;
     }
 );

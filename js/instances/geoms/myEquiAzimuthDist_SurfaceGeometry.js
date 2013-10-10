@@ -25,11 +25,13 @@
 define(
     [   "libs/three.js/build/three",
         "instances/designs/myGeometrywiseSegmentation",
+        "specs/geoms/myEquiAzimuthDist_SurfaceGeometrySpec",
         "cons/geoms/Surface"
     ],
     function (
         three,
         myGeometrywiseSegmentation,
+        myEquiAzimuthDist_SurfaceGeometrySpec,
         SurfaceGeometry
         ) {
 
@@ -42,7 +44,9 @@ define(
             myGeometrywiseSegmentation.noOfSegments_along_polar,
             myGeometrywiseSegmentation.getXSEA,
             myGeometrywiseSegmentation.getYSEA,
-            myGeometrywiseSegmentation.getZSEA);
+            myGeometrywiseSegmentation.getZSEA,
+            myEquiAzimuthDist_SurfaceGeometrySpec
+        );
 
         return myEquiAzimuthDist_SurfaceGeometry;
     }

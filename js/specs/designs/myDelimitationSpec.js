@@ -36,7 +36,7 @@ define(
             thetaR_max: Math.PI/2,
             phiR_min:   0, //-Math.PI,
             phiR_max:   2*Math.PI,
-            thetaR_at_max_surface_extent_along_polar: 0,
+            phiR_at_max_surface_extent_along_polar: 0,
             thetaR_at_max_surface_extent_along_azimuth: 0
         };
 

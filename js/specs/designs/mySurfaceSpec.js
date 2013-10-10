@@ -38,25 +38,26 @@ define(
                 },
                 surfaceDistR: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 6,
+                    debug: false
                 },
                 surfaceDistR_along_azimuth: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4,
-                    debug: true
+                    maxRecursionDepth: 6,
+                    debug: false
                 },
                 surfaceDistR_along_polar: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 6
                 },
                 horizontalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4,
+                    maxRecursionDepth: 6,
                     debug: false
                 },
                 verticalSurfaceProjection: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 4
+                    maxRecursionDepth: 6
                 }
             }
         };

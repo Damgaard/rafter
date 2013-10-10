@@ -32,7 +32,7 @@ define(
         mySurfaceSpec
         ) {
 
-        console.log("21");
+        //console.log("21");
 
         var myOuterSurface, getXgetYgetZ_rad = {};
 
