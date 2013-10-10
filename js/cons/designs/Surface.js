@@ -164,6 +164,8 @@ define(
                 maxRecursionDepth      = maxRecursionDepth      ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
 
+                console.log("maxRecursionDepth: ", maxRecursionDepth);
+
                 return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
                                          approximationPrecision, maxRecursionDepth, debug);
             };
@@ -223,7 +225,7 @@ define(
 
                 // checking that the triangle inequality holds:
                 // the constant "-20" ensures that I only log the worst cases":
-                if (debug && ((halfDist * 2 - dist) < -20)) {
+                if (false && ((halfDist * 2 - dist) < -20)) {
                     console.log(" ");
                     console.log("WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold");
                     console.log(" ");
@@ -273,7 +275,7 @@ define(
 
                 if (debug) {
                     //console.log("arguments: ", arguments);
-                    //console.log("approximationPrecision: ", approximationPrecision);
+                    console.log("approximationPrecision: ", approximationPrecision);
                     //console.log("phiR_start ", phiR_start );
                     //console.log("phiR_end ", phiR_end );
                     //console.log("dist: ", dist);

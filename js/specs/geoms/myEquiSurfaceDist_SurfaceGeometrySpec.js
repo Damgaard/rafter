@@ -38,11 +38,11 @@ define(
             conf: {
                 getX: {
                     approximationPrecision: 0.05,
-                    maxRecursionDepth: 30
+                    maxRecursionDepth: 6
                 },
                 getY: {
                     approximationPrecision: 0.05,
-                    maxRecursionDepth: 30
+                    maxRecursionDepth: 6
                 }
             }
         };

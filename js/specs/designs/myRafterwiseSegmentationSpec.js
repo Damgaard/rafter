@@ -36,6 +36,8 @@ define(
             max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 20,
             max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 20,
             conf: {
+                approximationPrecision: 0.1,
+                maxRecursionDepth: 6,
                 getXSES: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 4,
