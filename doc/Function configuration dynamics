@@ -1,0 +1,20 @@
+Configuration of functions
+
+In Rafter, some functions take configuration arguments, such as 'debug', and thus they are configurable functions.
+
+All configurable functions must have default values for their configuration options in their home modules' specification, more precicely in the 'conf' object in the JSON-file carrying that specification.
+
+Functions can inherit configuration argument values from their caller. As both the caller and the callee has configuration values, one must precede over the other.
+
+For the 'debug' configuration parameter, the following behavior apply:
+
+Caller function      | Callee function
+debug argument given | default debug argument
+---------------------+--------+---------
+                     |  TRUE  |  FALSE
+---------------------+--------+---------
+TRUE                 |  TRUE  |  TRUE
+FALSE                |  TRUE  |  FALSE
+NOT GIVEN            |  TRUE  |  FALSE
+
+Thus it can be seen that TRUE tricles down through function calls while FALSE does not tricle down. Thus the only way to except a function from a preceding TRUE value given by the caller, is to strip away the debug lines in the preceded callee function. Tough luck.

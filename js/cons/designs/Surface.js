@@ -275,7 +275,7 @@ define(
 
                 if (debug) {
                     //console.log("arguments: ", arguments);
-                    console.log("approximationPrecision: ", approximationPrecision);
+                    console.log("approximationPrecision in surfaceDistR_body: ", approximationPrecision);
                     //console.log("phiR_start ", phiR_start );
                     //console.log("phiR_end ", phiR_end );
                     //console.log("dist: ", dist);
@@ -299,7 +299,7 @@ define(
 
                 // If the currently obtained precision isn't good enough, recursively improve the
                 // estimation of each half of the current surface segment.
-                if(Math.abs(dist - halfDist * 2) > approximationPrecision && (remainingRecursionDepth > 0)) {
+                if(Math.abs(dist) > approximationPrecision && (remainingRecursionDepth > 0)) {
 
                     firstDist  = surfaceDistR_body(phiR_start,
                         thetaR_start,
