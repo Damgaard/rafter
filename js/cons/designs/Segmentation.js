@@ -65,13 +65,11 @@ define(
                 aSurface.surfaceDistR_along_azimuth(aDelimitation.phiR_min,
                     aDelimitation.thetaR_at_max_surface_extent_along_azimuth,
                     aDelimitation.phiR_max,
-                    aSegmentationSpec.conf.approximationPrecision,
                     aSegmentationSpec.conf.maxRecursionDepth, debug);
             max_surface_extent_along_polar =
                 aSurface.surfaceDistR_along_polar(aDelimitation.phiR_at_max_surface_extent_along_polar,
                     aDelimitation.thetaR_min,
                     aDelimitation.thetaR_max,
-                    aSegmentationSpec.conf.approximationPrecision,
                     aSegmentationSpec.conf.maxRecursionDepth, debug);
             if (debug) {
                 console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);

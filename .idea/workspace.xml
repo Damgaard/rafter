@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" afterPath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bricked.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,15 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Surface.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="159" column="0" selection-start="6567" selection-end="6567" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#9084#9445#0" expanded="false" />
-                <element signature="e#10487#12367#0" expanded="false" />
-                <element signature="e#12519#13010#0" expanded="false" />
-              </folding>
+            <state line="325" column="0" selection-start="15136" selection-end="15136" vertical-scroll-proportion="0.96336997">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -99,7 +96,7 @@
       <file leaf-file-name="myRafterwiseSegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="36" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
+            <state line="38" column="37" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -108,7 +105,7 @@
       <file leaf-file-name="myGeometrywiseSegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="28" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
+            <state line="37" column="0" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -141,10 +138,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Segmentation.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Segmentation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="20" selection-start="2340" selection-end="2340" vertical-scroll-proportion="0.35958904">
+            <state line="72" column="20" selection-start="2651" selection-end="2651" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -153,7 +150,7 @@
       <file leaf-file-name="mySurfaceSpec.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="49" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.0">
+            <state line="47" column="40" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -182,17 +179,17 @@
         <option value="$PROJECT_DIR$/js/init/makeMeshes.js" />
         <option value="$PROJECT_DIR$/js/instances/designs/myOuterSurface.js" />
         <option value="$PROJECT_DIR$/js/cons/designs/WinDoorSet.js" />
-        <option value="$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js" />
         <option value="$PROJECT_DIR$/js/specs/designs/myDelimitationSpec.js" />
         <option value="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" />
         <option value="$PROJECT_DIR$/js/specs/geoms/myEquiAzimuthDist_SurfaceGeometrySpec.js" />
         <option value="$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js" />
         <option value="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" />
         <option value="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
-        <option value="$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js" />
-        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
-        <option value="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" />
         <option value="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
+        <option value="$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js" />
+        <option value="$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js" />
+        <option value="$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
       </list>
     </option>
   </component>
@@ -646,41 +643,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js">
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="28" selection-start="1170" selection-end="1170" vertical-scroll-proportion="0.0">
+        <state line="38" column="37" selection-start="1322" selection-end="1322" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js">
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="36" selection-start="1366" selection-end="1366" vertical-scroll-proportion="0.0">
+        <state line="37" column="0" selection-start="1059" selection-end="1059" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="49" selection-start="1270" selection-end="1270" vertical-scroll-proportion="0.0">
+        <state line="47" column="40" selection-start="1350" selection-end="1350" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="20" selection-start="2651" selection-end="2651" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="159" column="0" selection-start="6567" selection-end="6567" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#9084#9445#0" expanded="false" />
-            <element signature="e#10487#12367#0" expanded="false" />
-            <element signature="e#12519#13010#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="20" selection-start="2340" selection-end="2340" vertical-scroll-proportion="0.35958904">
+        <state line="325" column="0" selection-start="15136" selection-end="15136" vertical-scroll-proportion="0.96336997">
           <folding />
         </state>
       </provider>

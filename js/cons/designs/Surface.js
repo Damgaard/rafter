@@ -102,11 +102,9 @@ define(
 
 
             surfaceDistR_along_azimuth = function(phiR_start, thetaR_start, phiR_end,
-                                                  approximationPrecision, maxRecursionDepth, debug) {
+                                                  maxRecursionDepth, debug) {
 
-                approximationPrecision = approximationPrecision ||
-                    aSurfaceSpec.conf.surfaceDistR_along_azimuth.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      ||
+                maxRecursionDepth = maxRecursionDepth ||
                     aSurfaceSpec.conf.surfaceDistR_along_azimuth.maxRecursionDepth;
                 debug = debug || aSurfaceSpec.conf.surfaceDistR_along_azimuth.debug;
 
@@ -131,20 +129,18 @@ define(
                 }
 
                 return surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start,
-                    approximationPrecision, maxRecursionDepth, debug);
+                    maxRecursionDepth, debug);
             };
 
 
             surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end,
                                                 approximationPrecision, maxRecursionDepth) {
 
-                approximationPrecision = approximationPrecision ||
-                    aSurfaceSpec.conf.surfaceDistR_along_polar.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      ||
+                maxRecursionDepth = maxRecursionDepth ||
                     aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
 
                 return surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end,
-                    approximationPrecision, maxRecursionDepth);
+                    maxRecursionDepth);
             };
 
 
@@ -155,21 +151,18 @@ define(
              */
 
             surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                    approximationPrecision, maxRecursionDepth, debug) {
+                                    maxRecursionDepth, debug) {
 
-                approximationPrecision = approximationPrecision ||
-                    aSurfaceSpec.conf.surfaceDistR.approximationPrecision;
-                maxRecursionDepth      = maxRecursionDepth      ||
+                maxRecursionDepth = maxRecursionDepth ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
                 debug = debug || aSurfaceSpec.conf.surfaceDistR.debug;
 
                 if (debug) {
-                    console.log("maxRecursionDepth      in surfaceDistR: ", maxRecursionDepth);
-                    console.log("approximationPrecision in surfaceDistR: ", approximationPrecision);
+                    console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
                 }
 
                 return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                         approximationPrecision, maxRecursionDepth, debug);
+                                         maxRecursionDepth, debug);
             };
 
 
@@ -197,7 +190,7 @@ define(
              */
 
             surfaceDistR_body = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                         approximationPrecision, remainingRecursionDepth, debug) {
+                                         remainingRecursionDepth, debug) {
                 var deltaPhi, deltaTheta, dist, halfDist, firstDist, secondDist;
 
                 // checking that the recursion limit hasn't been reached before the wanted
@@ -306,25 +299,24 @@ define(
 
                 // If the currently obtained precision isn't good enough, recursively improve the
                 // estimation of each half of the current surface segment.
-                if(Math.abs(dist) > approximationPrecision && (remainingRecursionDepth > 0)) {
+                if(remainingRecursionDepth > 0) {
 
                     firstDist  = surfaceDistR_body(phiR_start,
                         thetaR_start,
                         phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
-                        approximationPrecision, remainingRecursionDepth - 1, debug);
+                        remainingRecursionDepth - 1, debug);
 
                     secondDist = surfaceDistR_body(phiR_start + deltaPhi / 2,
                         thetaR_start + deltaTheta / 2,
                         phiR_start   + deltaPhi,
                         thetaR_start + deltaTheta,
-                        approximationPrecision, remainingRecursionDepth - 1, debug);
+                        remainingRecursionDepth - 1, debug);
 
                     return firstDist + secondDist;
                 } else {
-                    return dist;
-                    // WHY IS THIS NOT GETTING LOGGED???
                     if (debug) {console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);}
+                    return dist;
                 }
             };
 
@@ -372,21 +364,21 @@ define(
              * If projectionDistance is negative, the walking dirphiR_estimatorection is also negative
              * (i.e. clockwise around the unit circle).
              *
-             * @param  phiR_end_estimate_A  the phiR_end estimate that the previous recursive
+             * @param  phiR_end_estimate_A  The phiR_end estimate that the previous recursive
              * call to horizontalSurfaceProjection_body came up with.
              * The value of phiR_end_estimate_A is the absolute end value (as in: not a delta value)
              * at which to measure the surface distance to.
              * Initially phiR_end_estimate_A is given as phiR_start + an estimate of the delta
              * phiR value that will generate a walk of distance projectionDistance.
              *
-             * @param  projectionDistance   The distance wanted to be walked from phiR_start along
+             * @param  projectionDistance  The distance wanted to be walked from phiR_start along
              * the surface at constant azimuth. Thus, projectionDistance is an offset from phiR_start
              * and is thus a phiR_start ignorant, sort of.
              * Although distances are normally always positive, projectionDistance can be given
              * as a negative value. This indicates that the walking is to be done in the negative
              * direction (i.e. clockwise around the unit circle).
              *
-             * @param phiS    current segment from which the starting position (phiR_start, thetaR_start)
+             * @param phiS  Current segment from which the starting position (phiR_start, thetaR_start)
              * of the projection is originating. Only used for debugging.
              * @param thetaS  current segment from which the starting position (phiR_start, thetaR_start)
              * of the projection is originating. Only used for debugging.
@@ -407,7 +399,7 @@ define(
                 // surfaceDist is an offset from phiR_start and is thus a phiR_start ignorant, just
                 // as projectionDistance.
                 surfaceDist = surfaceDistR_along_azimuth(phiR_start, thetaR_start, phiR_end_estimate_A,
-                    approximationPrecision, maxRecursionDepth, debug);
+                    maxRecursionDepth, debug);
 
                 // as for projectionDistance, we need surfaceDist to be direction aware. That is, it
                 // needs to be negative if the starting point of the surfaceDist walk (phiR_start)

@@ -37,17 +37,14 @@ define(
                     debug: false
                 },
                 surfaceDistR: {
-                    approximationPrecision: 0.1,
                     maxRecursionDepth: 6,
                     debug: false
                 },
                 surfaceDistR_along_azimuth: {
-                    approximationPrecision: 0.099,
                     maxRecursionDepth: 6,
                     debug: false
                 },
                 surfaceDistR_along_polar: {
-                    approximationPrecision: 0.1,
                     maxRecursionDepth: 6
                 },
                 horizontalSurfaceProjection: {

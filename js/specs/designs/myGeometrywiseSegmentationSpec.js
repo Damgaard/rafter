@@ -35,7 +35,6 @@ define(
             max_outer_segmentExtent_along_polar: 15,
             max_outer_segmentExtent_along_azimuth: 15,
             conf: {
-                approximationPrecision: 0.1,
                 maxRecursionDepth: 6,
                 debug: false
             }
