@@ -42,7 +42,7 @@ define(
                     debug: false
                 },
                 surfaceDistR_along_azimuth: {
-                    approximationPrecision: 0.1,
+                    approximationPrecision: 0.099,
                     maxRecursionDepth: 6,
                     debug: false
                 },

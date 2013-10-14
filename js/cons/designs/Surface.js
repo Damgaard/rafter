@@ -231,22 +231,22 @@ define(
                     console.log(" ");
                     console.log("WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold");
                     console.log(" ");
-                    console.log("These are the arguments given to dist = linearDistR: ");
 
+                    console.log("These are the arguments given to dist = linearDistR: ");
                     console.log("phiR_start: ",phiR_start);
                     console.log("thetaR_start: ",thetaR_start);
                     console.log("phiR_start_plus_deltaPhi: ",phiR_start + deltaPhi);
                     console.log("thetaR_start_plus_deltaTheta: ",thetaR_start + deltaTheta);
                     console.log(" ");
-                    console.log("These are the arguments given to halfDist = linearDistR: ");
 
+                    console.log("These are the arguments given to halfDist = linearDistR: ");
                     console.log("phiR_start: ",phiR_start);
                     console.log("thetaR_start: ",thetaR_start);
                     console.log("phiR_start_plus_deltaPhi_div_2: ",phiR_start + deltaPhi / 2);
                     console.log("thetaR_start_plus_deltaTheta_div_2: ",thetaR_start + deltaTheta / 2);
                     console.log(" ");
-                    console.log("And the rest of the variables in surfaceDistR: ");
 
+                    console.log("And the rest of the variables in surfaceDistR: ");
                     console.log("phiR_end: ",phiR_end);
                     console.log("thetaR_end: ",thetaR_end);
 
@@ -280,6 +280,12 @@ define(
                     //console.log("phiR_start ", phiR_start );
                     //console.log("phiR_end ", phiR_end );
                     console.log("dist in surfaceDistR_body: ", dist);
+                    console.log("These are the arguments given to dist = linearDistR: ");
+                    console.log("phiR_start: ",phiR_start);
+                    console.log("thetaR_start: ",thetaR_start);
+                    console.log("phiR_start_plus_deltaPhi: ",phiR_start + deltaPhi);
+                    console.log("thetaR_start_plus_deltaTheta: ",thetaR_start + deltaTheta);
+                    console.log(" ");
                     //console.log("halfDist: ", halfDist);
 
                     /*var material = new THREE.LineBasicMaterial({
