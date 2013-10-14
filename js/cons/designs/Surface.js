@@ -134,10 +134,19 @@ define(
 
 
             surfaceDistR_along_polar = function(phiR_start, thetaR_start, thetaR_end,
-                                                approximationPrecision, maxRecursionDepth) {
+                                                maxRecursionDepth, debug) {
 
                 maxRecursionDepth = maxRecursionDepth ||
                     aSurfaceSpec.conf.surfaceDistR_along_polar.maxRecursionDepth;
+                debug = debug || aSurfaceSpec.conf.surfaceDistR_along_polar.debug;
+
+                if (debug) {
+                /*    console.log(" ");
+                    console.log("phiR_start: ", phiR_start);
+                    console.log("thetaR_start: ", thetaR_start);
+                    console.log("thetaR_end: ", thetaR_end);
+                    console.log(" ");*/
+                }
 
                 return surfaceDistR(phiR_start, thetaR_start, phiR_start, thetaR_end,
                     maxRecursionDepth);
@@ -158,7 +167,7 @@ define(
                 debug = debug || aSurfaceSpec.conf.surfaceDistR.debug;
 
                 if (debug) {
-                    console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
+                    //console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
                 }
 
                 return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
@@ -272,13 +281,17 @@ define(
                     //console.log("arguments: ", arguments);
                     //console.log("phiR_start ", phiR_start );
                     //console.log("phiR_end ", phiR_end );
-                    console.log("dist in surfaceDistR_body: ", dist);
+/*                    console.log("dist in surfaceDistR_body: ", dist);
                     console.log("These are the arguments given to dist = linearDistR: ");
                     console.log("phiR_start: ",phiR_start);
                     console.log("thetaR_start: ",thetaR_start);
                     console.log("phiR_start_plus_deltaPhi: ",phiR_start + deltaPhi);
                     console.log("thetaR_start_plus_deltaTheta: ",thetaR_start + deltaTheta);
-                    console.log(" ");
+                    console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);
+                    console.log(" ");*/
+
+
+
                     //console.log("halfDist: ", halfDist);
 
                     /*var material = new THREE.LineBasicMaterial({
@@ -315,7 +328,7 @@ define(
 
                     return firstDist + secondDist;
                 } else {
-                    if (debug) {console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);}
+                    //if (debug) {console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);}
                     return dist;
                 }
             };
@@ -348,10 +361,10 @@ define(
                     maxRecursionDepth, maxRecursionDepth, phiS, thetaS, debug);
 
                 if(debug) {
-                    console.log("init_phiR_end: ", init_phiR_end);
-                    console.log("phiS in horizontalSurfaceProjection: ", phiS);
-                    console.log("thetaS in horizontalSurfaceProjection: ", thetaS);
-                    console.log("best_phiR_end: ", best_phiR_end);
+//                    console.log("init_phiR_end: ", init_phiR_end);
+//                    console.log("phiS in horizontalSurfaceProjection: ", phiS);
+//                    console.log("thetaS in horizontalSurfaceProjection: ", thetaS);
+//                    console.log("best_phiR_end: ", best_phiR_end);
                 }
 
                 return best_phiR_end;
@@ -442,10 +455,11 @@ define(
 
                 } else if(debug) {
 
-                    if (remainingRecursionDepth === 0) {
+                    if (Math.abs(deltaDist) > approximationPrecision) {
                         console.log("  WOOPS! deltaDist didn't converge to 0!");
+                        console.log("approximationPrecision: ", approximationPrecision);
                         console.log("best deltaDist: ", deltaDist);
-                        console.log("best_phiR_end: ", phiR_end_estimate_B);
+                        //console.log("best_phiR_end: ", phiR_end_estimate_B);
 //                        var mark_phiR_one = new THREE.phiR_mark_geometry(7.337545372284094, getXR, getYR, getZR);
 //                        var mark_phiR_two = new THREE.phiR_mark_geometry(7.030486254051471, getXR, getYR, getZR);
                     }

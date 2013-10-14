@@ -37,10 +37,10 @@ define(
         myEquiAzimuthDist_SurfaceGeometrySpec = {
             conf: {
                 getX: {
-                    debug: true
+                    debug: false
                 },
                 getY: {
-                    debug: true
+                    debug: false
                 }
             }
         };

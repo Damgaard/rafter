@@ -57,7 +57,7 @@ define(
                     //console.log("*************************");
                     //console.log("****phi_seg****: ", phi_seg);
                     //debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
-                    console.log("debug in geoms/Surface: ", debug);
+                    //console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
                         maxRecursionDepthX, aSurfaceGeometrySpec.conf.getX.debug);

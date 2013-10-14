@@ -32,27 +32,19 @@ define(
         var Delimitation;
 
         Delimitation = function (aDelimitationSpec) {
-            var spec, phiR_int, thetaR_int;
+            var phiR_int, thetaR_int;
 
-            spec = {};
-
-            for (var prop in aDelimitationSpec) {
-                if (aDelimitationSpec.hasOwnProperty(prop)) {
-                    spec[prop] = aDelimitationSpec[prop];
-                }
-            }
-
-            phiR_int   = spec.phiR_max   - spec.phiR_min;
-            thetaR_int = spec.thetaR_max - spec.thetaR_min;
+            phiR_int   = aDelimitationSpec.phiR_max   - aDelimitationSpec.phiR_min;
+            thetaR_int = aDelimitationSpec.thetaR_max - aDelimitationSpec.thetaR_min;
 
             this.thetaR_int = thetaR_int;
             this.phiR_int = phiR_int;
-            this.thetaR_min = spec.thetaR_min;
-            this.phiR_min = spec.phiR_min;
-            this.thetaR_max = spec.thetaR_max;
-            this.phiR_max = spec.phiR_max;
-            this.thetaR_at_max_surface_extent_along_polar = spec.thetaR_at_max_surface_extent_along_polar;
-            this.thetaR_at_max_surface_extent_along_azimuth = spec.thetaR_at_max_surface_extent_along_azimuth;
+            this.thetaR_min = aDelimitationSpec.thetaR_min;
+            this.phiR_min = aDelimitationSpec.phiR_min;
+            this.thetaR_max = aDelimitationSpec.thetaR_max;
+            this.phiR_max = aDelimitationSpec.phiR_max;
+            this.phiR_at_max_surface_extent_along_polar = aDelimitationSpec.phiR_at_max_surface_extent_along_polar;
+            this.thetaR_at_max_surface_extent_along_azimuth = aDelimitationSpec.thetaR_at_max_surface_extent_along_azimuth;
 
             Object.freeze(this);
         };

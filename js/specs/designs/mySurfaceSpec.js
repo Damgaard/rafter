@@ -45,7 +45,8 @@ define(
                     debug: false
                 },
                 surfaceDistR_along_polar: {
-                    maxRecursionDepth: 6
+                    maxRecursionDepth: 6,
+                    debug: false
                 },
                 horizontalSurfaceProjection: {
                     approximationPrecision: 0.1,

@@ -38,13 +38,13 @@ define(
             conf: {
                 getX: {
                     approximationPrecision: 0.1,
-                    maxRecursionDepth: 6,
+                    maxRecursionDepth: 10,
                     debug: true
                 },
                 getY: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 6,
-                    debug: true
+                    debug: false
                 }
             }
         };

@@ -53,6 +53,8 @@ define(
             spec = {};
             debug = aSegmentationSpec.conf.debug;
 
+            //console.log("debug in Segmentation.js: ", debug);
+
             for (var prop in aSegmentationSpec) {
                 if (aSegmentationSpec.hasOwnProperty(prop)) {
                     spec[prop] = aSegmentationSpec[prop];
@@ -67,12 +69,17 @@ define(
                     aDelimitation.phiR_max,
                     aSegmentationSpec.conf.maxRecursionDepth, debug);
             max_surface_extent_along_polar =
-                aSurface.surfaceDistR_along_polar(aDelimitation.phiR_at_max_surface_extent_along_polar,
+                aSurface.surfaceDistR_along_polar(
+                    aDelimitation.phiR_at_max_surface_extent_along_polar,
                     aDelimitation.thetaR_min,
                     aDelimitation.thetaR_max,
                     aSegmentationSpec.conf.maxRecursionDepth, debug);
             if (debug) {
+                console.log("thetaR_at_max_surface_extent_along_azimuth: ", aDelimitation.thetaR_at_max_surface_extent_along_azimuth);
+                console.log("phiR_at_max_surface_extent_along_polar: ", aDelimitation.phiR_at_max_surface_extent_along_polar);
+
                 console.log("max_surface_extent_along_azimuth: ", max_surface_extent_along_azimuth);
+                console.log("max_surface_extent_along_polar: ", max_surface_extent_along_polar);
                 //console.log("spec.max_outer_segmentExtent_along_azimuth: ", spec.max_outer_segmentExtent_along_azimuth);
             }
 

@@ -34,9 +34,9 @@ define(
 
         db_rafterwiseSegmentationSpec = {
             max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 20,
-            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 0.5,
+            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 5,
             conf: {
-                maxRecursionDepth: 3,
+                maxRecursionDepth: 6,
                 debug: true,
                 getXSES: {
                     approximationPrecision: 0.1,
