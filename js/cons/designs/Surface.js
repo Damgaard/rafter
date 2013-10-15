@@ -204,7 +204,7 @@ define(
 
                 // checking that the recursion limit hasn't been reached before the wanted
                 // precision has been achieved:
-                if (false && (remainingRecursionDepth === 0)) {
+                if (debug && (remainingRecursionDepth === 0)) {
                     console.log("WOOPS! In surfaceDistR_body, the recursion limit has been reached");
                     console.log("phiR_start: ",phiR_start);
                     console.log("phiR_end: ",phiR_end);
@@ -229,7 +229,7 @@ define(
 
                 // checking that the triangle inequality holds:
                 // the constant "-20" ensures that I only log the worst cases":
-                if (false && ((halfDist * 2 - dist) < -20)) {
+                if (debug && ((halfDist * 2 - dist) < -20)) {
                     console.log(" ");
                     console.log("WOOPS! In surfaceDistR_body, the triangle inequality doesn't hold");
                     console.log(" ");
@@ -267,7 +267,7 @@ define(
                     }
 
                 // checking that halfDist and dist have the same sign:
-                if (false && (Math.abs(halfDist * 2 - dist) > (halfDist * 2))) {
+                if (debug && (Math.abs(halfDist * 2 - dist) > (halfDist * 2))) {
                     console.log("WOOPS! In surfaceDistR_body, halfDist and dist doesn't have the same sign");
                     console.log("dist: ", dist);
                     console.log("halfDist times two: ", halfDist*2);

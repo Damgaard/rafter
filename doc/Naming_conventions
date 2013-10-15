@@ -1,7 +1,15 @@
-only the main instances (which has their own files in 'instances') has the prefix 'my'
+The main instances (which has their own files in 'instances') has the prefix 'my'
+to indicate that it is specific/particular.
+When a function takes an instance as argument, the parameter name replaces 'my'
+with 'a' to indicate that any particular instance could be passed.
 
-Both camelCase and under_case is used: the former for the more tightly bound words and the latter for the more loosely bound words. ish.
+Both camelCase and under_case is used: the former for the more tightly bound words
+and the latter for the more loosely bound words. ish.
 
-when the words 'phi' and 'theta' have a capital R appended, like this: 'phiR' and 'thetaR', it means that they are measured in radians. Similarly, 'phiS' and 'thetaS' are measured in segments.
+When the words 'phi' and 'theta' have a capital R appended, like this: 'phiR' and
+'thetaR', it means that they are measured in radians. Similarly 'phiS' and 'thetaS'
+are measured in segments.
 
-When to use phiR/thetaR and when to use azimuth/polar: The former is for concrete values in the azimuth/polar axis'. The latter is for everything else relating to these axis
+When to use phiR/thetaR and when to use azimuth/polar: The former is for concrete
+values in the azimuth/polar axis'. The latter are the names for the two angular axis'
+in the 3D polar coordinate system.

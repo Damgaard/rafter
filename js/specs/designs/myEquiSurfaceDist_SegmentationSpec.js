@@ -37,7 +37,7 @@ define(
             max_outer_segmentExtent_along_azimuth:  myEquiAzimuthDist_SegmentationSpec.max_outer_segmentExtent_along_azimuth * 5,
             conf: {
                 maxRecursionDepth: 6,
-                debug: true,
+                debug: false,
                 getXSES: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 6,

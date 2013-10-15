@@ -39,7 +39,7 @@ define(
                 getX: {
                     approximationPrecision: 0.1,
                     maxRecursionDepth: 10,
-                    debug: true
+                    debug: false
                 },
                 getY: {
                     approximationPrecision: 0.1,

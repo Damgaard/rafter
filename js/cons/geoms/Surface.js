@@ -50,6 +50,9 @@ define(
 
                 this.vertices = [];
             THREE.Geometry.call( this );
+
+            console.time("populating the vertices array");
+
 //console.log("noOfSegments_phi: ", noOfSegments_phi);
             for ( theta_seg = 0; theta_seg <= noOfSegments_theta; theta_seg ++ ) {
 //console.log("********theta_seg********: ", theta_seg);
@@ -69,10 +72,7 @@ define(
                 };
             };
 
-            //console.log("this.vertices: ", this.vertices);
-
-            //color = new THREE.Color( 0xffffff );
-            //color.setHSL( 1.0, 1.0, 0.5 );
+            console.timeEnd("populating the vertices array");
 
             for (theta_seg = 0; theta_seg < noOfSegments_theta; theta_seg ++ ) {
                 for ( phi_seg = 0; phi_seg < noOfSegments_phi; phi_seg ++ ) {
