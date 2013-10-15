@@ -235,7 +235,7 @@ define(
                                          aSegmentationSpec.conf.getYSES.maxRecursionDepth;
                 debug                  = debug || aSegmentationSpec.conf.getYSES.debug;
 
-                return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth);
+                return getYSES_body(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug);
             };
 
 
