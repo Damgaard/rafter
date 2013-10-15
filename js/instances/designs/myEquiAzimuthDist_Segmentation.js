@@ -22,25 +22,24 @@
 
 
 define(
-    [
+    [   "instances/designs/myOuterSurface",
+        "instances/designs/myDelimitation",
+        "cons/designs/Segmentation",
+        "specs/designs/myEquiAzimuthDist_SegmentationSpec"
     ],
     function (
+        myOuterSurface,
+        myDelimitation,
+        Segmentation,
+        myEquiAzimuthDist_SegmentationSpec
         ) {
 
-        //console.log("26");
+        //console.log("20");
 
-        var myGeometrywiseSegmentationSpec;
+        var myGeometrywiseegmentation;
 
-        myGeometrywiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: 15,
-            max_outer_segmentExtent_along_azimuth: 15,
-            conf: {
-                maxRecursionDepth: 6,
-                debug: false
-            }
-        };
+        myGeometrywiseegmentation = new Segmentation(myEquiAzimuthDist_SegmentationSpec, myDelimitation, myOuterSurface);
 
-        Object.freeze(myGeometrywiseSegmentationSpec);
-        return myGeometrywiseSegmentationSpec;
+        return myGeometrywiseegmentation;
     }
 );

@@ -27,8 +27,6 @@ define(
         "init/makeDOMelements",
         "cons/geoms/Surface",
         "cons/designs/Segmentation",
-        "instances/designs/myGeometrywiseSegmentation",
-        "instances/designs/myRafterwiseSegmentation",
         "instances/designs/myWinDoorSet",
         "instances/geoms/myEquiAzimuthDist_SurfaceGeometry",
         "instances/geoms/myEquiSurfaceDist_SurfaceGeometry",
@@ -40,8 +38,6 @@ define(
         makeDOMelements,
         SurfaceGeometry,  // don't use any variables explicitly exported from this one, here.
         Segmentation,
-        myGeometrywiseSegmentation,
-        myRafterwiseSegmentation,
         myWinDoorSet,
         myEquiAzimuthDist_SurfaceGeometry,
         myEquiSurfaceDist_SurfaceGeometry,
@@ -55,7 +51,6 @@ define(
           , meshA
           , meshB
           , objects = [];
-//console.log("myGeometrywiseSegmentation.noOfSegments_along_azimuth: ", myGeometrywiseSegmentation.noOfSegments_along_azimuth);
 
         meshA = new THREE.Mesh(myEquiAzimuthDist_SurfaceGeometry);
         meshA.position.set( 0, 0, 0 );

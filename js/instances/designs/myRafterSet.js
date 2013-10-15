@@ -23,13 +23,13 @@
 
 define(
     [   "instances/designs/myOuterSurface",
-        "instances/designs/myRafterwiseSegmentation",
+        "instances/designs/myEquiSurfaceDist_Segmentation",
         "cons/designs/RafterSet",
         "specs/designs/myRafterSetSpec"
     ],
     function (
         myOuterSurface,
-        myRafterwiseSegmentation,
+        myEquiSurfaceDist_Segmentation,
         RafterSet,
         myRafterSetSpec
         ) {
@@ -38,7 +38,7 @@ define(
 
         var myRafterSet;
 
-        myRafterSet = new RafterSet(myRafterSetSpec, myRafterwiseSegmentation, myOuterSurface);
+        myRafterSet = new RafterSet(myRafterSetSpec, myEquiSurfaceDist_Segmentation, myOuterSurface);
 
         return myRafterSet;
     }

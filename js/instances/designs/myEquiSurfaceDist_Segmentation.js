@@ -25,21 +25,21 @@ define(
     [   "instances/designs/myOuterSurface",
         "instances/designs/myDelimitation",
         "cons/designs/Segmentation",
-        "specs/designs/myRafterwiseSegmentationSpec"
+        "specs/designs/myEquiSurfaceDist_SegmentationSpec"
     ],
     function (
         myOuterSurface,
         myDelimitation,
         Segmentation,
-        myRafterwiseSegmentationSpec
+        myEquiSurfaceDist_SegmentationSpec
         ) {
 
         //console.log("23");
 
-        var myRafterwiseegmentation;
+        var myEquiSurfaceDist_Segmentation;
 
-        myRafterwiseegmentation = new Segmentation(myRafterwiseSegmentationSpec, myDelimitation, myOuterSurface);
+        myEquiSurfaceDist_Segmentation = new Segmentation(myEquiSurfaceDist_SegmentationSpec, myDelimitation, myOuterSurface);
 
-        return myRafterwiseegmentation;
+        return myEquiSurfaceDist_Segmentation;
     }
 );

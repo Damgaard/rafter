@@ -24,13 +24,13 @@
 
 define(
     [   "libs/three.js/build/three",
-        "instances/designs/myRafterwiseSegmentation",
+        "instances/designs/myEquiSurfaceDist_Segmentation",
         "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec",
         "cons/geoms/Surface"
     ],
     function (
         three,
-        myRafterwiseSegmentation,
+        myEquiSurfaceDist_Segmentation,
         myEquiSurfaceDist_SurfaceGeometrySpec,
         SurfaceGeometry
         ) {
@@ -40,11 +40,11 @@ define(
         var myEquiSurfaceDist_SurfaceGeometry;
 
         myEquiSurfaceDist_SurfaceGeometry = new THREE.SurfaceGeometry(
-            myRafterwiseSegmentation.noOfSegments_along_azimuth,
-            myRafterwiseSegmentation.noOfSegments_along_polar,
-            myRafterwiseSegmentation.getXSES,
-            myRafterwiseSegmentation.getYSES,
-            myRafterwiseSegmentation.getZSES,
+            myEquiSurfaceDist_Segmentation.noOfSegments_along_azimuth,
+            myEquiSurfaceDist_Segmentation.noOfSegments_along_polar,
+            myEquiSurfaceDist_Segmentation.getXSES,
+            myEquiSurfaceDist_Segmentation.getYSES,
+            myEquiSurfaceDist_Segmentation.getZSES,
             myEquiSurfaceDist_SurfaceGeometrySpec);
 
         return myEquiSurfaceDist_SurfaceGeometry;

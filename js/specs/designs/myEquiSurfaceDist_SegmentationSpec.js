@@ -22,19 +22,19 @@
 
 
 define(
-    [ "specs/designs/myGeometrywiseSegmentationSpec"
+    [ "specs/designs/myEquiAzimuthDist_SegmentationSpec"
     ],
     function (
-        myGeometrywiseSegmentationSpec
+        myEquiAzimuthDist_SegmentationSpec
         ) {
 
         //console.log("28");
 
-        var db_rafterwiseSegmentationSpec;
+        var myEquiSurfaceDist_SegmentationSpec;
 
-        db_rafterwiseSegmentationSpec = {
-            max_outer_segmentExtent_along_polar: myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_polar * 20,
-            max_outer_segmentExtent_along_azimuth:  myGeometrywiseSegmentationSpec.max_outer_segmentExtent_along_azimuth * 5,
+        myEquiSurfaceDist_SegmentationSpec = {
+            max_outer_segmentExtent_along_polar: myEquiAzimuthDist_SegmentationSpec.max_outer_segmentExtent_along_polar * 20,
+            max_outer_segmentExtent_along_azimuth:  myEquiAzimuthDist_SegmentationSpec.max_outer_segmentExtent_along_azimuth * 5,
             conf: {
                 maxRecursionDepth: 6,
                 debug: true,
@@ -51,7 +51,7 @@ define(
             }
         };
 
-        Object.freeze(db_rafterwiseSegmentationSpec);
-        return db_rafterwiseSegmentationSpec;
+        Object.freeze(myEquiSurfaceDist_SegmentationSpec);
+        return myEquiSurfaceDist_SegmentationSpec;
     }
 );
