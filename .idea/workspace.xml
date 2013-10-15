@@ -2,16 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/Naming_conventions" afterPath="$PROJECT_DIR$/doc/Naming_conventions" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/geoms/Surface.js" afterPath="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/init/makeMeshes.js" afterPath="$PROJECT_DIR$/js/init/makeMeshes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" afterPath="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" />
     </list>
     <ignored path="bricked.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Surface.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381859506375" ignored="false" />
+    <file path="/Surface.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381861028337" ignored="false" />
     <file path="/test.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1374833633493" ignored="false" />
     <file path="/Segmentation.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381844462417" ignored="false" />
     <file path="/main.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1375205572791" ignored="false" />
@@ -78,19 +73,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiAzimuthDist_SegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
+      <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="28" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
+            <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Surface.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.65217394">
+            <state line="194" column="0" selection-start="7965" selection-end="7965" vertical-scroll-proportion="0.6061644">
               <folding />
             </state>
           </provider>
@@ -109,15 +104,6 @@
         <entry file="file://$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="41" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myEquiSurfaceDist_SegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="28" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -145,6 +131,15 @@
         <entry file="file://$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Segmentation.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="228" column="15" selection-start="9807" selection-end="9807" vertical-scroll-proportion="-29.214285">
               <folding />
             </state>
           </provider>
@@ -188,11 +183,11 @@
         <option value="$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js" />
         <option value="$PROJECT_DIR$/doc/Naming_conventions" />
         <option value="$PROJECT_DIR$/js/libs/three.js/build/three.js" />
-        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
         <option value="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" />
         <option value="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" />
         <option value="$PROJECT_DIR$/js/init/makeMeshes.js" />
         <option value="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
       </list>
     </option>
   </component>
@@ -643,13 +638,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/doc/Naming_conventions">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="34" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -667,13 +655,6 @@
     <entry file="file://$PROJECT_DIR$/js/cons/geoms/Rafter.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="327" column="0" selection-start="15254" selection-end="15254" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -750,7 +731,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.65217394">
+        <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="228" column="15" selection-start="9807" selection-end="9807" vertical-scroll-proportion="-29.214285">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="194" column="0" selection-start="7965" selection-end="7965" vertical-scroll-proportion="0.6061644">
           <folding />
         </state>
       </provider>

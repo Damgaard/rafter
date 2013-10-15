@@ -37,7 +37,9 @@ define(
         var Surface;
 
         Surface = function (aSurfaceSpec, getXgetYgetZ_rad, phiR_estimator, radius) {
-            var spec, linearDistR, surfaceDistR,
+            var spec, linearDistR,
+                memo_surfaceDistR = {},
+                surfaceDistR,
                 surfaceDistR_body,
                 surfaceDistR_along_azimuth,
                 surfaceDistR_along_polar,
@@ -161,6 +163,7 @@ define(
 
             surfaceDistR = function(phiR_start, thetaR_start, phiR_end, thetaR_end,
                                     maxRecursionDepth, debug) {
+                var surfaceDistR;
 
                 maxRecursionDepth = maxRecursionDepth ||
                     aSurfaceSpec.conf.surfaceDistR.maxRecursionDepth;
@@ -170,8 +173,37 @@ define(
                     //console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
                 }
 
-                return surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                                         maxRecursionDepth, debug);
+                if (typeof memo_surfaceDistR[phiR_start] == 'undefined') {
+                    memo_surfaceDistR[phiR_start] = {};
+                }
+
+                if (typeof memo_surfaceDistR[phiR_start][thetaR_start] == 'undefined') {
+                    memo_surfaceDistR[phiR_start][thetaR_start] = {};
+                }
+
+                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end] == 'undefined') {
+                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end] = {};
+                }
+
+                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end] == 'undefined') {
+                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end] = {};
+                }
+
+//                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] == 'undefined') {
+//                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] = {};
+//                }
+
+                if (memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth]) {
+                    surfaceDistR = memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth];
+                    console.log("memo hit ");
+                    console.log("memo hit: ", memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth]);
+                } else {
+                    surfaceDistR = surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                        maxRecursionDepth, debug);
+                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] = surfaceDistR;
+                }
+
+                return surfaceDistR;
             };
 
 
