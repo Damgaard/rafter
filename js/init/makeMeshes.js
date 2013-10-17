@@ -48,18 +48,22 @@ define(
 
         var myEquiAzimuthDist_SurfaceGeometry
           , myEquiSurfaceDist_SurfaceGeometry
+          , materialA
           , meshA
+          , materialB
           , meshB
           , objects = [];
 
-        meshA = new THREE.Mesh(myEquiAzimuthDist_SurfaceGeometry);
+        materialA = new THREE.MeshBasicMaterial( { color: 0xFF8C00, wireframe: true } );
+        meshA = new THREE.Mesh(myEquiAzimuthDist_SurfaceGeometry, materialA);
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
         meshA.callback = function() { makeDOMelements.info.innerHTML = this.name; };
         makeScene.scene.add( meshA );
         objects.push( meshA );
 
-        meshB = new THREE.Mesh(myEquiSurfaceDist_SurfaceGeometry);
+        materialB = new THREE.MeshBasicMaterial( { color: 0x4169E1, wireframe: true } );
+        meshB = new THREE.Mesh(myEquiSurfaceDist_SurfaceGeometry, materialB);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";
         meshB.callback = function() { makeDOMelements.info.innerHTML = this.name; };
