@@ -32,7 +32,7 @@ define(
         three,
         myEquiSurfaceDist_Segmentation,
         myEquiSurfaceDist_SurfaceGeometrySpec,
-        SurfaceGeometry
+        SurfaceGeometry  // don't use any variables explicitly exported from this one, here.
         ) {
 
         //console.log("42");
