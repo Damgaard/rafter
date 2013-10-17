@@ -38,7 +38,11 @@ define(
 
         var myEquiSurfaceDist_Segmentation;
 
-        myEquiSurfaceDist_Segmentation = new Segmentation(myEquiSurfaceDist_SegmentationSpec, myDelimitation, myOuterSurface);
+        myEquiSurfaceDist_Segmentation = new Segmentation(
+            myEquiSurfaceDist_SegmentationSpec,
+            myDelimitation,
+            myOuterSurface
+        );
 
         return myEquiSurfaceDist_Segmentation;
     }

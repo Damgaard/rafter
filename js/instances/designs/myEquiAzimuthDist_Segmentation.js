@@ -38,7 +38,11 @@ define(
 
         var myGeometrywiseegmentation;
 
-        myGeometrywiseegmentation = new Segmentation(myEquiAzimuthDist_SegmentationSpec, myDelimitation, myOuterSurface);
+        myGeometrywiseegmentation = new Segmentation(
+            myEquiAzimuthDist_SegmentationSpec,
+            myDelimitation,
+            myOuterSurface
+        );
 
         return myGeometrywiseegmentation;
     }

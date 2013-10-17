@@ -136,7 +136,7 @@ define(
                 return thetaR_offset_from_thetaR_min;
             }
 
-            // get-functions equidistant along azimuth
+            // get-functions Equidistant along Azimuth
             getXSEA = function (phiS, thetaS) {
                 var thetaR, phiR, x;
                 phiR = phiR_from_phiS(phiS);

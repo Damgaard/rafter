@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" afterPath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js" afterPath="$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js" afterPath="$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="bricked.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,7 +28,7 @@
     <file path="/mySurfaceSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381437522250" ignored="false" />
     <file path="/NormalVectorProjectedGetXYZ.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1376830527317" ignored="false" />
     <file path="/mySuperQuadricSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381412374890" ignored="false" />
-    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381857399678" ignored="false" />
+    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382009447842" ignored="false" />
     <file path="/myRafterwiseSegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381744576307" ignored="false" />
     <file path="/myWinDoorSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378226776679" ignored="false" />
     <file path="/WinDoorSet.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378836609536" ignored="false" />
@@ -64,35 +67,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="makeMeshes.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/init/makeMeshes.js">
+      <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="0" selection-start="2063" selection-end="2063" vertical-scroll-proportion="0.0">
+            <state line="84" column="47" selection-start="3917" selection-end="3917" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Surface.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="194" column="0" selection-start="7965" selection-end="7965" vertical-scroll-proportion="0.6061644">
+            <state line="192" column="51" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiAzimuthDist_SurfaceGeometrySpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/geoms/myEquiAzimuthDist_SurfaceGeometrySpec.js">
+      <file leaf-file-name="Rafter.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/Rafter.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -100,17 +94,8 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiSurfaceDist_SurfaceGeometrySpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="41" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myRafterSetSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/myRafterSetSpec.js">
+      <file leaf-file-name="RafterSet.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/RafterSet.js">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
@@ -118,37 +103,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mySuperQuadricSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/mySuperQuadricSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mySurfaceSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Segmentation.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="Segmentation.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="15" selection-start="9807" selection-end="9807" vertical-scroll-proportion="-29.214285">
+            <state line="294" column="14" selection-start="12815" selection-end="12815" vertical-scroll-proportion="3.419534">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myWinDoorSetSpec.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/specs/designs/myWinDoorSetSpec.js">
+      <file leaf-file-name="three.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/libs/three.js/build/three.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="11030" column="12" selection-start="230383" selection-end="230395" vertical-scroll-proportion="-6.5">
               <folding />
             </state>
           </provider>
@@ -172,11 +139,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/js/instances/designs/myRafterwiseSegmentation.js" />
-        <option value="$PROJECT_DIR$/js/instances/designs/myEquiSufaceDist_Segmentation.js" />
         <option value="$PROJECT_DIR$/js/instances/designs/myRafterSet.js" />
         <option value="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" />
-        <option value="$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js" />
         <option value="$PROJECT_DIR$/js/specs/designs/myRafterwiseSegmentationSpec.js" />
         <option value="$PROJECT_DIR$/js/specs/designs/myGeometrywiseSegmentationSpec.js" />
         <option value="$PROJECT_DIR$/js/instances/designs/myGeometrywiseSegmentation.js" />
@@ -188,6 +152,9 @@
         <option value="$PROJECT_DIR$/js/init/makeMeshes.js" />
         <option value="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
         <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
+        <option value="$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js" />
+        <option value="$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
       </list>
     </option>
   </component>
@@ -223,7 +190,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -472,22 +438,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bricked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -495,8 +448,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="fileTemplates" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -562,7 +515,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24918744" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32231852" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19989166" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -638,62 +591,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/libs/three.js/build/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3302" column="30" selection-start="64274" selection-end="64274" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/geoms/Rafter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myDelimitationSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="28" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="28" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myRafterSetSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/mySuperQuadricSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/specs/designs/mySurfaceSpec.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -729,23 +626,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Rafter.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="58" selection-start="3323" selection-end="3323" vertical-scroll-proportion="0.0">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+    <entry file="file://$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="15" selection-start="9807" selection-end="9807" vertical-scroll-proportion="-29.214285">
+        <state line="44" column="8" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="44" column="8" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="28" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="29" column="28" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/RafterSet.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="194" column="0" selection-start="7965" selection-end="7965" vertical-scroll-proportion="0.6061644">
+        <state line="192" column="51" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/libs/three.js/build/three.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11030" column="12" selection-start="230383" selection-end="230395" vertical-scroll-proportion="-6.5">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="84" column="47" selection-start="3917" selection-end="3917" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="294" column="14" selection-start="12815" selection-end="12815" vertical-scroll-proportion="3.419534">
           <folding />
         </state>
       </provider>
