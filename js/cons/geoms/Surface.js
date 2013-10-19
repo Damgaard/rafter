@@ -50,16 +50,9 @@ define(
                 this.vertices = [];
             THREE.Geometry.call( this );
 
-            console.time("populating the vertices array");
-
-//console.log("noOfSegments_phi: ", noOfSegments_phi);
             for ( theta_seg = 0; theta_seg <= noOfSegments_theta; theta_seg ++ ) {
-//console.log("********theta_seg********: ", theta_seg);
                 for ( phi_seg = 0; phi_seg <= noOfSegments_phi;   phi_seg ++ ) {
-                    //console.log("*************************");
-                    //console.log("****phi_seg****: ", phi_seg);
                     //debug = false; //((theta_seg === 0) && (phi_seg === 4)); //|| ((theta_seg === 0) && (phi_seg === 0));
-                    //console.log("debug in geoms/Surface: ", debug);
                     var x = getX(phi_seg, theta_seg,
                         approximationPrecisionX,
                         maxRecursionDepthX, aSurfaceGeometrySpec.conf.getX.debug);
@@ -71,7 +64,6 @@ define(
                 };
             };
 
-            console.timeEnd("populating the vertices array");
 
             for (theta_seg = 0; theta_seg < noOfSegments_theta; theta_seg ++ ) {
                 for ( phi_seg = 0; phi_seg < noOfSegments_phi; phi_seg ++ ) {
@@ -84,7 +76,6 @@ define(
                     face.normal.copy( normal );
                     face.vertexNormals.push( normal.clone(), normal.clone(), normal.clone(), normal.clone() );
                     this.faces.push( face );
-                    //this.material = new THREE.MeshBasicMaterial( { color: 0xffffff } );
                 };
             };
 
@@ -95,46 +86,3 @@ define(
         Object.freeze(THREE.SurfaceGeometry);
     }
 );
-
-/*
-THREE.Line = function ( geometry, material, type ) {
-
-    THREE.Object3D.call( this );
-
-    this.geometry = geometry;
-    this.material = ( material !== undefined ) ? material : new THREE.LineBasicMaterial( { color: Math.random() * 0xffffff } );
-    this.type = ( type !== undefined ) ? type : THREE.LineStrip;
-
-    if ( this.geometry ) {
-        if ( ! this.geometry.boundingSphere ) {
-            this.geometry.computeBoundingSphere();*/
-
-
-/*                    var material = new THREE.LineBasicMaterial({
- color: 0xffffff
- });
- endPointX = getX(best_phiR_end, thetaR_start);
- endPointY = getY(best_phiR_end, thetaR_start);
- endPointZ = getZ(thetaR_start);
- var geometry = new THREE.Geometry();
- geometry.vertices.push(new THREE.Vector3(0, 0, 0));
- geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
- var line = new THREE.Line(geometry, material);
- makeScene.scene.add(line);*/
-
-
-/*if (!this.vertices[face.a]) {
- console.log("this face.a can't index vertices: ", face.a);
- }
-
- if (!this.vertices[face.b]) {
- console.log("this face.b can't index vertices: ", face.b);
- }
-
- if (!this.vertices[face.c]) {
- console.log("this face.c can't index vertices: ", face.c);
- }
-
- if (!this.vertices[face.d]) {
- console.log("this face.d can't index vertices: ", face.d);
- }*/

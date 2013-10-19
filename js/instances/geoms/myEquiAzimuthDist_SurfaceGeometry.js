@@ -32,7 +32,7 @@ define(
     function (
         three,
         myEquiAzimuthDist_Segmentation,
-        myEquiAzimuthDist_positioning,
+        myEquiAzimuthDist_segmentPositioning,
         myEquiAzimuthDist_SurfaceGeometrySpec,
         SurfaceGeometry  // don't use any variables explicitly exported from this one, here.
         ) {
@@ -44,9 +44,9 @@ define(
         myEquiAzimuthDist_SurfaceGeometry = new THREE.SurfaceGeometry(
             myEquiAzimuthDist_Segmentation.noOfSegments_along_azimuth,
             myEquiAzimuthDist_Segmentation.noOfSegments_along_polar,
-            myEquiAzimuthDist_positioning.getXSEA,
-            myEquiAzimuthDist_positioning.getYSEA,
-            myEquiAzimuthDist_positioning.getZSEA,
+            myEquiAzimuthDist_segmentPositioning.getXSEA,
+            myEquiAzimuthDist_segmentPositioning.getYSEA,
+            myEquiAzimuthDist_segmentPositioning.getZSEA,
             myEquiAzimuthDist_SurfaceGeometrySpec
         );
 

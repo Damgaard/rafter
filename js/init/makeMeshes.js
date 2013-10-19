@@ -30,6 +30,7 @@ define(
         "instances/designs/myWinDoorSet",
         "instances/geoms/myEquiAzimuthDist_SurfaceGeometry",
         "instances/geoms/myEquiSurfaceDist_SurfaceGeometry",
+        "instances/geoms/myEquiSegmentDist_SurfaceGeometry",
         "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec"
     ],
     function (
@@ -41,17 +42,20 @@ define(
         myWinDoorSet,
         myEquiAzimuthDist_SurfaceGeometry,
         myEquiSurfaceDist_SurfaceGeometry,
+        myEquiSegmentDist_SurfaceGeometry,
         myEquiSurfaceDist_SurfaceGeometrySpec
     ) {
 
         //console.log("15");
 
-        var myEquiAzimuthDist_SurfaceGeometry
-          , myEquiSurfaceDist_SurfaceGeometry
-          , materialA
+        var //myEquiAzimuthDist_SurfaceGeometry
+          //, myEquiSurfaceDist_SurfaceGeometry
+           materialA
           , meshA
           , materialB
           , meshB
+          , materialC
+          , meshC
           , objects = [];
 
         materialA = new THREE.MeshBasicMaterial( { color: 0xFF8C00, wireframe: true } );
@@ -69,6 +73,14 @@ define(
         meshB.callback = function() { makeDOMelements.info.innerHTML = this.name; };
         makeScene.scene.add( meshB );
         objects.push( meshB );
+
+        materialC = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } );
+        meshC = new THREE.Mesh(myEquiSegmentDist_SurfaceGeometry, materialC);
+        meshC.position.set( 0, 0, 0 );
+        meshC.name = "myWallC";
+        meshC.callback = function() { makeDOMelements.info.innerHTML = this.name; };
+        makeScene.scene.add( meshC );
+        objects.push( meshC );
 
         return {
             objects: objects

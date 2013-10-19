@@ -21,29 +21,32 @@
 "use strict";
 
 
+// technically, this file really ought to be named myEquiSurfaceDistSURFACEGeometrySpec...
+
+
 define(
-    [   "instances/designs/myOuterSurface",
-        "instances/designs/myDelimitation",
-        "cons/designs/Segmentation",
-        "specs/designs/myEquiAzimuthDist_SegmentationSpec"
+    [
     ],
     function (
-        myOuterSurface,
-        myDelimitation,
-        Segmentation,
-        myEquiAzimuthDist_SegmentationSpec
         ) {
 
-        //console.log("20");
+        //console.log("30");
 
-        var myEquiAzimuthDist_Segmentation;
+        var myEquiSegmentDist_SurfaceGeometrySpec;
 
-        myEquiAzimuthDist_Segmentation = new Segmentation(
-            myEquiAzimuthDist_SegmentationSpec,
-            myDelimitation,
-            myOuterSurface
-        );
+        myEquiSegmentDist_SurfaceGeometrySpec = {
+            conf: {
+                getX: {
+                    debug: false
+                },
+                getY: {
+                    debug: false
+                }
+            }
+        };
 
-        return myEquiAzimuthDist_Segmentation;
+        Object.freeze(myEquiSegmentDist_SurfaceGeometrySpec);
+
+        return myEquiSegmentDist_SurfaceGeometrySpec;
     }
 );

@@ -25,30 +25,33 @@
 define(
     [   "libs/three.js/build/three",
         "instances/designs/myEquiSurfaceDist_Segmentation",
-        "instances/designs/segmentPositionings/myEquiSurfaceDist",
-        "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec",
+        "instances/designs/segmentPositionings/myEquiSegmentDist",
+        "specs/geoms/myEquiSegmentDist_SurfaceGeometrySpec",
         "cons/geoms/Surface"
+
+
     ],
     function (
         three,
-        myEquiSurfaceDist_Segmentation,
-        myEquiSurfaceDist_segmentPositioning,
-        myEquiSurfaceDist_SurfaceGeometrySpec,
+        myEquiAzimuthDist_Segmentation,  // fails when replaced with myEquiSegmentDist_Segmentation
+        myEquiSegmentDist_segmentPositioning,
+        myEquiSegmentDist_SurfaceGeometrySpec,
         SurfaceGeometry  // don't use any variables explicitly exported from this one, here.
         ) {
 
         //console.log("42");
 
-        var myEquiSurfaceDist_SurfaceGeometry;
+        var myEquiSegmentDist_SurfaceGeometry;
 
-        myEquiSurfaceDist_SurfaceGeometry = new THREE.SurfaceGeometry(
-            myEquiSurfaceDist_Segmentation.noOfSegments_along_azimuth,
-            myEquiSurfaceDist_Segmentation.noOfSegments_along_polar,
-            myEquiSurfaceDist_segmentPositioning.getXSESu,
-            myEquiSurfaceDist_segmentPositioning.getYSESu,
-            myEquiSurfaceDist_segmentPositioning.getZSESu,
-            myEquiSurfaceDist_SurfaceGeometrySpec);
+        myEquiSegmentDist_SurfaceGeometry = new THREE.SurfaceGeometry(
+            myEquiAzimuthDist_Segmentation.noOfSegments_along_azimuth,
+            myEquiAzimuthDist_Segmentation.noOfSegments_along_polar,
+            myEquiSegmentDist_segmentPositioning.getXSESe,
+            myEquiSegmentDist_segmentPositioning.getYSESe,
+            myEquiSegmentDist_segmentPositioning.getZSESe,
+            myEquiSegmentDist_SurfaceGeometrySpec
+        );
 
-        return myEquiSurfaceDist_SurfaceGeometry;
+        return myEquiSegmentDist_SurfaceGeometry;
     }
 );

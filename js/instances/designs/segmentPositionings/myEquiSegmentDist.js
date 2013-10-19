@@ -23,27 +23,26 @@
 
 define(
     [   "instances/designs/myOuterSurface",
-        "instances/designs/myDelimitation",
-        "cons/designs/Segmentation",
-        "specs/designs/myEquiAzimuthDist_SegmentationSpec"
+        "instances/designs/myEquiSurfaceDist_Segmentation",
+        "cons/designs/segmentPositionings/EquiSegmentDist"
     ],
     function (
         myOuterSurface,
-        myDelimitation,
-        Segmentation,
-        myEquiAzimuthDist_SegmentationSpec
+        myEquiSurfaceDist_Segmentation,
+        EquiSegmentDist_segmentPositioning
         ) {
 
-        //console.log("20");
+        var myEquiSegmentDist_segmentPositioning, phiR_from_phiS, thetaR_from_thetaS;
 
-        var myEquiAzimuthDist_Segmentation;
+        phiR_from_phiS = myEquiSurfaceDist_Segmentation.phiR_from_phiS;
+        thetaR_from_thetaS = myEquiSurfaceDist_Segmentation.thetaR_from_thetaS;
 
-        myEquiAzimuthDist_Segmentation = new Segmentation(
-            myEquiAzimuthDist_SegmentationSpec,
-            myDelimitation,
+        myEquiSegmentDist_segmentPositioning = new EquiSegmentDist_segmentPositioning(
+            phiR_from_phiS,
+            thetaR_from_thetaS,
             myOuterSurface
         );
 
-        return myEquiAzimuthDist_Segmentation;
+        return myEquiSegmentDist_segmentPositioning;
     }
 );

@@ -30,7 +30,13 @@ define( [],
             var getXSEA, getYSEA, getZSEA;
 
 
-            // get-functions Equidistant along Azimuth
+            /**
+             * get-function Equidistant along Azimuth.
+             * The meaning of 'Equidistant along Azimuth' is different from
+             * 'EquiAngular'. However the former implies the latter when the
+             * polar shape is a sphere. All other polar shapes
+             * distorts the positions in the euclidian space.
+             */
             getXSEA = function (phiS, thetaS) {
                 var thetaR, phiR, x;
                 phiR = phiR_from_phiS(phiS);

@@ -30,7 +30,7 @@ define( [],
             aEquiSurfaceDist_segmentPositioningSpec, aDelimitation,
             thetaR_from_thetaS, segment_extent_azimuth, aSurface ) {
             var memo = {},
-                getXSES, getYSES, getZSES,
+                getXSESu, getYSESu, getZSESu,
                 getXSES_body, getYSES_body;
 
 
@@ -38,7 +38,7 @@ define( [],
              * @see getXSES_body
              */
 
-            getXSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+            getXSESu = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
 
                 //console.log("approximationPrecision: ", approximationPrecision);
 
@@ -101,7 +101,7 @@ define( [],
              * @see getYSES_body
              */
 
-            getYSES = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
+            getYSESu = function(phiS, thetaS, approximationPrecision, maxRecursionDepth, debug) {
                 approximationPrecision = approximationPrecision ||
                     aEquiSurfaceDist_segmentPositioningSpec.conf.getYSES.approximationPrecision;
                 maxRecursionDepth      = maxRecursionDepth      ||
@@ -160,7 +160,7 @@ define( [],
              * defined by phiS and thetaS}
              */
 
-            getZSES = function(thetaS) {
+            getZSESu = function(thetaS) {
                 var thetaR, z;
                 thetaR = thetaR_from_thetaS(thetaS);
                 z = aSurface.getZR(thetaR);
@@ -168,9 +168,9 @@ define( [],
             };
 
 
-            this.getXSES = getXSES;
-            this.getYSES = getYSES;
-            this.getZSES = getZSES;
+            this.getXSESu = getXSESu;
+            this.getYSESu = getYSESu;
+            this.getZSESu = getZSESu;
 
             Object.freeze(this);
         };
