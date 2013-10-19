@@ -30,18 +30,26 @@ define(
 
         //console.log("28");
 
-        var myEquiSurfaceDist_SegmentationSpec;
+        var myEquiSurfaceDist_segmentPositioningSpec;
 
-        myEquiSurfaceDist_SegmentationSpec = {
-            max_outer_segmentExtent_along_polar: myEquiAzimuthDist_SegmentationSpec.max_outer_segmentExtent_along_polar * 20,
-            max_outer_segmentExtent_along_azimuth:  myEquiAzimuthDist_SegmentationSpec.max_outer_segmentExtent_along_azimuth * 5,
+        myEquiSurfaceDist_segmentPositioningSpec = {
             conf: {
                 maxRecursionDepth: 6,
-                debug: false
+                debug: false,
+                getXSES: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 6,
+                    debug:false
+                },
+                getYSES: {
+                    approximationPrecision: 0.1,
+                    maxRecursionDepth: 6,
+                    debug: false
+                }
             }
         };
 
-        Object.freeze(myEquiSurfaceDist_SegmentationSpec);
-        return myEquiSurfaceDist_SegmentationSpec;
+        Object.freeze(myEquiSurfaceDist_segmentPositioningSpec);
+        return myEquiSurfaceDist_segmentPositioningSpec;
     }
 );

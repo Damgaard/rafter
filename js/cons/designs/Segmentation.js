@@ -22,14 +22,8 @@
 
 
 define(
-    [   //"libs/three.js/build/three"
-        //"init/makeScene"
-    ],
-    function (
-        //three
-        //makeScene
-        ) {
-        //console.log("5");
+    [],
+    function () {
 
         var Segmentation;
 
@@ -301,7 +295,7 @@ define(
             this.thetaR_from_thetaS = thetaR_from_thetaS;
             this.noOfSegments_along_azimuth = noOfSegments_along_azimuth;
             this.noOfSegments_along_polar = noOfSegments_along_polar;
-            //this.segment_extent_azimuth = segment_extent_azimuth;
+            this.segment_extent_azimuth = segment_extent_azimuth;
             //this.segment_extent_polar = segment_extent_polar;
             this.getXSEA = getXSEA;
             this.getYSEA = getYSEA;

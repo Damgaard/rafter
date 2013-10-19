@@ -25,12 +25,14 @@
 define(
     [   "libs/three.js/build/three",
         "instances/designs/myEquiSurfaceDist_Segmentation",
+        "instances/designs/segmentPositionings/myEquiSurfaceDist",
         "specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec",
         "cons/geoms/Surface"
     ],
     function (
         three,
         myEquiSurfaceDist_Segmentation,
+        myEquiSurfaceDist_segmentPositioning,
         myEquiSurfaceDist_SurfaceGeometrySpec,
         SurfaceGeometry  // don't use any variables explicitly exported from this one, here.
         ) {
@@ -42,9 +44,9 @@ define(
         myEquiSurfaceDist_SurfaceGeometry = new THREE.SurfaceGeometry(
             myEquiSurfaceDist_Segmentation.noOfSegments_along_azimuth,
             myEquiSurfaceDist_Segmentation.noOfSegments_along_polar,
-            myEquiSurfaceDist_Segmentation.getXSES,
-            myEquiSurfaceDist_Segmentation.getYSES,
-            myEquiSurfaceDist_Segmentation.getZSES,
+            myEquiSurfaceDist_segmentPositioning.getXSES,
+            myEquiSurfaceDist_segmentPositioning.getYSES,
+            myEquiSurfaceDist_segmentPositioning.getZSES,
             myEquiSurfaceDist_SurfaceGeometrySpec);
 
         return myEquiSurfaceDist_SurfaceGeometry;

@@ -24,10 +24,10 @@
 define( [],
     function () {
 
-        var EquiAzimuthDist_Segmentation;
+        var EquiAzimuthDist_segmentPositioning;
 
-        EquiAzimuthDist_Segmentation = function ( phiR_from_phiS, thetaR_from_thetaS, aSurface ) {
-            var getXSEA, getYSEA, getZSEA,
+        EquiAzimuthDist_segmentPositioning = function ( phiR_from_phiS, thetaR_from_thetaS, aSurface ) {
+            var getXSEA, getYSEA, getZSEA;
 
 
             // get-functions Equidistant along Azimuth
@@ -61,7 +61,7 @@ define( [],
             Object.freeze(this);
         };
 
-        Object.freeze(EquiAzimuthDist_Segmentation);
-        return EquiAzimuthDist_Segmentation;
+        Object.freeze(EquiAzimuthDist_segmentPositioning);
+        return EquiAzimuthDist_segmentPositioning;
     }
 );

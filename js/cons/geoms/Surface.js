@@ -27,7 +27,6 @@ define(
     function (
         three
         ) {
-        //console.log("9");
 
         // X = length, Y = height, Z = depth,
         THREE.SurfaceGeometry = function (noOfSegments_phi, noOfSegments_theta, getX, getY, getZ, aSurfaceGeometrySpec) {

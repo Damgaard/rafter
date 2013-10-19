@@ -32,13 +32,11 @@ define(
         makeScene,
         phiR_mark  // don't use any variables explicitly exported from this one, here.
         ) {
-        //console.log("7");
 
         var Surface;
 
         Surface = function (aSurfaceSpec, getXgetYgetZ_rad, phiR_estimator, radius) {
             var spec, linearDistR,
-                memo_surfaceDistR = {},
                 surfaceDistR,
                 surfaceDistR_body,
                 surfaceDistR_along_azimuth,
@@ -170,38 +168,11 @@ define(
                 debug = debug || aSurfaceSpec.conf.surfaceDistR.debug;
 
                 if (debug) {
-                    //console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
+                    console.log("maxRecursionDepth in surfaceDistR: ", maxRecursionDepth);
                 }
 
-                if (typeof memo_surfaceDistR[phiR_start] == 'undefined') {
-                    memo_surfaceDistR[phiR_start] = {};
-                }
-
-                if (typeof memo_surfaceDistR[phiR_start][thetaR_start] == 'undefined') {
-                    memo_surfaceDistR[phiR_start][thetaR_start] = {};
-                }
-
-                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end] == 'undefined') {
-                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end] = {};
-                }
-
-                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end] == 'undefined') {
-                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end] = {};
-                }
-
-//                if (typeof memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] == 'undefined') {
-//                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] = {};
-//                }
-
-                if (memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth]) {
-                    surfaceDistR = memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth];
-                    console.log("memo hit ");
-                    console.log("memo hit: ", memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth]);
-                } else {
-                    surfaceDistR = surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
-                        maxRecursionDepth, debug);
-                    memo_surfaceDistR[phiR_start][thetaR_start][phiR_end][thetaR_end][maxRecursionDepth] = surfaceDistR;
-                }
+                surfaceDistR = surfaceDistR_body(phiR_start, thetaR_start, phiR_end, thetaR_end,
+                    maxRecursionDepth, debug);
 
                 return surfaceDistR;
             };

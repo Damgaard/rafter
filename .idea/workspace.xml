@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSegmentDist.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiAzimuthDist.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiSurfaceDist.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/js/specs/designs/segmentPositionings/myEquiSurfaceDistSpec.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js" afterPath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js" afterPath="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/Naming_conventions" afterPath="$PROJECT_DIR$/doc/Naming_conventions" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" afterPath="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js" afterPath="$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/designs/Surface.js" afterPath="$PROJECT_DIR$/js/cons/designs/Surface.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/cons/geoms/Surface.js" afterPath="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" afterPath="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" afterPath="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -32,14 +35,14 @@
     <file path="/mySurfaceSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381437522250" ignored="false" />
     <file path="/NormalVectorProjectedGetXYZ.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1376830527317" ignored="false" />
     <file path="/mySuperQuadricSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381412374890" ignored="false" />
-    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382037871073" ignored="false" />
+    <file path="/Dummy.txt" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382187071039" ignored="false" />
     <file path="/myRafterwiseSegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381744576307" ignored="false" />
     <file path="/myWinDoorSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378226776679" ignored="false" />
     <file path="/WinDoorSet.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378836609536" ignored="false" />
     <file path="/myWinDoorSet.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378231948390" ignored="false" />
     <file path="/makeMeshes.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381253323898" ignored="false" />
     <file path="/myWinDoorSetSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378408337696" ignored="false" />
-    <file path="/Naming_conventions" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381857954564" ignored="false" />
+    <file path="/Naming_conventions" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382189325315" ignored="false" />
     <file path="/Plane.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1378836005629" ignored="false" />
     <file path="/myEquiSurfaceDistGeometrySpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1379624318675" ignored="false" />
     <file path="/myEquiAzimuthDistGeometry.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380376267159" ignored="false" />
@@ -48,12 +51,16 @@
     <file path="/myPhiR_mark_one.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1380487172831" ignored="false" />
     <file path="/Call path notes" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381242259138" ignored="false" />
     <file path="/myGeometrywiseSegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381435423450" ignored="false" />
-    <file path="/myEquiSurfaceDist_SurfaceGeometrySpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381859129798" ignored="false" />
+    <file path="/myEquiSurfaceDist_SurfaceGeometrySpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382193483029" ignored="false" />
     <file path="/myEquiAzimuthDist_SurfaceGeometry.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381436941547" ignored="false" />
     <file path="/myEquiAzimuthDist_SurfaceGeometrySpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381744610993" ignored="false" />
     <file path="/myEquiSurfaceDist_SegmentationSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1381859104227" ignored="false" />
-    <file path="/EquiAzimuthDist.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382038891178" ignored="false" />
+    <file path="/EquiAzimuthDist.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382192140384" ignored="false" />
     <file path="/myEquiAzimuthDist.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382040431872" ignored="false" />
+    <file path="/EquiSurfaceDist.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382193325555" ignored="false" />
+    <file path="/myEquiSurfaceDistSpec.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382189726599" ignored="false" />
+    <file path="/myEquiSurfaceDist.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382191973035" ignored="false" />
+    <file path="/myEquiSurfaceDist_SurfaceGeometry.js" changelist="fe36ef91-5d80-4f56-8ead-bdb23c1a908c" time="1382191545947" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,25 +83,34 @@
       <file leaf-file-name="Segmentation.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="319" column="0" selection-start="13683" selection-end="13683" vertical-scroll-proportion="-27.071428">
+            <state line="297" column="12" selection-start="13089" selection-end="13089" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="makeMeshes.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/init/makeMeshes.js">
+      <file leaf-file-name="myEquiSurfaceDist_SegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="38" column="93" selection-start="1265" selection-end="1332" vertical-scroll-proportion="0.0">
+            <state line="40" column="13" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EquiSegmentDist.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSegmentDist.js">
+      <file leaf-file-name="myEquiAzimuthDist_SegmentationSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="39" column="13" selection-start="1059" selection-end="1147" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EquiAzimuthDist.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="27" column="0" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -103,61 +119,52 @@
       <file leaf-file-name="EquiSurfaceDist.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+            <state line="70" column="0" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EquiAzimuthDist.js" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js">
+      <file leaf-file-name="myEquiSurfaceDistSpec.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/specs/designs/segmentPositionings/myEquiSurfaceDistSpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="85" selection-start="888" selection-end="923" vertical-scroll-proportion="0.22945206">
+            <state line="34" column="44" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiAzimuthDist_Segmentation.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js">
+      <file leaf-file-name="myEquiSurfaceDist.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiSurfaceDist.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="8" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0">
+            <state line="40" column="12" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiSurfaceDist_Segmentation.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js">
+      <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="44" column="8" selection-start="1349" selection-end="1349" vertical-scroll-proportion="0.0">
+            <state line="73" column="0" selection-start="3237" selection-end="3237" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiAzimuthDist.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiAzimuthDist.js">
+      <file leaf-file-name="myEquiSurfaceDist_SurfaceGeometrySpec.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="57" selection-start="933" selection-end="933" vertical-scroll-proportion="0.0">
+            <state line="41" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.4527897">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="myEquiAzimuthDist_SurfaceGeometry.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js">
+      <file leaf-file-name="Surface.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="12" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="myEquiSurfaceDist_SurfaceGeometry.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="92" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0">
+            <state line="34" column="0" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -181,30 +188,30 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/doc/Naming_conventions" />
-        <option value="$PROJECT_DIR$/js/libs/three.js/build/three.js" />
-        <option value="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" />
-        <option value="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" />
-        <option value="$PROJECT_DIR$/js/init/makeMeshes.js" />
-        <option value="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
-        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
-        <option value="$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js" />
-        <option value="$PROJECT_DIR$/js/instances/designs/myEquiSurfaceDist_Segmentation.js" />
-        <option value="$PROJECT_DIR$/js/cons/designs/Segmentations/EquiSegmentDist.js" />
         <option value="$PROJECT_DIR$/js/cons/designs/Segmentations/EquiSurfaceDist.js" />
-        <option value="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
         <option value="$PROJECT_DIR$/js/cons/designs/Segmentations/EquiAzimuthDist.js" />
         <option value="$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiAzimuthDist.js" />
-        <option value="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" />
         <option value="$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js" />
+        <option value="$PROJECT_DIR$/doc/Naming_conventions" />
+        <option value="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_segmentPositioningSpec.js" />
+        <option value="$PROJECT_DIR$/js/specs/designs/segmentPositionings/myEquiSurfaceDistSpec.js" />
+        <option value="$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js" />
+        <option value="$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js" />
+        <option value="$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiSurfaceDist.js" />
+        <option value="$PROJECT_DIR$/js/cons/geoms/Surface.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/Surface.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/Segmentation.js" />
+        <option value="$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js" />
+        <option value="$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="49" />
     <option name="y" value="24" />
-    <option name="width" value="1871" />
-    <option name="height" value="1056" />
+    <option name="width" value="1231" />
+    <option name="height" value="696" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -322,55 +329,15 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
+              <option name="myItemId" value="specs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="three.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bricked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
+              <option name="myItemId" value="designs" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="three.js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="build" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bricked" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="code" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
+              <option name="myItemId" value="segmentPositionings" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -532,6 +499,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bricked" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="code" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="doc" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -542,11 +523,12 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="options.lastSelected" value="fileTemplates" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/js/specs/designs/segmentPositionings" />
       <recent name="$PROJECT_DIR$/js/instances/designs" />
       <recent name="$PROJECT_DIR$/js/specs/designs" />
     </key>
@@ -603,13 +585,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="49" y="24" width="1871" height="1056" extended-state="6" />
+    <frame x="49" y="24" width="1231" height="696" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24918744" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19989166" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29850745" sideWeight="0.6722038" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -685,42 +667,9 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
+    <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="28" selection-start="1375" selection-end="1375" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="28" selection-start="841" selection-end="841" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/RafterSet.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="192" column="51" selection-start="7883" selection-end="7883" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/libs/three.js/build/three.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11030" column="12" selection-start="230383" selection-end="230395" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="84" column="47" selection-start="3917" selection-end="3917" vertical-scroll-proportion="0.0">
+        <state line="48" column="12" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -732,37 +681,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js">
+    <entry file="file://$PROJECT_DIR$/doc/Naming_conventions">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="319" column="0" selection-start="13683" selection-end="13683" vertical-scroll-proportion="-27.071428">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiAzimuthDist.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="57" selection-start="933" selection-end="933" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/init/makeMeshes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="93" selection-start="1265" selection-end="1332" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/instances/designs/myEquiAzimuthDist_Segmentation.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="8" selection-start="1339" selection-end="1339" vertical-scroll-proportion="0.0">
+        <state line="10" column="44" selection-start="618" selection-end="618" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -774,23 +695,86 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiAzimuthDist_SurfaceGeometry.js">
+    <entry file="file://$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiAzimuthDist.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="12" selection-start="1736" selection-end="1736" vertical-scroll-proportion="0.0">
+        <state line="26" column="57" selection-start="0" selection-end="1529" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/instances/geoms/myEquiSurfaceDist_SurfaceGeometry.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="92" selection-start="1213" selection-end="1213" vertical-scroll-proportion="0.0">
+        <state line="7" column="2" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiAzimuthDist_SegmentationSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="13" selection-start="1059" selection-end="1147" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/myEquiSurfaceDist_SegmentationSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="13" selection-start="1389" selection-end="1389" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/geoms/Surface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="0" selection-start="3237" selection-end="3237" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiAzimuthDist.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="85" selection-start="888" selection-end="923" vertical-scroll-proportion="0.22945206">
+        <state line="27" column="0" selection-start="843" selection-end="843" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Surface.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="0" selection-start="1064" selection-end="1064" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/instances/designs/segmentPositionings/myEquiSurfaceDist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="12" selection-start="1356" selection-end="1356" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/Segmentation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="297" column="12" selection-start="13089" selection-end="13089" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/cons/designs/segmentPositionings/EquiSurfaceDist.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="0" selection-start="2761" selection-end="2761" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/designs/segmentPositionings/myEquiSurfaceDistSpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="44" selection-start="1036" selection-end="1036" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/specs/geoms/myEquiSurfaceDist_SurfaceGeometrySpec.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="32" selection-start="1206" selection-end="1206" vertical-scroll-proportion="0.4527897">
           <folding />
         </state>
       </provider>

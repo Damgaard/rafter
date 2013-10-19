@@ -6,6 +6,10 @@ with 'a' to indicate that any particular instance could be passed.
 Both camelCase and under_case is used: the former for the more tightly bound words
 and the latter for the more loosely bound words. ish.
 
+Names can contain upper case letters. Letters are upper case when required by the
+camelCase style, or when a word is the name of a constructor, in which case the
+first letter of the word must be upper case.
+
 When the words 'phi' and 'theta' have a capital R appended, like this: 'phiR' and
 'thetaR', it means that they are measured in radians. Similarly 'phiS' and 'thetaS'
 are measured in segments.
