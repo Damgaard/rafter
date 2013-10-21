@@ -58,7 +58,7 @@ define(
           , meshC
           , objects = [];
 
-        materialA = new THREE.MeshBasicMaterial( { color: 0xFF8C00, wireframe: true } );
+        materialA = new THREE.MeshBasicMaterial( { color: 0xFF8C00, wireframe: true, side: THREE.DoubleSide } );
         meshA = new THREE.Mesh(myEquiAzimuthDist_SurfaceGeometry, materialA);
         meshA.position.set( 0, 0, 0 );
         meshA.name = "myWallA";
@@ -66,7 +66,7 @@ define(
         makeScene.scene.add( meshA );
         objects.push( meshA );
 
-        materialB = new THREE.MeshBasicMaterial( { color: 0x4169E1, wireframe: true } );
+        materialB = new THREE.MeshBasicMaterial( { color: 0x4169E1, wireframe: true, side: THREE.DoubleSide } );
         meshB = new THREE.Mesh(myEquiSurfaceDist_SurfaceGeometry, materialB);
         meshB.position.set( 0, 0, 0 );
         meshB.name = "myWallB";
@@ -74,7 +74,7 @@ define(
         makeScene.scene.add( meshB );
         objects.push( meshB );
 
-        materialC = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true } );
+        materialC = new THREE.MeshBasicMaterial( { color: 0xFFFFFF, wireframe: true, side: THREE.DoubleSide } );
         meshC = new THREE.Mesh(myEquiSegmentDist_SurfaceGeometry, materialC);
         meshC.position.set( 0, 0, 0 );
         meshC.name = "myWallC";
