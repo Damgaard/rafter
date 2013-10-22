@@ -109,23 +109,11 @@ define(
                 debug = debug || aSurfaceSpec.conf.surfaceDistR_along_azimuth.debug;
 
                 if (debug) {
-                    //console.log(" ");
-                    //console.log("phiR_start: ", phiR_start);
-                    //console.log("thetaR_start: ", thetaR_start);
-                    //console.log("phiR_end: ", phiR_end);
-                    //console.log(" ");
-
-                    /*var material = new THREE.LineBasicMaterial({
-                        color: 0xffffff
-                    });
-                    var endPointX = getXR(phiR_end, thetaR_start);
-                    var endPointY = getYR(phiR_end, thetaR_start);
-                    var endPointZ = getZR(thetaR_start);
-                    var geometry = new THREE.Geometry();
-                    geometry.vertices.push(new THREE.Vector3(0, 0, 0));
-                    geometry.vertices.push(new THREE.Vector3(endPointX, endPointY, endPointZ));
-                    var line = new THREE.Line(geometry, material);
-                    makeScene.scene.add(line);*/
+                    console.log(" ");
+                    console.log("phiR_start: ", phiR_start);
+                    console.log("thetaR_start: ", thetaR_start);
+                    console.log("phiR_end: ", phiR_end);
+                    console.log(" ");
                 }
 
                 return surfaceDistR(phiR_start, thetaR_start, phiR_end, thetaR_start,
@@ -281,36 +269,17 @@ define(
                 }
 
                 if (debug) {
-                    //console.log("arguments: ", arguments);
-                    //console.log("phiR_start ", phiR_start );
-                    //console.log("phiR_end ", phiR_end );
-/*                    console.log("dist in surfaceDistR_body: ", dist);
+                    console.log("arguments: ", arguments);
+                    console.log("phiR_start ", phiR_start );
+                    console.log("phiR_end ", phiR_end );
+                    console.log("dist in surfaceDistR_body: ", dist);
                     console.log("These are the arguments given to dist = linearDistR: ");
                     console.log("phiR_start: ",phiR_start);
                     console.log("thetaR_start: ",thetaR_start);
                     console.log("phiR_start_plus_deltaPhi: ",phiR_start + deltaPhi);
                     console.log("thetaR_start_plus_deltaTheta: ",thetaR_start + deltaTheta);
                     console.log("remainingRecursionDepth in surfaceDistR_body: ", remainingRecursionDepth);
-                    console.log(" ");*/
-
-
-
-                    //console.log("halfDist: ", halfDist);
-
-                    /*var material = new THREE.LineBasicMaterial({
-                     color: 0xffffff
-                     });
-                    var phiS_start_x = getXR(phiR_start, thetaR_start);
-                    var phiS_start_y = getYR(phiR_start, thetaR_start);
-                    var phiS_start_z = getZR(thetaR_start);
-                    var phiS_end_x = getXR(phiR_end, thetaR_end);
-                    var phiS_end_y = getYR(phiR_end, thetaR_end);
-                    var phiS_end_z = getZR(thetaR_end);
-                    var geometry = new THREE.Geometry();
-                    geometry.vertices.push(new THREE.Vector3(phiS_start_x, phiS_start_y, phiS_start_z));
-                    geometry.vertices.push(new THREE.Vector3(phiS_end_x, phiS_end_y, phiS_end_z));
-                    var line = new THREE.Line(geometry, material);
-                    makeScene.scene.add(line);*/
+                    console.log(" ");
                 }
 
                 // If the currently obtained precision isn't good enough, recursively improve the
@@ -431,22 +400,22 @@ define(
 
                 //console.log("debug in horizontalSurfaceProjection_body: ", debug);
 
-                if(debug) { // && projectionDistance === 716.9945307505925) {
-                    //console.log(" ");
-                    //console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
-                    //console.log("projectionDistance: ", projectionDistance);
+                if(debug) {
+                    console.log(" ");
+                    console.log("phiR_end_estimate_A: ", phiR_end_estimate_A);
+                    console.log("projectionDistance: ", projectionDistance);
                     //mark_phiR_one = new THREE.phiR_mark_geometry(phiR_end_estimate_A, getXR, getYR, getZR);
-                    //console.log("phiR_end for surfaceDist: ", phiR_end_estimate_A);
-                    //console.log("surfaceDist: ", surfaceDist);
-                    //console.log("phiR_end for surfaceDist - true phiR_end: ", phiR_end_estimate_A - 6.283617937340014);
-                    //console.log("deltaDist: ", deltaDist);
-                    //console.log("phiR_estimator(deltaDist): ", phiR_estimator(deltaDist));
-                    //console.log("phiR_end_estimate_B - true phiR_end: ", phiR_end_estimate_B -  6.283617937340014);
-                    //console.log(" ");
-                    //console.log("phiS in horizontalSurfaceProjection_body: ", phiS);
-                    //console.log("thetaS in horizontalSurfaceProjection_body: ", thetaS);
-                    //console.log("approximationPrecision: ", approximationPrecision);
-                    //console.log("remainingRecursionDepth: ", remainingRecursionDepth);
+                    console.log("phiR_end for surfaceDist: ", phiR_end_estimate_A);
+                    console.log("surfaceDist: ", surfaceDist);
+                    console.log("phiR_end for surfaceDist - true phiR_end: ", phiR_end_estimate_A - 6.283617937340014);
+                    console.log("deltaDist: ", deltaDist);
+                    console.log("phiR_estimator(deltaDist): ", phiR_estimator(deltaDist));
+                    console.log("phiR_end_estimate_B - true phiR_end: ", phiR_end_estimate_B -  6.283617937340014);
+                    console.log(" ");
+                    console.log("phiS in horizontalSurfaceProjection_body: ", phiS);
+                    console.log("thetaS in horizontalSurfaceProjection_body: ", thetaS);
+                    console.log("approximationPrecision: ", approximationPrecision);
+                    console.log("remainingRecursionDepth: ", remainingRecursionDepth);
                 }
 
                 if(Math.abs(deltaDist) > approximationPrecision && (remainingRecursionDepth > 0)) {
@@ -462,7 +431,7 @@ define(
                         console.log("  WOOPS! deltaDist didn't converge to 0!");
                         console.log("approximationPrecision: ", approximationPrecision);
                         console.log("best deltaDist: ", deltaDist);
-                        //console.log("best_phiR_end: ", phiR_end_estimate_B);
+                        console.log("best_phiR_end: ", phiR_end_estimate_B);
 //                        var mark_phiR_one = new THREE.phiR_mark_geometry(7.337545372284094, getXR, getYR, getZR);
 //                        var mark_phiR_two = new THREE.phiR_mark_geometry(7.030486254051471, getXR, getYR, getZR);
                     }

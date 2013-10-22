@@ -60,8 +60,8 @@ require(
         SuperQuadricTest.run();
         SurfaceTest.runA();
         SurfaceTest.runB();
-        SegmentationTest.runA();
-        SegmentationTest.runB();
+        //SegmentationTest.runA();
+        //SegmentationTest.runB();
 
         // start QUnit.
         QUnit.load();
