@@ -41,6 +41,13 @@ define(
                 spec[prop] = aSuperQuadricSpec[prop];
             };
 
+            /**
+             * get-function Equidistant along Azimuth.
+             * The meaning of 'Equidistant along Azimuth' is different from
+             * 'EquiAngular'. However the former implies the latter when the
+             * polar shape is a sphere. All other polar shapes
+             * distorts the positions in the euclidian space.
+             */
             getX = function(phi_rad, theta_rad) {
                 var x = spec.radius * spec.modulator_XY(theta_rad) * spec.curve_X(phi_rad);
                 //console.log("x in SuperQuadric: ", x);
