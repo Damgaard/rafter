@@ -92,7 +92,11 @@ define(
 
             geometrywiseSegmentationSpec = {
                 max_outer_segmentExtent_along_polar: 20,
-                max_outer_segmentExtent_along_azimuth: 20
+                max_outer_segmentExtent_along_azimuth: 20,
+                conf: {
+                    maxRecursionDepth: 4,
+                    debug: false
+                }
             };
 
             segmentation = new Segmentation(geometrywiseSegmentationSpec, delimitation, surface);
@@ -166,7 +170,11 @@ define(
 
             geometrywiseSegmentationSpec = {
                 max_outer_segmentExtent_along_polar: 20,
-                max_outer_segmentExtent_along_azimuth: 20
+                max_outer_segmentExtent_along_azimuth: 20,
+                conf: {
+                    maxRecursionDepth: 4,
+                    debug: false
+                }
             };
 
             segmentation = new Segmentation(geometrywiseSegmentationSpec, delimitation, surface);
