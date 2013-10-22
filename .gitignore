@@ -12,3 +12,4 @@ js/libs/qunitjs.com/
 
 # Don't add internal Webstorm files
 *~
+.idea/
